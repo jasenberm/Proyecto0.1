@@ -1,0 +1,155 @@
+/* 3.Lista de restaurantes */
+#list-filtros {
+    background: url(../images/pricing_bg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin-top: 10px;
+}
+
+#envol-filtros {
+    background-color: rgba(139, 195, 74, 0.74);
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background-position-x: 15%;
+    background-position-y: 80%;
+}
+
+.section-header {
+    padding-left: 10px;
+    padding-top: 35px;
+}
+
+.rest-title {
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+/* lsitado de filtros */
+#list-rest {
+    display: block;
+    width: 100%;
+    margin: 0px;
+    padding-left: 0px;
+}
+
+#list-rest li {
+    color: #3d7024 !important;
+    display: inline-block;
+    width: auto;
+    padding: 0px 10px;
+    margin-right: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
+}
+
+#list-rest li:hover {
+    color: #fff !important;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+#list-rest li.active {
+    border-bottom: 3px ridge #fff;
+    color: #fff !important;
+}
+
+.badge-primary {
+    background-color: #3d7024; 
+}
+
+/* restaurantes */
+#lista {
+    display: block;
+    width: 100%;
+    padding: 50px 0px 25px 0px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+#lista .item {
+    background-color: #8bc34a;
+    box-shadow: 0px 2px 5px #948e8e;
+    display: none; 
+    vertical-align: top;
+    margin-bottom: 25px;
+    margin-right: 20px;
+    color: #fff;
+    text-align: center;
+    width: 30%;
+    box-sizing: border-box;
+}
+
+#lista .item h2 {
+    font-size: 32px;
+    padding: 12px;
+    margin: 0px;
+}
+
+#lista .item a {
+    display: inline-block;
+    max-width: 100%;
+    text-decoration: none;
+}
+
+#lista .item img {
+    max-width: 100%;
+}
+
+@media (min-width: 991px) {
+	#lista .item:nth-child(7),
+	#lista .item:nth-child(8),
+	#lista .item:nth-child(9) {
+		margin-bottom: 25px;
+	}
+}
+
+/*  --========================    for  hover direction  =============================-- */
+
+.listado li a,
+.listado li a img {
+	display: block;
+	position: relative;
+}
+.listado li a {
+	overflow: hidden;
+	color: #fff;
+}
+
+
+.listado li a .rest-desc{
+	position: absolute;
+	font-size: 14px;
+	background: rgba(139, 195, 74, 0.56);
+    width: 100%;
+    height: 100%;
+	top: 0px;
+	left: -100%;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.listado li a .rest-desc span h3 {
+	font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.listado li a:hover .rest-desc {
+	left: 0px;
+}
+
+.listado li a:hover .rest-desc span {
+	display: block;
+	color: rgba(255,255,255,0.9);
+	font-size: 14px;
+  	padding: 22% 20px;
+  	line-height: 23px;
+}
