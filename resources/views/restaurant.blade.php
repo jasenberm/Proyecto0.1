@@ -9,7 +9,15 @@
 
     <title>Mamma's Kitchen</title>
 
-    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+    {{-- CSS --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/list-restaurant.css') }}"> 
+
+
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/owl.theme.css') }}">
@@ -19,9 +27,9 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-datetimepicker.min.css') }}">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
     
-    <style>
+    {{-- <style>
         @foreach($sliders as $key=>$slider)
 
             .owl-carousel .owl-wrapper, .owl-carousel .owl-item:nth-child({{ $key + 1 }}) .item
@@ -42,14 +50,14 @@
                 controlsContainer: ".flexslider-container"
             });
         });
-    </script>
+    </script> --}}
 
 </head>
 
 <body data-spy="scroll" data-target="#template-navbar">
 
     <!--== 4. Navigation ==-->
-    <nav id="template-navbar" class="navbar navbar-default custom-navbar-default navbar-fixed-top">
+    {{-- <nav id="template-navbar" class="navbar navbar-default custom-navbar-default navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -71,11 +79,60 @@
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.row -->
-    </nav>
+    </nav> --}}
+
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img id="logo" src="{{ asset('frontend/images/Logo_main.png') }}" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                data-target="#navbarWelcome" 
+                aria-controls="navbarWelcome" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>        
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarWelcome">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">acerca de</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">reservacion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="modal" 
+                                data-target="#staticBackdrop">inicio de sesion</a>
+                        </li>
+                        {{-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        </li> 
+                        <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                            Disabled</a>
+                        </li>--}}
+                    </ul>
+                </div>
+            </nav>
+        </div>  
+    </div>
 
 
     <!--== 5. Header ==-->
-    <section id="header-slider" class="owl-carousel">
+    {{-- <section id="header-slider" class="owl-carousel">
         @foreach ($sliders as $key=>$slider)
             <div class="item">
                 <div class="container">
@@ -86,11 +143,11 @@
                 </div>
             </div>
         @endforeach
-    </section>
+    </section> --}}
 
 
     <!--== 6. About us ==-->
-    <section id="about" class="about">
+    {{-- <section id="about" class="about">
         <img src="{{ asset('frontend/images/icons/about_color.png') }}" class="img-responsive section-icon hidden-sm hidden-xs">
         <div class="wrapper">
             <div class="container-fluid">
@@ -112,7 +169,22 @@
                 </div> <!-- /.row -->
             </div> <!-- /.container-fluid -->
         </div> <!-- /.wrapper -->
-    </section> <!-- /#about -->
+    </section> <!-- /#about --> --}}
+
+    <div class="row" id="acerca-de">
+        <img src="{{ asset('frontend/images/icons/about_color.png') }}" alt="acerca-de" 
+        class="img-responsive section-icon d-none d-lg-block d-xl-block">
+        <div class="col about-bg d-none d-lg-block d-xl-block"></div>
+        <div class="col about-content">
+            <h1 class="content-title">Acerca de</h1>
+            <p class="content-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Eius iusto numquam corporis asperiores! Amet iste facere cupiditate eos hic in! Ipsum 
+                earum dolores ducimus similique voluptatum quas ullam quos dolorum.</p>
+            <p class="content-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Eius iusto numquam corporis asperiores! Amet iste facere cupiditate eos hic in! Ipsum 
+                earum dolores ducimus similique voluptatum quas ullam quos dolorum.</p>
+        </div>
+    </div>
 
 
     <!--==  7. Afordable Pricing  ==-->
@@ -339,25 +411,40 @@
     </footer>
 
 
-    <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+    crossorigin="anonymous"></script>
+
+
+<script src="{{ asset('frontend/js/jquery.mixitup.min.js') }}"></script>
+<script src="{{ asset('frontend/js/main.js') }}"></script>
+<script src="{{ asset('frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+    {{-- <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/jquery.mixitup.min.js') }}"></script>
     <script src="{{ asset('frontend/js/wow.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.validate.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/jquery.hoverdir.js') }}"></script>
-    {{--<script type="text/javascript" src="{{ asset('frontend/js/jQuery.scrollSpeed.js') }}"></script>--}}
+    
     <script type="text/javascript" src="{{ asset('frontend/js/jQuery.scrollSpeed2.js') }}"></script>
     <script src="{{ asset('frontend/js/script.js') }}"></script>
-    <script src="{{ asset('frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
 
-    @if ($errors->any())
+    {{-- @if ($errors->any())
         @foreach ($errors->all() as $error)
             <script>
                 toastr.error('{{ $error }}');
             </script>
         @endforeach
-    @endif    
+    @endif     --}}
 
     <script type="text/javascript">
             $(function () {
@@ -370,7 +457,7 @@
             });
             
     </script>
-{!! Toastr::message() !!}
+{{-- {!! Toastr::message() !!} --}}
 </body>
 
 </html>
