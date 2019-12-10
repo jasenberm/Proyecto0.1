@@ -28,7 +28,7 @@
     <link href="{{ asset('backend/css/material-dashboard.min.css') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('backend/demo/demo.css') }}" rel="stylesheet" />
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     
     @stack('css')
@@ -174,6 +174,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     
+    
+
     <script>
         $(document).ready(function() {
             $().ready(function() {

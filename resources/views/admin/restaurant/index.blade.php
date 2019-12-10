@@ -32,6 +32,9 @@
               <dl class="row">
                 <dt class="col-sm-3">Nombre de mi restaurante </dt>
                 <dd class="col-sm-9">{{ $restaurant->name_restaurant }}<br></dd>
+
+                <dt class="col-sm-3">Foto de mi restaurante </dt>
+                <dd class="col-sm-9"><a href="#" data-toggle="modal" data-target="#modalImagen">{{ $restaurant->image }}</a><br></dd>
                 
                 <dt class="col-sm-3">Categoria</dt>
                 <dd class="col-sm-9">{{ $categoryRestaurant->name }}<br></dd>
@@ -44,6 +47,26 @@
               </dl>
             </div>
           </div>
+          <div class="modal fade" id="modalImagen" tabindex="-1" role="dialog" aria-labelledby="modalImagenLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalImagenLbel">{{ $restaurant->image }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <img src="{{ asset('upload/restaurant/'.$restaurant->image) }}" alt="restaurante"
+                    style="width:100%">
+                  </div>
+                  <div class="modal-footer">
+                    <h3>Mi restaurante</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
           @endforeach
         </div>
       </div>

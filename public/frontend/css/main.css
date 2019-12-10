@@ -123,6 +123,15 @@ nav.shrink .navbar-toggler {
 }
 
 
+.contendor {
+    width: 350px;
+    height: 300px;
+}
+#restaurante {
+    width: 300px;
+    height: 300px;
+}
+
 
 
 /* 4.ubicaciones */

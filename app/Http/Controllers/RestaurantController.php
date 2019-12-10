@@ -31,6 +31,6 @@ class RestaurantController extends Controller
             }
         }
 
-        return view('restaurant', compact('restaurant', 'categories', 'items', 'sliders'));
+        return view('user.restaurant', compact('restaurant', 'categories', 'items', 'sliders'));
     }
 }

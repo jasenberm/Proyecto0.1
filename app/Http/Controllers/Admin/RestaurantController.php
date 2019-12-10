@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Restaurant;
+use Illuminate\Support\Carbon;
 use App\CategoryRestaurant;
 
 class RestaurantController extends Controller
@@ -47,16 +48,31 @@ class RestaurantController extends Controller
         $this->validate($request, [
             'category' => 'required',
             'name_restaurant' => 'required',
-            'description' => 'required',
-            'address' => 'required',
+            'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);
-        $restaurant = new Restaurant();
+        $image = $request->file('image');
+        $slug = str_slug($request->name_restaurant);
+        if (isset($image)) {
+            $currentDate = Carbon::now()->toDateString();
+            $imagename = $slug . '-' . $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+            if (!file_exists('upload/restaurant')) {
+                mkdir('upload/restaurant', 0777, true);
+            }
+            $image->move('upload/restaurant', $imagename);
+        } else {
+            $imagename = 'default.jpg';
+        }
 
+        $restaurant = new Restaurant();
+        $restaurant = new Restaurant();
         $restaurant->user_id = auth()->id();
         $restaurant->category_restaurant_id = $request->category;
         $restaurant->name_restaurant = $request->name_restaurant;
+        $restaurant->image = $imagename;    
         $restaurant->description = $request->description;
-        $restaurant->address = $request->address;
+        if (!empty($request->address)) {
+            $restaurant->address = $request->address;
+        }
         $restaurant->save();
         return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Creado y Registrado Correctamente');
     }
@@ -98,16 +114,31 @@ class RestaurantController extends Controller
         $this->validate($request, [
             'category' => 'required',
             'name_restaurant' => 'required',
-            'description' => 'required',
-            'address' => 'required',
+            'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);
         $restaurant = Restaurant::find($id);
+        $image = $request->file('image');
+        $slug = str_slug($request->name_restaurant);
+        if (isset($image)) {
+            $currentDate = Carbon::now()->toDateString();
+            $imagename = $slug . '-' . $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+            if (!file_exists('upload/restaurant')) {
+                mkdir('upload/restaurant', 0777, true);
+            }
+            //unlink('upload/restaurant/' . $restaurant->image);
+            $image->move('upload/restaurant', $imagename);
+        } else {
+            $imagename = $restaurant->image;
+        }
 
         $restaurant->user_id = auth()->id();
         $restaurant->category_restaurant_id = $request->category;
         $restaurant->name_restaurant = $request->name_restaurant;
+        $restaurant->image = $imagename;    
         $restaurant->description = $request->description;
-        $restaurant->address = $request->address;
+        if (!empty($request->address)) {
+            $restaurant->address = $request->address;
+        }
         $restaurant->save();
         return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Modificado Correctamente');
     }

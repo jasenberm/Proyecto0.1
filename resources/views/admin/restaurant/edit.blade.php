@@ -17,7 +17,7 @@
                   <h4 class="card-title ">Editar Restaurante</h4>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('restaurant.update', $restaurant->id) }}">
+                    <form method="POST" action="{{ route('restaurant.update', $restaurant->id) }}" enctype="multipart/form-data">
                       @csrf
                       @method('PUT')
                       <div class="col-md-12">
@@ -36,7 +36,14 @@
                           <label class="bmd-label-floating">Nombre</label>
                           <input type="text" class="form-control" value="{{ $restaurant->name_restaurant }}" name="name_restaurant">
                         </div>
-                      </div>                        
+                      </div>
+                      <div class="col-md-12">
+                        <div class="custom-file">
+                          <label class="bmd-label-floating">Elegir una foto</label>
+                          <input type="file" class="form-control" name="image">
+                        </div>
+                      </div>   
+                      <br>                     
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Descripción</label>

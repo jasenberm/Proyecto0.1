@@ -17,7 +17,7 @@
                   <h4 class="card-title ">Agregar Nuevo Restaurante</h4>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('restaurant.store') }}">
+                    <form method="POST" action="{{ route('restaurant.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-12">
                           <div class="form-group">
@@ -35,6 +35,12 @@
                                 <label class="bmd-label-floating">Nombre del Restaurante</label>
                                 <input type="text" class="form-control" name="name_restaurant">
                             </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="custom-file">
+                              <label class="bmd-label-floating">Elegir una foto</label>
+                              <input type="file" name="image">
+                          </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">

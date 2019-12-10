@@ -59,36 +59,7 @@
 
 </head>
 
-<body data-spy="scroll" data-target="#template-navbar">
-
-    <!--== 4. Navigation ==-->
-    {{-- <nav id="template-navbar" class="navbar navbar-default custom-navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#Food-fair-toggle">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img id="logo" src="{{ asset('frontend/images/Logo_main.png') }}" class="logo img-responsive">
-                </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="Food-fair-toggle">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#about">Acerca de</a></li>
-                    <li><a href="#menu-list">Lista de Restaurantes</a></li>
-                    <li><a href="#ubicaciones">Ubicaciones</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.row -->
-    </nav> --}}
-
-
+<body>
     <div class="row">
         <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -104,34 +75,18 @@
                 <div class="collapse navbar-collapse" id="navbarWelcome">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">acerca de</a>
+                            <a class="nav-link" href="#acerca-de">acerca de</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">lista de restaurantes</a>
+                            <a class="nav-link" href="#listado">lista de restaurantes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">ubicaciones</a>
+                            <a class="nav-link" href="#ubicacion">ubicaciones</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="modal" 
                                 data-target="#staticBackdrop">inicio de sesion</a>
                         </li>
-                        {{-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                        </li> 
-                        <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
-                            Disabled</a>
-                        </li>--}}
                     </ul>
                 </div>
             </nav>
@@ -139,47 +94,7 @@
     </div>
 
 
-    <!--== 5. Header ==-->
-    {{--<section id="header-slider" class="owl-carousel">
-        @foreach ($sliders as $key=>$slider)
-            <div class="item">
-                <div class="container">
-                    <div class="header-content">
-                        <h1 class="header-title">{{ $slider->title }}</h1>
-                        <p class="header-sub-title">{{ $slider->sub_title }}</p>
-                    </div> <!-- /.header-content -->
-                </div>
-            </div>
-        @endforeach
-    </section>--}}
-
-
-    <!--== 6. About us ==-->
-    {{-- <section id="about" class="about">
-        <img src="{{ asset('frontend/images/icons/about_color.png') }}" class="img-responsive section-icon hidden-sm hidden-xs">
-        <div class="wrapper">
-            <div class="container-fluid">
-                <div class="row dis-table">
-                    <div class="hidden-xs col-sm-6 section-bg about-bg dis-table-cell">
-
-                    </div>
-                    <div class="col-xs-12 col-sm-6 dis-table-cell">
-                        <div class="section-content">
-                            <h2 class="section-content-title">Acerca de </h2>
-                            <p class="section-content-para">
-                                Astronomy compels the soul to look upward, and leads us from this world to another. Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size.
-                            </p>
-                            <p class="section-content-para">
-                                beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man. Where ignorance lurks, so too do the frontiers of discovery and imagination.
-                            </p>
-                        </div> <!-- /.section-content -->
-                    </div>
-                </div> <!-- /.row -->
-            </div> <!-- /.container-fluid -->
-        </div> <!-- /.wrapper -->
-    </section> <!-- /#about --> --}}
-
-
+    {{-- acerca de --}}
     <div class="row" id="acerca-de">
         <img src="{{ asset('frontend/images/icons/about_color.png') }}" alt="acerca-de" 
         class="img-responsive section-icon d-none d-lg-block d-xl-block">
@@ -195,67 +110,9 @@
         </div>
     </div>
 
-    <!--==  7. Afordable Pricing  ==-->
-    {{-- <section id="menu-list" class="menu-list">
-        <div id="w">
-            <div class="pricing-filter">
-                <div class="pricing-filter-wrapper">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                <div class="section-header">
-                                    <h2 class="pricing-title">Lista de Restaurantes Asociados</h2>
-                                    <ul id="filter-list" class="clearfix">
-                                        <li class="filter" data-filter="all">Todo</li>
-                                        @foreach($categoryRestaurants as $category)
-                                        @if ($category->restaurants->count() > 0)
-                                            <li class="filter" data-filter="#{{ $category->slug }}">{{ $category->name }}
-                                                <span class="badge">{{ $category->restaurants->count() }}</span>
-                                            </li>
-                                        @endif
-                                        @endforeach
-                                    </ul><!-- @end #filter-list -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <ul id="menu-pricing" class="menu-price">
-                            @foreach($restaurants as $restaurant)
-                                <li class="item" id="{{ $restaurant->category_restaurant->slug }}">
-                                    <a href="{{ route('restaurant.welcome', $restaurant->id) }}">
-                                        <img src="{{ asset('upload/restaurant/'.$restaurant->image) }}" 
-                                            class="img-responsive" alt="Restaurante" style="height:300px; width:369px;">
-                                        <div class="menu-desc text-center">
-                                            <span>
-                                                <h3>{{ $restaurant->name_restaurant }}</h3><br>
-                                                    Descripcion: {{ $restaurant->description}} <br>
-                                                    Direccion: {{ $restaurant->address }} <br>
-                                            </span>
-                                        </div>
-                                    </a>
-                                    <h2 class="white">{{ $restaurant->name_restaurant }}</h2>
-                                </li>
-                            @endforeach
-                        </ul>
-
-                        <!-- <div class="text-center">
-                                    <a id="loadPricingContent" class="btn btn-middle hidden-sm hidden-xs">Load More <span class="caret"></span></a>
-                            </div> -->
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section> --}}
-
-    <section class="container-fluid">
+    
+    {{-- listado de restaurantes asociados --}}
+    <section class="container-fluid" id="listado">
         <div class="row" id="list-filtros">
             <div class="col-md-12 col-offset-1" id="envol-filtros">
                 <div class="section-header">
@@ -278,7 +135,7 @@
             </div>
         </div>
         <div class="restaurantes">
-            <div class="col col-md-offset-1">
+            <div class="col col-md-offset-1" id="contenedor">
                 <ul class="listado" id="lista">
                     @foreach($restaurants as $restaurant)
                     <li class="item" id="{{ $restaurant->category_restaurant->slug }}">
@@ -301,101 +158,8 @@
     </section>
 
 
-    <!--== 15. Reserve A Table! ==-->
-    {{--<section id="reserve" class="reserve">
-        <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/reserve_black.png') }}">
-        <div class="wrapper">
-            <div class="container-fluid">
-                <div class="row dis-table">
-                    <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
-                        <h2 class="section-title">Reserve A Table !</h2>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
-
-                    </div>
-                </div> <!-- /.dis-table -->
-            </div> <!-- /.row -->
-        </div> <!-- /.wrapper -->
-    </section> <!-- /#reserve -->--}}
-
-
-    {{--<section class="reservation">
-        <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/reserve_color.png') }}">
-        <div class="wrapper">
-            <div class="container-fluid">
-                <div class=" section-content">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-6">
-                            <form class="reservation-form" method="post" action="{{ route('reservation.reserve') }}">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control reserve-form empty iconified" 
-                                            name="name" id="name" required="required" placeholder="  &#xf007;  Nombre">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" name="email" class="form-control reserve-form empty iconified" 
-                                            id="email" required="required" placeholder="  &#xf1d8;  e-mail">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="tel" class="form-control reserve-form empty iconified" 
-                                            name="phone" id="phone" required="required" placeholder="  &#xf095;  Telefono">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control reserve-form empty iconified" 
-                                            name="dateandtime" id="datetimepicker1" required="required" 
-                                            placeholder="&#xf017;  Hora">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12 col-sm-12">
-                                        <textarea type="text" name="message" class="form-control reserve-form empty iconified" 
-                                        id="message" rows="3" required="required" placeholder=" &#xf086;  Detalles de la Reservación"></textarea>
-                                    </div>
-
-                                    <div class="col-md-12 col-sm-12">
-                                        <button type="submit" id="submit" name="submit" class="btn btn-reservation">
-                                            <span><i class="fa fa-check-circle-o"></i></span>
-                                            Hacer Reservacion
-                                        </button>
-                                    </div>
-
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-md-2 hidden-sm hidden-xs"></div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="opening-time">
-                                <h3 class="opening-time-title">Hours</h3>
-                                <p>Mon to Fri: 7:30 AM - 9:30 PM</p>
-                                <p>Sat & Sun: 8:00 AM - 11:30 PM</p>
-
-                                <div class="launch">
-                                    <h4>Lunch</h4>
-                                    <p>Mon to Fri: 12:00 PM - 5:00 PM</p>
-                                </div>
-
-                                <div class="dinner">
-                                    <h4>Dinner</h4>
-                                    <p>Mon to Sat: 6:00 PM - 1:00 AM</p>
-                                    <p>Sun: 5:30 PM - 12:00 AM</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>--}}
-
-    <section>
+    {{-- ubicaciones generales --}}
+    <section id="ubicacion">
         <div class="container-fluid">
             <div class="row" id="ubicaciones">
                 <div class="col ubicacion-bg d-none d-lg-block d-xl-block"></div>
@@ -412,21 +176,7 @@
         </div>
     </section>
 
-    {{-- <section id="ubicaciones" class="ubicaciones">
-        <div class="container-fluid color-bg">
-            <div class="row dis-table">
-                <div class="hidden-xs col-sm-6 dis-table-cell">
-                    <h2 class="section-title">Ubicaciones</h2>
-                </div>
-                <div class="col-xs-6 col-sm-6 dis-table-cell">
-                    <div class="section-content">
-                        <p>Conoce de manera mas simplificada todos los restaurantes que trabajan con nosotros, con la visualizacion de sus ubicaciones en nustro mapa</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
+    {{-- mapa --}}
     <div class="container-fluid">
         <div class="row">
             <div id="map-canvas"></div>
@@ -434,13 +184,14 @@
     </div>
 
 
+    {{-- pie de pagina --}}
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
+                <div class="col-md-12 col-md-offset-3">
                     <div class="copyright text-center">
                         <p>
-                            &copy; Copyright, 2019 <a href="#">Nombre de la aplicacion</a> Desarrollado por <a href="">Jose Asencio Bermudez</a>
+                            &copy; Copyright, 2019 <a href="#">Nombre de la aplicacion</a> Desarrollado por <a href="">Jose Asencio Bermudez</a> & <a href="">Erick Briones Dominguez</a> 
                         </p>
                     </div>
                 </div>
