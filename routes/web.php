@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('welcome');
 Route::post('/reservation', 'ReservationController@reserve')->name('reservation.reserve');
 Route::post('/contact', 'ContactController@sendMessage')->name('contact.send');
-Route::get('restaurant/{id}', 'RestaurantController@index')->name('restaurant.welcome');
+Route::get('/{id}', 'RestaurantController@index')->name('restaurant.welcome');
 
 Auth::routes();
 

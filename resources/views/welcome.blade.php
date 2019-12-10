@@ -118,10 +118,7 @@
                 <div class="section-header">
                     <h2 class="rest-title">Lista de restaurantes asociados</h2>
                     <ul class="clearfix" id="list-rest">
-                        <li class="filter" data-filter="all">
-                            todo
-                            
-                        </li>
+                        <li class="filter" data-filter="all">todo</li>
                         @foreach($categoryRestaurants as $category)
                         @if ($category->restaurants->count() > 0)
                             <li class="filter" data-filter="#{{ $category->slug }}">

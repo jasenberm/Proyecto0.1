@@ -111,7 +111,7 @@
         <div class="row" id="list-filtros">
             <div class="col-md-12 col-offset-1" id="envol-filtros">
                 <div class="section-header">
-                    <h2 class="rest-title">Menu</h2>
+                    <h2 class="rest-title">Lista de restaurantes asociados</h2>
                     <ul class="clearfix" id="list-rest">
                         <li class="filter" data-filter="all">todo</li>
                         @foreach($categories as $category)
@@ -127,16 +127,17 @@
             </div>
         </div>
         <div class="restaurantes">
-            <div class="col col-md-offset-1">
+            <div class="col col-md-offset-1" id="contenedor">
                 <ul class="listado" id="lista">
                     @foreach($items as $item)
                     <li class="item" id="{{ $item->category->slug }}">
                         <a href="{{ route('restaurant.welcome', $item->id) }}">
-                            <img src="{{ asset('upload/restaurant/'.$item->image) }}" class="img-responsive" alt="Food">
+                            <img src="{{ asset('upload/item/'.$item->image) }}" class="img-responsive" alt="Food">
                             <div class="rest-desc text-center">
                                 <span>
-                                    <h3>{{ $item->name }}</h3><br>
+                                    <h3>{{ $item->name }}</h3>
                                     Descripcion: {{ $item->description}} <br>
+                                    
                                 </span>
                             </div>
                         </a>
@@ -274,8 +275,8 @@
     crossorigin="anonymous"></script>
 
 
-<script src="{{ asset('frontend/js/jquery.mixitup.min.js') }}"></script>
-
+<script src="frontend/js/jquery.mixitup.min.js"></script>
+<script src="frontend/js/main.js"></script>
 <script src="{{ asset('frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
 
     {{-- <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
@@ -298,7 +299,7 @@
         @endforeach
     @endif     --}}
 
-    <script>
+    {{-- <script>
     $(document).ready(function(){
         $(window).scroll(function(){
             if ($(document).scrollTop() > 50) {
@@ -331,7 +332,7 @@
                 });
             });
             
-    </script>
+    </script> --}}
 {{-- {!! Toastr::message() !!} --}}
 </body>
 
