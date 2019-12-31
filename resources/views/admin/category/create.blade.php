@@ -17,7 +17,7 @@
                   <h4 class="card-title ">Agregar Nueva Categoria</h4>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('category.store') }}">
+                    <form method="POST" action="{{ route('category.store') }}" autocomplete="off">
                         @csrf
                         <div class="col-md-12">
                             <div class="form-group">

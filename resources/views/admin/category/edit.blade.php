@@ -17,7 +17,7 @@
                   <h4 class="card-title ">Editar Categoria</h4>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('category.update', $category->id) }}">
+                    <form method="POST" action="{{ route('category.update', $category->id) }}" autocomplete="off">
                         @csrf
                         @method('PUT')
                         <div class="col-md-12">

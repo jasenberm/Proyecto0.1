@@ -13,7 +13,7 @@ use App\Restaurant;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $valRestaurant = Restaurant::where('user_id', auth()->id())->get('id');
         if ($valRestaurant->isEmpty()) {
