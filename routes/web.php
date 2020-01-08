@@ -19,7 +19,11 @@ Route::post('/reservation', 'ReservationController@reserve')->name('reservation.
 Route::post('/contact', 'ContactController@sendMessage')->name('contact.send');
 Route::get('/{id}', 'RestaurantController@index')->where('id', '[0-9]+')->name('restaurant.welcome');
 
-Auth::routes();
+// Auth::routes();
+
+Route::get('/login', 'Security\LoginController@index')->name('login');
+Route::post('/login', 'Security\LoginController@login')->name('login_post');
+Route::post('/logout', 'Security\LoginController@logout')->name('logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'admin'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
