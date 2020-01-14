@@ -23,9 +23,10 @@ Route::get('/{id}', 'RestaurantController@index')->where('id', '[0-9]+')->name('
 
 Route::get('/login', 'Security\LoginController@index')->name('login');
 Route::post('/login', 'Security\LoginController@login')->name('login_post');
+Route::get('/logout', 'Security\LoginController@logout')->name('logout');
 Route::post('/logout', 'Security\LoginController@logout')->name('logout');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'superadmin'], 'namespace' => 'admin'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 
     Route::resource('slider', 'SliderController');

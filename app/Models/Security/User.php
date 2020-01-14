@@ -2,8 +2,9 @@
 
 namespace App\Models\Security;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Rol;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Session;
 
 class User extends Authenticatable
 {
@@ -17,37 +18,56 @@ class User extends Authenticatable
     // relacion con la tabla de roles
     public function roles()
     {
-        return $this->belongsToMany('App\Role');
+        return $this->belongsToMany(Rol::class, 'rol_user');
     }
 
-    // Validacion de rol del usuario
-    public function authorizeRoles($roles){
-        if ($this->hasAnyRole($roles)) {
-            return true;
+    public function setSession($roles)
+    {
+        //   dd($roles);
+        if (count($roles) == 1) {
+
+            Session::put(
+                [
+                    'rol_id' => $roles[0]['id'],
+                    'rol_nombre' => $roles[0]['name'],
+                    'rol_descripcion' => $roles[0]['description'],
+                    'usuario' => $this->user,
+                    'usuario_id' => $this->id,
+                    'usuario_nombre' => $this->name
+                ]
+            );
+            //dd(session()->all());
         }
-        abort(401, 'This action is unauthorized');
     }
 
-    public function hasAnyRole($roles){
-        if (is_array($roles)) {
-            foreach ($roles as $role) {
-                if ($this->hasRole($roles)) {
-                    return true;
-                }    
-            }
-        } else {
-            if ($this->hasRole($roles)) {
-                return true;
-            }
-        }
-        return false;
-    }
+    // // Validacion de rol del usuario
+    // public function authorizeRoles($roles){
+    //     if ($this->hasAnyRole($roles)) {
+    //         return true;
+    //     }
+    //     abort(401, 'This action is unauthorized');
+    // }
 
-    public function hasRole($role){
-        if ($this->roles()->where('name', $role)->first()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    // public function hasAnyRole($roles){
+    //     if (is_array($roles)) {
+    //         foreach ($roles as $role) {
+    //             if ($this->hasRole($roles)) {
+    //                 return true;
+    //             }    
+    //         }
+    //     } else {
+    //         if ($this->hasRole($roles)) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+
+    // public function hasRole($role){
+    //     if ($this->roles()->where('name', $role)->first()) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 }
