@@ -28,6 +28,6 @@ class MiddAdminRestaurant
     private function permiso()
     {
         //dd(session()->get('rol_nombre') == 'superAdmin');
-        return session()->get('rol_nombre') == 'superAdmin';
+        return session()->get('rol_nombre') == 'admin';
     }
 }
