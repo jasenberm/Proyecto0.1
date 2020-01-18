@@ -25,7 +25,8 @@ class HomeController extends Controller
     public function index()
     {
         $categoryRestaurants = CategoryRestaurant::all();
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::where('status', 1)->get();
+        //dd($restaurants);
         return view('welcome', compact('restaurants', 'categoryRestaurants'));
     }
 }

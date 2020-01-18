@@ -40,8 +40,12 @@
             @if(Request::is('admin*'))
                 @include('layouts.partial.sidebar')
             @endif
+
+            @if (Request::is('superuser*'))
+                @include('layouts.partial.superSidebar')
+            @endif
             <div class="main-panel">
-                @if(Request::is('admin*'))
+                @if(Request::is(['admin*', 'superuser*']))
                 <!-- Navbar -->
                     @include('layouts.partial.topbar')
                 <!-- End Navbar -->
@@ -49,7 +53,7 @@
                 <!-- Content -->
                     @yield('content')
                 <!-- End Content -->
-                @if(Request::is('admin*'))
+                @if(Request::is(['admin*', 'superuser*']))
                 <!-- Footer -->
                     @include('layouts.partial.footer')
                 <!-- End Footer -->

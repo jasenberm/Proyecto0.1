@@ -40,6 +40,26 @@ class UserTableSeeder extends Seeder
         ]);
 
         $user = new User();
+        $user->name = "Usuario2";
+        $user->user = "User2";
+        $user->email =  "user2@mail.com";
+        $user->password = bcrypt('usuario');
+        $user->save();
+        // $user->roles()->attach($role_user);
+
+        // $rol_user = new RolUser();
+        // $rol_user->rol_id = 1;
+        // $rol_user->user_id = 2;
+        // $rol_user->status = 1;
+        // $rol_user->save();
+
+        DB::table('rol_user')->insert([
+            'rol_id' => 2,
+            'user_id' => 2,
+            'status' => 1
+        ]);
+
+        $user = new User();
         $user->name = "Administrador";
         $user->user = "Admin";
         $user->email =  "admin@mail.com";
@@ -55,7 +75,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('rol_user')->insert([
             'rol_id' => 1,
-            'user_id' => 2,
+            'user_id' => 3,
             'status' => 1
         ]);
 
@@ -75,7 +95,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('rol_user')->insert([
             'rol_id' => 3,
-            'user_id' => 3,
+            'user_id' => 4,
             'status' => 1
         ]);
     }

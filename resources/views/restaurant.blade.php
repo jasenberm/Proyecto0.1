@@ -10,9 +10,12 @@
     <title>Mamma's Kitchen</title>
 
     {{-- CSS --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
         crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/list-restaurant.css') }}">  --}}
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/list-restaurant.css') }}"> 
 
@@ -111,7 +114,7 @@
         <div class="row" id="list-filtros">
             <div class="col-md-12 col-offset-1" id="envol-filtros">
                 <div class="section-header">
-                    <h2 class="rest-title">Lista de restaurantes asociados</h2>
+                    <h2 class="rest-title">Menú</h2>
                     <ul class="clearfix" id="list-rest">
                         <li class="filter" data-filter="all">todo</li>
                         @foreach($categories as $category)
@@ -228,7 +231,7 @@
             <div class="row" id="ubicaciones">
                 <div class="col ubicacion-bg d-none d-lg-block d-xl-block"></div>
                 <div class="col ubicacion-content">
-                    <h1 class="content-title">Ubicaicones</h1>
+                    <h1 class="content-title">Ubicaciones</h1>
                     <p class="content-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                         Eius iusto numquam corporis asperiores! Amet iste facere cupiditate eos hic in! Ipsum 
                         earum dolores ducimus similique voluptatum quas ullam quos dolorum.</p>
@@ -264,7 +267,10 @@
     </footer>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    <script src="{{ asset ('frontend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset ('frontend/js/jquery-3.3.1.slim.min.js') }}"></script>
+    <script src="{{ asset ('frontend/js/popper.min.js') }}"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
@@ -272,7 +278,7 @@
     crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> --}}
 
 
 <script src="frontend/js/jquery.mixitup.min.js"></script>

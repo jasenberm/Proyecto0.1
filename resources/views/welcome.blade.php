@@ -85,8 +85,9 @@
                             <a class="nav-link" href="#ubicacion">ubicaciones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="modal" 
-                                data-target="#staticBackdrop">inicio de sesion</a>
+                            {{-- <a class="nav-link" data-toggle="modal" 
+                                data-target="#staticBackdrop">inicio de sesion</a> --}}
+                                <a class="nav-link" href="{{ route('login') }}">inicio de sesion</a>
                         </li>
                     </ul>
                 </div>
@@ -163,7 +164,7 @@
             <div class="row" id="ubicaciones">
                 <div class="col ubicacion-bg d-none d-lg-block d-xl-block"></div>
                 <div class="col ubicacion-content">
-                    <h1 class="content-title">Ubicaicones</h1>
+                    <h1 class="content-title">Ubicaciones</h1>
                     <p class="content-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                         Eius iusto numquam corporis asperiores! Amet iste facere cupiditate eos hic in! Ipsum 
                         earum dolores ducimus similique voluptatum quas ullam quos dolorum.</p>

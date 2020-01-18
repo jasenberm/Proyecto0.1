@@ -22,7 +22,7 @@ class RestaurantController extends Controller
         foreach ($restaurants as $key => $value) {
             $categoryRestaurant = Restaurant::find($value->id)->category_restaurant;
         }
-        
+
         return view('admin.restaurant.index', compact('restaurants', 'categoryRestaurant'));
     }
 
@@ -64,12 +64,12 @@ class RestaurantController extends Controller
         }
 
         $restaurant = new Restaurant();
-        $restaurant = new Restaurant();
         $restaurant->user_id = auth()->id();
         $restaurant->category_restaurant_id = $request->category;
         $restaurant->name_restaurant = $request->name_restaurant;
-        $restaurant->image = $imagename;    
+        $restaurant->image = $imagename;
         $restaurant->description = $request->description;
+        $restaurant->status = true;
         if (!empty($request->address)) {
             $restaurant->address = $request->address;
         }
@@ -134,7 +134,7 @@ class RestaurantController extends Controller
         $restaurant->user_id = auth()->id();
         $restaurant->category_restaurant_id = $request->category;
         $restaurant->name_restaurant = $request->name_restaurant;
-        $restaurant->image = $imagename;    
+        $restaurant->image = $imagename;
         $restaurant->description = $request->description;
         if (!empty($request->address)) {
             $restaurant->address = $request->address;

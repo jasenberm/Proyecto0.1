@@ -2,7 +2,6 @@
 
 namespace App\Models\Security;
 
-use App\Rol;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Session;
 
@@ -18,7 +17,7 @@ class User extends Authenticatable
     // relacion con la tabla de roles
     public function roles()
     {
-        return $this->belongsToMany(Rol::class, 'rol_user');
+        return $this->belongsToMany('App\Rol', 'rol_user');
     }
 
     public function setSession($roles)

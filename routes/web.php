@@ -44,3 +44,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
 
     Route::get('maps', 'MapsController@index')->name('maps.index');
 });
+
+
+Route::group(['prefix' => 'superuser', 'middleware' => 'auth', 'namespace' => 'superuser'], function () {
+
+    Route::resource('client', 'ClientController');
+    Route::resource('category', 'CategoryRestaurantController');
+});
