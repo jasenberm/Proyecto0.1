@@ -23,6 +23,7 @@
                 <thead class="text-primary">
                   <th>Id</th>
                   <th>Nombre</th>
+                  <th>Estado</th>
                   <th>Creado</th>
                   <th>Actualizado</th>
                   <th>Acciones</th>
@@ -32,6 +33,7 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $category->name}}</td>
+                        <td>{{ $category->status}}</td>
                         <td>{{ $category->created_at}}</td>
                         <td>{{ $category->updated_at}}</td>
                         <td>

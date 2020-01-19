@@ -50,4 +50,5 @@ Route::group(['prefix' => 'superuser', 'middleware' => 'auth', 'namespace' => 's
 
     Route::resource('client', 'ClientController');
     Route::resource('category', 'CategoryRestaurantController');
+    Route::resource('request', 'RequestController');
 });

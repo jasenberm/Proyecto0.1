@@ -33,7 +33,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        $categoryRestaurant = CategoryRestaurant::all();
+        $categoryRestaurant = CategoryRestaurant::where('status', 1)->get();
         return view('admin.restaurant.create', compact('categoryRestaurant'));
     }
 
@@ -48,6 +48,7 @@ class RestaurantController extends Controller
         $this->validate($request, [
             'category' => 'required',
             'name_restaurant' => 'required',
+            'ruc' => 'required|size:13',
             'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);
         $image = $request->file('image');
@@ -67,9 +68,9 @@ class RestaurantController extends Controller
         $restaurant->user_id = auth()->id();
         $restaurant->category_restaurant_id = $request->category;
         $restaurant->name_restaurant = $request->name_restaurant;
+        $restaurant->ruc = $request->ruc;
         $restaurant->image = $imagename;
         $restaurant->description = $request->description;
-        $restaurant->status = true;
         if (!empty($request->address)) {
             $restaurant->address = $request->address;
         }

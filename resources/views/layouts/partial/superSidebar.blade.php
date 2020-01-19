@@ -13,7 +13,7 @@
                 </a>
             </li>
             <li class="{{ Request::is('superuser/owner*')? 'active': '' }}">
-                <a class="nav-link" href="{{ route('owner.index') }}">
+                <a class="nav-link" href="{{ route('client.index') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Usuarios Dueños</p>
                 </a>
@@ -22,6 +22,12 @@
                 <a class="nav-link" href="{{ route('category.index') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Restaurante-Categorias</p>
+                </a>
+            </li>
+            <li class="{{ Request::is('superuser/request*')? 'active': '' }}">
+                <a class="nav-link" href="{{ route('request.index') }}">
+                    <i class="material-icons">dashboard</i>
+                    <p>Solicitudes</p>
                 </a>
             </li>
         </ul>

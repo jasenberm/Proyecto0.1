@@ -18,6 +18,7 @@ class CreateRestaurantsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_restaurant_id');
             $table->string('name_restaurant')->unique();
+            $table->string('ruc');
             $table->string('image', 150)->default('default.jpg');
             $table->string('description', 200)->nullable();
             $table->boolean('status')->default(false);

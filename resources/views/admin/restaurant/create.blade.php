@@ -33,9 +33,15 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Nombre del Restaurante</label>
-                                <input type="text" class="form-control" name="name_restaurant">
+                                <input type="text" class="form-control" name="name_restaurant" value="{{ old('name_restaurant') }}">
                             </div>
                         </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                              <label class="bmd-label-floating">RUC</label>
+                              <input type="numeric" class="form-control" name="ruc" value="{{ old('ruc') }}">
+                          </div>
+                      </div>
                         <div class="col-md-12">
                           <div class="custom-file">
                               <label class="bmd-label-floating">Elegir una foto</label>
@@ -45,7 +51,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Descripción</label>
-                                <input type="text" class="form-control" name="description">
+                                <input type="text" class="form-control" name="description" value="{{ old('description') }}">
                             </div>
                         </div>
                         <div class="col-md-12">

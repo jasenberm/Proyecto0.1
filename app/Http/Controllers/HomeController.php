@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         $categoryRestaurants = CategoryRestaurant::all();
         $restaurants = Restaurant::where('status', 1)->get();
-        //dd($restaurants);
+        //dd($restaurants->find(1)->category_restaurant);
         return view('welcome', compact('restaurants', 'categoryRestaurants'));
     }
 }

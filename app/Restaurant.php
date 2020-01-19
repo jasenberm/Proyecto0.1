@@ -11,6 +11,11 @@ class Restaurant extends Model
         return $this->belongsTo('App\CategoryRestaurant');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Security\User');
+    }
+
     public function sliders()
     {
         return $this->hasMany('App\Slider');
