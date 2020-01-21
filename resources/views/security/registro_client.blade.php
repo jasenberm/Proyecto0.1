@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="shortcut icon" href="images/star.png" type="favicon/ico" /> -->
 
-    <title>Inicio de Sesion</title>
+    <title>Registro</title>
 
     {{-- CSS --}}
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
@@ -27,10 +27,10 @@
       @include('layouts.partial.msg')
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">Inicio de Sesion</h4>
+            <h4 class="card-title ">Registro de Cliente</h4>
           </div>
           <div class="card-body">
-            <form method="POST" action="{{ route('login_post') }}" autocomplete="off">
+            <form method="POST" action="{{ route('register_client_post') }}" autocomplete="off">
             @csrf
               <div class="col-md-12">
                 <div class="form-group">
@@ -40,10 +40,34 @@
               </div>
               <div class="col-md-12">
                 <div class="form-group">
+                  <label class="bmd-label-floating">Nombres</label>
+                    <input type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Apellidos</label>
+                    <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Correo</label>
+                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
                   <label class="bmd-label-floating">Clave</label>
                     <input type="password" class="form-control" name="password" required>
                 </div>
-              </div>           
+              </div>          
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Confirmación de Clave</label>
+                    <input type="password" class="form-control" name="password_confirmation" required>
+                </div>
+              </div>  
               <br>
               <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
               <a href="{{ route('welcome') }}" class="btn btn-danger">Retroceder</a>

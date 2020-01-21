@@ -13,7 +13,7 @@
                 </a>
             </li>
             <li class="{{ Request::is('superuser/owner*')? 'active': '' }}">
-                <a class="nav-link" href="{{ route('client.index') }}">
+                <a class="nav-link" href="{{ route('owner.index') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Usuarios Dueños</p>
                 </a>

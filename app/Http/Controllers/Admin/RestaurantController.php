@@ -48,7 +48,7 @@ class RestaurantController extends Controller
         $this->validate($request, [
             'category' => 'required',
             'name_restaurant' => 'required',
-            'ruc' => 'required|size:13',
+            'ruc' => 'required|digits:13',
             'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);
         $image = $request->file('image');
@@ -115,6 +115,7 @@ class RestaurantController extends Controller
         $this->validate($request, [
             'category' => 'required',
             'name_restaurant' => 'required',
+            'ruc' => 'required|digits:13',
             'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);
         $restaurant = Restaurant::find($id);
@@ -135,6 +136,7 @@ class RestaurantController extends Controller
         $restaurant->user_id = auth()->id();
         $restaurant->category_restaurant_id = $request->category;
         $restaurant->name_restaurant = $request->name_restaurant;
+        $restaurant->ruc = $request->ruc;
         $restaurant->image = $imagename;
         $restaurant->description = $request->description;
         if (!empty($request->address)) {

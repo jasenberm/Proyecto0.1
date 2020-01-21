@@ -39,7 +39,7 @@
                         <div class="col-md-12">
                           <div class="form-group">
                               <label class="bmd-label-floating">RUC</label>
-                              <input type="numeric" class="form-control" name="ruc" value="{{ old('ruc') }}">
+                              <input type="text" class="form-control" name="ruc" value="{{ old('ruc') }}">
                           </div>
                       </div>
                         <div class="col-md-12">

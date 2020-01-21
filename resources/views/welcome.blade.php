@@ -107,9 +107,8 @@
             <p class="content-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Eius iusto numquam corporis asperiores! Amet iste facere cupiditate eos hic in! Ipsum 
                 earum dolores ducimus similique voluptatum quas ullam quos dolorum.</p>
-            <p class="content-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Eius iusto numquam corporis asperiores! Amet iste facere cupiditate eos hic in! Ipsum 
-                earum dolores ducimus similique voluptatum quas ullam quos dolorum.</p>
+            <p class="content-description">Si desea publicitar su negocio a travez de nuestra plataforma, 
+                inicie el proceso en el <a href="{{ route('register_owner') }}">siguiente enlace<a>.</p>
         </div>
     </div>
 
@@ -123,7 +122,7 @@
                     <ul class="clearfix" id="list-rest">
                         <li class="filter" data-filter="all">todo</li>
                         @foreach($categoryRestaurants as $category)
-                        @if ($category->restaurants->count() > 0)
+                        @if ($category->restaurants->where('status', 1)->count() > 0)
                             <li class="filter" data-filter="#{{ $category->slug }}">
                                 {{ $category->name }}
                                 <span class="badge badge-primary badge-pill">{{ $category->restaurants->count() }}</span>

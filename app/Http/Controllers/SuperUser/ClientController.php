@@ -17,31 +17,39 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Rol::all();
+        //$roles = Rol::all();
 
         if ($request->is('superuser/client')) {
             //dd($roles);
+            $roles = Rol::where('name', 'user')->get();
             $usersTemp = collect();
             $users = collect();
             foreach ($roles as $key => $rol) {
                 //dd($rol);
                 //($rol->users()->where('rol_id', 2)->get());
                 // dd($usersTemp);
-                if (($rol->users()->where('rol_id', 2)->get())->isNotEmpty()) {
-                    $users = $rol->users()->where('rol_id', 2)->get();
+                if (($rol->users()->where('status', 1)->get())->isNotEmpty()) {
+                    $users = $rol->users()->where('status', 1)->get();
                 }
             }
 
             return view('superUser.clients.index', compact('users'));
         } elseif ($request->is('superuser/owner')) {
+            $roles = Rol::where('name', 'admin')->get();
+
             $usersTemp = collect();
             $users = collect();
             foreach ($roles as $key => $rol) {
                 //dd($rol);
                 //($rol->users()->where('rol_id', 2)->get());
                 // dd($usersTemp);
-                if (($rol->users()->where('rol_id', 1)->get())->isNotEmpty()) {
-                    $users = $rol->users()->where('rol_id', 1)->get();
+
+                // dd($rol->users()->where('status', 1)->get());
+
+                //$users = $rol->users()->where('status', 1)->get();
+
+                if (($rol->users()->where('status', 1)->get())->isNotEmpty()) {
+                    $users = $rol->users()->where('status', 1)->get();
                 }
             }
 

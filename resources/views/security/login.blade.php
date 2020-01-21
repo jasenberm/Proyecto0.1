@@ -43,7 +43,10 @@
                   <label class="bmd-label-floating">Clave</label>
                     <input type="password" class="form-control" name="password" required>
                 </div>
-              </div>           
+              </div>
+              <div class="col-md-12">
+                <p>¿No tines una cuenta? <a href="{{ route('register') }}">Registrate</a></p>
+              </div>             
               <br>
               <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
               <a href="{{ route('welcome') }}" class="btn btn-danger">Retroceder</a>

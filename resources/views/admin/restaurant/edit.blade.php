@@ -38,6 +38,12 @@
                         </div>
                       </div>
                       <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">RUC</label>
+                          <input type="text" class="form-control" value="{{ $restaurant->ruc }}" name="ruc">
+                        </div>
+                      </div>
+                      <div class="col-md-12">
                         <div class="custom-file">
                           <label class="bmd-label-floating">Elegir una foto</label>
                           <input type="file" class="form-control" name="image">

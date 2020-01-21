@@ -1,6 +1,8 @@
 <?php
 
 //use Illuminate\Routing\Route;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +27,11 @@ Route::get('/login', 'Security\LoginController@index')->name('login');
 Route::post('/login', 'Security\LoginController@login')->name('login_post');
 Route::get('/logout', 'Security\LoginController@logout')->name('logout');
 Route::post('/logout', 'Security\LoginController@logout')->name('logout');
+Route::get('/register', 'Security\RegisterController@index')->name('register');
+Route::get('/registerOwner', 'Security\RegisterController@index')->name('register_owner');
+Route::post('/register', 'Security\RegisterController@register')->name('register_client_post');
+Route::post('/registerOwner', 'Security\RegisterController@register')->name('register_owner_post');
+
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace' => 'admin'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
@@ -49,6 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
 Route::group(['prefix' => 'superuser', 'middleware' => 'auth', 'namespace' => 'superuser'], function () {
 
     Route::resource('client', 'ClientController');
+    Route::resource('owner', 'ClientController');
     Route::resource('category', 'CategoryRestaurantController');
     Route::resource('request', 'RequestController');
 });
