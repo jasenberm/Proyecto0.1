@@ -18,7 +18,7 @@
                     <p>Usuarios Dueños</p>
                 </a>
             </li>
-            <li class="{{ Request::is('superuser/category_restaurant*')? 'active': '' }}">
+            <li class="{{ Request::is('superuser/category_admin*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('category_admin.index') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Restaurante-Categorias</p>

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Brian2694\Toastr\Facades\Toastr;
 use Closure;
 
-class MiddAdminRestaurant
+class MiddSuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,19 +16,19 @@ class MiddAdminRestaurant
      */
     public function handle($request, Closure $next)
     {
-        // dd('llega');
         if ($this->permiso()) {
             // dd('enrtra');
             return $next($request);
             dd('enrtra');
         }
 
-        return redirect('/superuser/client');
+        return redirect('/admin/dashboard');
     }
 
     private function permiso()
     {
         //dd(session()->all());
-        return session()->get('rol_nombre') == 'admin';
+        //dd('permiso');
+        return session()->get('rol_nombre') == 'superAdmin';
     }
 }

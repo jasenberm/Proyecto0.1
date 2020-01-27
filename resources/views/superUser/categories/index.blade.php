@@ -44,7 +44,7 @@
                         <td>{{ $category->updated_at}}</td>                        
                         <td>              
                           <form method="POST" id="status-form-{{ $category->id }}" 
-                            action="{{ route('category_restaurant.update', $category->id) }}" style="display: none;">
+                            action="{{ route('category_admin.update', $category->id) }}" style="display: none;">
                               @csrf
                               @method('PUT')
                             </form>

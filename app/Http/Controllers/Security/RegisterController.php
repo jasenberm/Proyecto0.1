@@ -97,7 +97,14 @@ class RegisterController extends Controller
         $rol = session()->get('rol_nombre');
         if ($rol == 'admin') {
             return '/admin/dashboard';
-        } elseif ($rol == 'user') {
+        }
+
+        if ($rol == 'superAdmin') {
+            dd('lega');
+            return '/superuser/client';
+        }
+
+        if ($rol == 'user') {
             return '/';
         }
     }

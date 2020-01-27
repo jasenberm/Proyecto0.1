@@ -80,7 +80,7 @@ class CategoryRestaurantController extends Controller
             $category->status = true;
             $category->save();
         }
-        return redirect()->route('category_restaurant.index')->with('successMsg', 'Cambio de estado realizado correctamente');
+        return redirect()->route('category_admin.index')->with('successMsg', 'Cambio de estado realizado correctamente');
     }
 
     /**

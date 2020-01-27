@@ -32,7 +32,6 @@ Route::get('/registerOwner', 'Security\RegisterController@index')->name('registe
 Route::post('/register', 'Security\RegisterController@register')->name('register_client_post');
 Route::post('/registerOwner', 'Security\RegisterController@register')->name('register_owner_post');
 
-
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace' => 'admin'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 
@@ -53,7 +52,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
 });
 
 
-Route::group(['prefix' => 'superuser', 'middleware' => 'auth', 'namespace' => 'superuser'], function () {
+Route::group(['prefix' => 'superuser', 'middleware' => ['auth', 'superuser'], 'namespace' => 'superuser'], function () {
 
     Route::resource('client', 'ClientController');
     Route::resource('owner', 'ClientController');

@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/admin/dashboard';
+    //protected $redirectTo = '/admin/dashboard';
 
     public function __construct()
     {
@@ -40,5 +40,22 @@ class LoginController extends Controller
     public function username()
     {
         return 'user';
+    }
+
+    public function redirectPath()
+    {
+        $rol = session()->get('rol_nombre');
+        if ($rol == 'admin') {
+            return '/admin/dashboard';
+        }
+
+        if ($rol == 'superAdmin') {
+            // dd('llega');
+            return '/superuser/client';
+        }
+
+        if ($rol == 'user') {
+            return '/';
+        }
     }
 }
