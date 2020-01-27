@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\SuperUser;
 
-use App\CategoryRestaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Restaurant;
 
-class CategoryRestaurantController extends Controller
+class RestaurantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class CategoryRestaurantController extends Controller
      */
     public function index()
     {
-        $categories = CategoryRestaurant::all();
-
-        return view('superUser.categories.index', compact('categories'));
+        $restaurants = Restaurant::where('status', true)->get();
+        //dd($restaurants);
+        return view('superUser.restaurants.index', compact('restaurants'));
     }
 
     /**
@@ -72,15 +72,7 @@ class CategoryRestaurantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = CategoryRestaurant::find($id);
-        if ($category->status == true) {
-            $category->status = false;
-            $category->save();
-        } elseif ($category->status == false) {
-            $category->status = true;
-            $category->save();
-        }
-        return redirect()->route('category_restaurant.index')->with('successMsg', 'Cambio de estado realizado correctamente');
+        //
     }
 
     /**

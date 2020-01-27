@@ -72,7 +72,11 @@ class RequestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($id);
+        $restaurant = Restaurant::find($id);
+        $restaurant->status = true;
+        $restaurant->save();
+        return redirect()->route('request.index')->with('successMsg', 'Restaurante validado Exitosamente');
     }
 
     /**
@@ -83,6 +87,6 @@ class RequestController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd('destroy');
     }
 }

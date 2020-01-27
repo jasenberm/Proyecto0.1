@@ -16,7 +16,9 @@ class MiddAdminRestaurant
      */
     public function handle($request, Closure $next)
     {
+        // dd('llega');
         if ($this->permiso()) {
+            // dd('enrtra');
             return $next($request);
             dd('enrtra');
         }
@@ -27,7 +29,7 @@ class MiddAdminRestaurant
 
     private function permiso()
     {
-        //dd(session()->get('rol_nombre') == 'superAdmin');
+        //dd(session()->all());
         return session()->get('rol_nombre') == 'admin';
     }
 }

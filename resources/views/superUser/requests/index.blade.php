@@ -35,7 +35,7 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $restaurant->user->user }}</td>
                                 <td>{{ $restaurant->name_restaurant }}</td>
-                                <td>{{ $restaurant->name_restaurant }}</td>
+                                <td>{{ $restaurant->ruc }}</td>
                                 <td>{{ $restaurant->created_at }}</td>
                                 <td>
                                   @if ($restaurant->status == true)
@@ -47,10 +47,11 @@
                                 <td>
                                   @if ($restaurant->status == false)
                                   <form method="POST" id="status-form-{{ $restaurant->id }}" 
-                                    action="{{ route('reservation.status', $restaurant->id) }}" style="display: none;">
+                                    action="{{ route('request.update', $restaurant->id) }}" style="display: none;">
                                       @csrf
+                                      @method('PUT')
                                     </form>
-                                    <button type="button" class="btn btn-info btn-sm" onclick="if(confirm('¿Verificaste la Solicitud por Telefono?')){
+                                    <button type="button" class="btn btn-info btn-sm" onclick="if(confirm('¿Verificaste el RUC en el SRI?')){
                                       event.preventDefault();
                                       document.getElementById('status-form-{{ $restaurant->id }}').submit();
                                       }else{
@@ -61,7 +62,7 @@
                                   @endif
                                   
                                   <form method="POST" id="delete-form-{{ $restaurant->id }}" 
-                                    action="{{ route('reservation.destory', $restaurant->id) }}" style="display: none;">
+                                    action="{{ route('request.destroy', $restaurant->id) }}" style="display: none;">
                                     @csrf
                                     @method('DELETE')
                                   </form>

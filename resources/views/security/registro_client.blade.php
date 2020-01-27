@@ -69,7 +69,7 @@
                 </div>
               </div>  
               <br>
-              <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+              <button type="submit" class="btn btn-primary">Registrar</button>
               <a href="{{ route('welcome') }}" class="btn btn-danger">Retroceder</a>
             </form>
           </div>

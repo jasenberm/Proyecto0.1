@@ -15,29 +15,29 @@
       @include('layouts.partial.msg')
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title">Usuarios</h4>
+            <h4 class="card-title">Restaurantes</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table id="table" class="table table-striped" style="width:100%">
                 <thead class="text-primary">
                   <th>Id</th>
-                  <th>Usuario</th>
                   <th>Nombre</th>
-                  <th>Correo</th>
+                  <th>Dueño</th>
+                  <th>RUC</th>
                   <th>Creado</th>
                   <th>Actualizado</th>
                   <th>Acciones</th>
                 </thead>
                 <tbody>
-                    @foreach ($users as $key=>$user)
+                    @foreach ($restaurants as $key=>$restaurant)
                     <tr>
                         <td>{{ $key + 1 }}</td>
-                        <td>{{ $user->user}}</td>
-                        <td>{{ $user->name}}</td>
-                        <td>{{ $user->email}}</td>
-                        <td>{{ $user->created_at}}</td>
-                        <td>{{ $user->updated_at}}</td>
+                        <td>{{ $restaurant->name_restaurant}}</td>
+                        <td>{{ $restaurant->user->name}}</td>
+                        <td>{{ $restaurant->ruc}}</td>
+                        <td>{{ $restaurant->created_at}}</td>
+                        <td>{{ $restaurant->updated_at}}</td>
                         <td>
                           <a href="" class="btn btn-info btn-sm">
                             <i class="material-icons">more_horiz</i>

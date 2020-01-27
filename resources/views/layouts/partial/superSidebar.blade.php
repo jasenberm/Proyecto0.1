@@ -18,8 +18,8 @@
                     <p>Usuarios Dueños</p>
                 </a>
             </li>
-            <li class="{{ Request::is('superuser/category*')? 'active': '' }}">
-                <a class="nav-link" href="{{ route('category.index') }}">
+            <li class="{{ Request::is('superuser/category_restaurant*')? 'active': '' }}">
+                <a class="nav-link" href="{{ route('category_admin.index') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Restaurante-Categorias</p>
                 </a>
@@ -28,6 +28,12 @@
                 <a class="nav-link" href="{{ route('request.index') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Solicitudes</p>
+                </a>
+            </li>
+            <li class="{{ Request::is('superuser/restautrant*')? 'active': '' }}">
+                <a class="nav-link" href="{{ route('restaurant_admin.index') }}">
+                    <i class="material-icons">dashboard</i>
+                    <p>Restaurantes</p>
                 </a>
             </li>
         </ul>

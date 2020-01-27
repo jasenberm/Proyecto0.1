@@ -25,7 +25,7 @@
                   <th>Nombre</th>
                   <th>Estado</th>
                   <th>Creado</th>
-                  <th>Actualizado</th>
+                  <th>Actualizado</th>                  
                   <th>Acciones</th>
                 </thead>
                 <tbody>
@@ -33,25 +33,47 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $category->name}}</td>
-                        <td>{{ $category->status}}</td>
-                        <td>{{ $category->created_at}}</td>
-                        <td>{{ $category->updated_at}}</td>
                         <td>
-                            <a href="" class="btn btn-info btn-sm">
-                            <i class="material-icons">mode_edit</i>
-                            </a>
-                            <form method="POST"  action="" style="display: none;">
-                            @csrf
-                            @method('DELETE')
+                          @if ($category->status == true)
+                            <span class="badge badge-success">Activado</span>
+                          @else
+                            <span class="badge badge-danger">Desactivado</span>
+                          @endif
+                        </td>
+                        <td>{{ $category->created_at}}</td>
+                        <td>{{ $category->updated_at}}</td>                        
+                        <td>              
+                          <form method="POST" id="status-form-{{ $category->id }}" 
+                            action="{{ route('category_restaurant.update', $category->id) }}" style="display: none;">
+                              @csrf
+                              @method('PUT')
                             </form>
-                            <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
-                            event.preventDefault();
-                            {{--document.getElementById('delete-form-{{ $slider->id }}').submit();--}}
-                            }else{
+                            @if ($category->status == true)
+                            <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('¿Seguro de desactivar esta categoria?')){
+                              event.preventDefault();
+                              document.getElementById('status-form-{{ $category->id }}').submit();
+                              }else{
                                 event.preventDefault();
+                              }">
+                              
+                          
+                            <i class="material-icons">highlight_off</i>
+                          </button>
+                          @else
+                          <button type="button" class="btn btn-success btn-sm" onclick="if(confirm('¿Seguro de activar esta categoria?')){
+                            event.preventDefault();
+                            document.getElementById('status-form-{{ $category->id }}').submit();
+                            }else{
+                              event.preventDefault();
                             }">
-                            <i class="material-icons">delete</i>
-                            </button>
+                            
+                        
+                            <i class="material-icons">check_circle</i>
+                        </button>
+                           
+                          
+                          @endif
+                                                                    
                         </td>
                     </tr>    
                     @endforeach
