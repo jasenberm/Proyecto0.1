@@ -43,7 +43,7 @@
                 <dd class="col-sm-9">{{ $restaurant->description }}<br></dd>
         
                 <dt class="col-sm-3">Dirección</dt>
-                <dd class="col-sm-9">{{ $restaurant->address }}<br></dd>
+                <dd class="col-sm-9"><a href="{{ route('maps.index') }}">Agregar la dirección</a> de su restaurante<br></dd>
               </dl>
             </div>
           </div>

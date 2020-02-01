@@ -53,13 +53,7 @@
                                 <label class="bmd-label-floating">Descripción</label>
                                 <input type="text" class="form-control" name="description" value="{{ old('description') }}">
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Dirección</label>
-                                <input type="text" class="form-control" name="address">
-                            </div>
-                        </div>
+                        </div>                      
                         <br>
                         <a href="{{ route('restaurant.index') }}" class="btn btn-danger">Retroceder</a>
                         <button type="submit" class="btn btn-primary">Guardar</button>

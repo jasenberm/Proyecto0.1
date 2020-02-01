@@ -34,7 +34,7 @@
             @csrf
               <div class="col-md-12">
                 <div class="form-group">
-                  <label class="bmd-label-floating">Usario</label>
+                  <label class="bmd-label-floating">Usuario</label>
                     <input type="text" class="form-control" name="user" value="{{ old('user') }}" required>
                 </div>
               </div>

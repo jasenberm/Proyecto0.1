@@ -8,24 +8,26 @@ use App\Reservation;
 
 class ReservationController extends Controller
 {
-    public function reserve(Request $request)
+    public function reserve(Request $request, $id)
     {
+        //dd($request->name);
         $this->validate($request, [
-            'name' => 'required',
-            'phone' => 'required',
-            'email' => 'required|email',
-            'dateandtime' => 'required',
-            'message' => 'required'
+            'date' => 'required',
+            'time' => 'required'
         ]);
+        $usuario = auth()->user();
+        //dd($usuario);
         $reservation = new Reservation();
-        $reservation->name = $request->name;
-        $reservation->phone = $request->phone;
-        $reservation->email = $request->email;
-        $reservation->date_and_time = $request->dateandtime;
-        $reservation->message = $request->message;
+        $reservation->restaurant_id = $id;
+        $reservation->name = $usuario->name;
+        $reservation->email = $usuario->email;
+        $reservation->date = $request->date;
+        $reservation->time = $request->time;
+        $reservation->message = "ejemplo";
+
         $reservation->status = false;
         $reservation->save();
-        Toastr::success('Reservacion enviada correctamente. Espere su confirmacion', 'Exito!', ["positionClass" => "toast-top-right"]);
+        //Toastr::success('Reservacion enviada correctamente. Espere su confirmacion', 'Exito!', ["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 }

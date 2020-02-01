@@ -17,7 +17,6 @@ class CreateReservationsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('restaurant_id');
             $table->string('name');
-            $table->string('phone');
             $table->string('email');
             $table->string('date');
             $table->string('time');

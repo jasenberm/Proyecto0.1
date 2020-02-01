@@ -15,7 +15,7 @@
       @if ($valRestaurant->isNotEmpty())
         <a href="{{ route('slider.create') }}" class="btn btn-primary">Agregar Nuevo</a>
       @else
-        <p>Agregar el <a href="{{ route('restaurant.index') }}">restaurnate</a> para poder empezar a ingresar las imagenes que iran en el banner 
+        <p>Agregar el <a href="{{ route('restaurant.index') }}">restaurante</a> para poder empezar a ingresar las imagenes que iran en el banner 
           que represente su negocio.</p>
       @endif
       @include('layouts.partial.msg')

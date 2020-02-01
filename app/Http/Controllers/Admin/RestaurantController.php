@@ -71,9 +71,6 @@ class RestaurantController extends Controller
         $restaurant->ruc = $request->ruc;
         $restaurant->image = $imagename;
         $restaurant->description = $request->description;
-        if (!empty($request->address)) {
-            $restaurant->address = $request->address;
-        }
         $restaurant->save();
         return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Creado y Registrado Correctamente');
     }
@@ -139,9 +136,6 @@ class RestaurantController extends Controller
         $restaurant->ruc = $request->ruc;
         $restaurant->image = $imagename;
         $restaurant->description = $request->description;
-        if (!empty($request->address)) {
-            $restaurant->address = $request->address;
-        }
         $restaurant->save();
         return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Modificado Correctamente');
     }

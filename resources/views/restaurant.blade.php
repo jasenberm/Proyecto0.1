@@ -10,14 +10,41 @@
     <title>Mamma's Kitchen</title>
 
     {{-- CSS --}}
-    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
+    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/list-restaurant.css') }}">  --}}
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/list-restaurant.css') }}"> 
+
+
+    {{-- prueba de reservaciones --}}
+    
+<!--===============================================================================================-->
+	
+<!--===============================================================================================-->
+	
+<!--===============================================================================================-->
+	{{-- <link rel="stylesheet" type="text/css" href="frontend/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="frontend/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="frontend/vendor/animsition/css/animsition.min.css"> --}}
+<!--===============================================================================================-->
+    {{-- <link rel="stylesheet" type="text/css" href="frontend/vendor/select2/select2.min.css"> --}}
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" /> --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/select2.min.css') }}">
+
+<!--===============================================================================================-->
+	{{-- <link rel="stylesheet" type="text/css" href="frontend/vendor/daterangepicker/daterangepicker.css"> --}}
+<!--===============================================================================================-->
+	{{-- <link rel="stylesheet" type="text/css" href="frontend/vendor/slick/slick.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="frontend/vendor/lightbox2/css/lightbox.min.css">  --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/main2.css') }}">
+
 
 
     {{-- <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
@@ -76,15 +103,42 @@
                             <a class="nav-link" href="#acerca-de">acerca de</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#menu">menu</a>
+                            <a class="nav-link" href="#listado">menú</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#reservar" tabindex="-1" aria-disabled="true">reservacion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="modal" 
-                                data-target="#staticBackdrop">inicio de sesion</a>
-                        </li>
+                            <a class="nav-link" href="#ubicacion">ubicación</a>
+                        </li>                        
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#reservar" aria-disabled="false">reservacion</a>
+                            </li>
+                            <li class="nav-item">
+                                {{-- <a class="nav-link" data-toggle="modal" 
+                                    data-target="#staticBackdrop">inicio de sesion</a> --}}
+                                    <a class="nav-link" href="{{ route('login') }}">inicio de sesion</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="#reserve">reservacion</a>
+                            </li>                        
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->user }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </nav>
@@ -144,7 +198,7 @@
                                 </span>
                             </div>
                         </a>
-                        <h2 class="white">{{ $item->price }}</h2>
+                        <h2 class="white">${{ $item->price }}</h2>
                     </li>                    
                     @endforeach
                 </ul>
@@ -154,75 +208,143 @@
 
 
     <!--== 15. Reserve A Table! ==-->
-    {{-- <section id="reserve" class="reserve">
-        <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/reserve_black.png') }}">
-        <div class="wrapper">
-            <div class="container-fluid">
-                <div class="row dis-table">
-                    <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
-                        <h2 class="section-title">Reserve A Table !</h2>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
+    <section class="section-reservation bg1-pattern p-t-100 p-b-113">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 p-b-30">
+					<div class="t-center">
+						<span class="tit2 t-center">
+							Reservación
+						</span>
 
-                    </div>
-                </div> <!-- /.dis-table -->
-            </div> <!-- /.row -->
-        </div> <!-- /.wrapper -->
-    </section> <!-- /#reserve -->
+						<h3 class="tit3 t-center m-b-35 m-t-2">
+							Reserva tu mesa
+						</h3>
+					</div>
 
+                    <form method="POST" action="{{ route('reservation.reserve', $restaurant->id) }}" class="wrap-form-reservation size22 m-l-r-auto">
+                        @csrf
+                        <div class="row">
+							<div class="col-md-4">
+								<!-- Date -->
+								<span class="txt9">
+									Día
+								</span>
 
-    <section class="reservation">
-        <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/reserve_color.png') }}">
-        <div class="wrapper">
-            <div class="container-fluid">
-                <div class=" section-content">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-6">
-                            <form class="reservation-form" method="post" action="{{ route('reservation.reserve') }}">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control reserve-form empty iconified" 
-                                            name="name" id="name" required="required" placeholder="  &#xf007;  Nombre">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" name="email" class="form-control reserve-form empty iconified" 
-                                            id="email" required="required" placeholder="  &#xf1d8;  e-mail">
-                                        </div>
-                                    </div>
+								<div class="wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
+									<input class="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="text" name="date">
+									<i class="btn-calendar fa fa-calendar ab-r-m hov-pointer m-r-18" aria-hidden="true"></i>
+								</div>
+							</div>
 
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="tel" class="form-control reserve-form empty iconified" 
-                                            name="phone" id="phone" required="required" placeholder="  &#xf095;  Telefono">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control reserve-form empty iconified" 
-                                            name="dateandtime" id="datetimepicker1" required="required" 
-                                            placeholder="&#xf017;  Hora">
-                                        </div>
-                                    </div>
+							<div class="col-md-4">
+								<!-- Time -->
+								<span class="txt9">
+									Hora
+								</span>
 
-                                    <div class="col-md-12 col-sm-12">
-                                        <textarea type="text" name="message" class="form-control reserve-form empty iconified" 
-                                        id="message" rows="3" required="required" placeholder=" &#xf086;  Detalles de la Reservación"></textarea>
-                                    </div>
+								<div class="wrap-inputtime size12 bo2 bo-rad-10 m-t-3 m-b-23">
+									<!-- Select2 -->
+									<select class="selection-1" name="time">
+										<option>9:00</option>
+										<option>9:30</option>
+										<option>10:00</option>
+										<option>10:30</option>
+										<option>11:00</option>
+										<option>11:30</option>
+										<option>12:00</option>
+										<option>12:30</option>
+										<option>13:00</option>
+										<option>13:30</option>
+										<option>14:00</option>
+										<option>14:30</option>
+										<option>15:00</option>
+										<option>15:30</option>
+										<option>16:00</option>
+										<option>16:30</option>
+										<option>17:00</option>
+										<option>17:30</option>
+										<option>18:00</option>
+									</select>
+								</div>
+							</div>
 
-                                    <div class="col-md-12 col-sm-12">
-                                        <button type="submit" id="submit" name="submit" class="btn btn-reservation">
-                                            <span><i class="fa fa-check-circle-o"></i></span>
-                                            Hacer Reservacion
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+							<div class="col-md-4">
+								<!-- People -->
+								<span class="txt9">
+									personas
+								</span>
+
+								<div class="wrap-inputpeople size12 bo2 bo-rad-10 m-t-3 m-b-23">
+									<!-- Select2 -->
+									<select class="selection-1" name="people">
+										<option>1 persona</option>
+										<option>2 personas</option>
+										<option>3 personas</option>
+										<option>4 personas</option>
+										<option>5 personas</option>
+										<option>6 personas</option>
+										<option>7 personas</option>
+										<option>8 personas</option>
+										<option>9 personas</option>
+										<option>10 personas</option>
+										<option>11 personas</option>
+										<option>12 personas</option>
+									</select>
+								</div>
+							</div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
+
+                        @guest
+                        <div class="t-center">
+                            <span class="tit2 t-center">
+                                Inicia sesión para realizar su reservación
+                            </span>
+                        </div>
+                        @else
+                            <div class="wrap-btn-booking flex-c-m m-t-6">
+							    <!-- Button3 -->
+							    <button type="submit" class="btn3 flex-c-m size13 txt11 trans-0-4">
+								    Reservar
+							    </button>
+						    </div>
+                        @endguest
+						
+					</form>
+				</div>
+			</div>
+
+			{{-- <div class="info-reservation flex-w p-t-80">
+				<div class="size23 w-full-md p-t-40 p-r-30 p-r-0-md">
+					<h4 class="txt5 m-b-18">
+						Reserve by Phone
+					</h4>
+
+					<p class="size25">
+						Donec quis euismod purus. Donec feugiat ligula rhoncus, varius nisl sed, tincidunt lectus.
+						<span class="txt25">Nulla vulputate</span>
+						, lectus vel volutpat efficitur, orci
+						<span class="txt25">lacus sodales</span>
+						 sem, sit amet quam:
+						<span class="txt24">(001) 345 6889</span>
+					</p>
+				</div>
+
+				<div class="size24 w-full-md p-t-40">
+					<h4 class="txt5 m-b-18">
+						For Event Booking
+					</h4>
+
+					<p class="size26">
+						Donec feugiat ligula rhoncus:
+						<span class="txt24">(001) 345 6889</span>
+						, varius nisl sed, tinci-dunt lectus sodales sem.
+					</p>
+				</div>
+
+			</div> --}}
+		</div>
+	</section>
 
 
     {{-- ubicacion especifica --}}
@@ -267,23 +389,101 @@
     </footer>
 
 
-    <script src="{{ asset ('frontend/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset ('frontend/js/jquery-3.3.1.slim.min.js') }}"></script>
-    <script src="{{ asset ('frontend/js/popper.min.js') }}"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
-    crossorigin="anonymous"></script> --}}
+    <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery-3.3.1.slim.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/popper.min.js') }}"></script>
 
 
-<script src="frontend/js/jquery.mixitup.min.js"></script>
-<script src="frontend/js/main.js"></script>
-<script src="{{ asset('frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> --}}
+
+
+<script src="{{ asset('frontend/js/jquery.mixitup.min.js') }}"></script>
+<script src="{{ asset('frontend/js/main.js') }}"></script>
+{{-- <script src="frontend/js/bootstrap-datetimepicker.min.js"></script> --}}
+
+
+{{-- prueba para la reservacion --}}
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+	{{-- <script type="text/javascript" src="frontend/vendor/animsition/js/animsition.min.js"></script> --}}
+<!--===============================================================================================-->
+	
+	
+<!--===============================================================================================-->
+    {{-- <script src="{{ asset('frontend/vendor/select2/select2.js') }}"></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script> --}}
+    <script type="text/javascript" src="{{ asset('frontend/js/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{{ asset('frontend/js/moment.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('frontend/js/daterangepicker.js') }}"></script>
+<!--===============================================================================================-->
+	{{-- <script type="text/javascript" src="frontend/vendor/slick/slick.min.js"></script>
+	<script type="text/javascript" src="frontend/js/slick-custom.js"></script> --}}
+<!--===============================================================================================-->
+	{{-- <script type="text/javascript" src="frontend/vendor/parallax100/parallax100.js"></script>
+	<script type="text/javascript">
+        $('.parallax100').parallax100();
+	</script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="frontend/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="frontend/vendor/lightbox2/js/lightbox.min.js"></script> --}}
+<!--===============================================================================================-->
+	
+
+<script type="text/javascript">
+    /*[ Daterangepicker ]
+    ===========================================================*/
+    $('.my-calendar').daterangepicker({
+        "singleDatePicker": true,
+        "showDropdowns": true,
+        locale: {
+            format: 'DD/MM/YYYY'
+        },
+    });
+
+    var myCalendar = $('.my-calendar');
+    var isClick = 0;
+
+    $(window).on('click',function(){ 
+        isClick = 0;
+    });
+
+    $(myCalendar).on('apply.daterangepicker',function(){ 
+        isClick = 0;
+    });
+
+    $('.btn-calendar').on('click',function(e){ 
+        e.stopPropagation();
+
+        if(isClick == 1) isClick = 0;   
+        else if(isClick == 0) isClick = 1;
+
+        if (isClick == 1) {
+            myCalendar.focus();
+        }
+    });
+
+    $(myCalendar).on('click',function(e){ 
+        e.stopPropagation();
+        isClick = 1;
+    });
+
+    $('.daterangepicker').on('click',function(e){ 
+        e.stopPropagation();
+    });
+
+    $(".selection-1").select2();
+    
+    
+</script> 
+
 
     {{-- <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
@@ -305,30 +505,8 @@
         @endforeach
     @endif     --}}
 
-    {{-- <script>
-    $(document).ready(function(){
-        $(window).scroll(function(){
-            if ($(document).scrollTop() > 50) {
-                $("nav").addClass("shrink");
-            } else {
-                $("nav").removeClass("shrink");
-            }
-        });
-    });
-    
-    $(document).ready(function() {
-        $(window).scroll(function () {
-           if ($(document).scrollTop() > 50) {
-               $("#logo").attr("src", "{{ asset('frontend/images/Logo_stick.png') }}")
-           } else {
-            $("#logo").attr("src", "{{ asset('frontend/images/Logo_main.png') }}")
-           } 
-        });
-    });
-</script>
 
-
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker({
                     format: "dd MM yyyy - HH:11 P",
@@ -338,7 +516,7 @@
                 });
             });
             
-    </script> --}}
+    </script>  --}}
 {{-- {!! Toastr::message() !!} --}}
 </body>
 

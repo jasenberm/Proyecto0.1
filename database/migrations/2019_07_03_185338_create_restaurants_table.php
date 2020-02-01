@@ -22,7 +22,6 @@ class CreateRestaurantsTable extends Migration
             $table->string('image', 150)->default('default.jpg');
             $table->string('description', 200)->nullable();
             $table->boolean('status')->default(false);
-            $table->string('address')->nullable();
             $table->string('lng')->nullable();
             $table->string('lat')->nullable();
             $table->foreign('user_id')

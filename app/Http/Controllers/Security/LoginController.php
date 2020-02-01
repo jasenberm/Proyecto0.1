@@ -44,6 +44,7 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
+        dd(session());
         $rol = session()->get('rol_nombre');
         if ($rol == 'admin') {
             return '/admin/dashboard';

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->name('welcome');
-Route::post('/reservation', 'ReservationController@reserve')->name('reservation.reserve');
+Route::post('reservations/{id}', 'ReservationController@reserve')->name('reservation.reserve');
 Route::post('/contact', 'ContactController@sendMessage')->name('contact.send');
 Route::get('/{id}', 'RestaurantController@index')->where('id', '[0-9]+')->name('restaurant.welcome');
 

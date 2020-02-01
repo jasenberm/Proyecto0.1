@@ -55,14 +55,7 @@
                           <label class="bmd-label-floating">Descripción</label>
                           <textarea class="form-control" name="description">{{ $restaurant->description }}</textarea>
                         </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Dirección</label>
-                          <input type="text" class="form-control" value="{{ $restaurant->address }}" name="address">
-                        </div>
-                      </div>
-                      
+                      </div>      
                       <br>
                       <a href="{{ route('restaurant.index') }}" class="btn btn-danger">Back</a>
                       <button type="submit" class="btn btn-primary">Save</button>
