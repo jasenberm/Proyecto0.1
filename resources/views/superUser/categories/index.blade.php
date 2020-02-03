@@ -12,7 +12,8 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-      @include('layouts.partial.msg')
+        <a href="{{ route('category_admin.create') }}" class="btn btn-primary">Agregar Nuevo</a>
+        @include('layouts.partial.msg')
         <div class="card">
           <div class="card-header card-header-primary">
             <h4 class="card-title">Categorias de Restaurantes</h4>
@@ -23,6 +24,7 @@
                 <thead class="text-primary">
                   <th>Id</th>
                   <th>Nombre</th>
+                  <th>Slug</th>
                   <th>Estado</th>
                   <th>Creado</th>
                   <th>Actualizado</th>                  
@@ -33,6 +35,7 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $category->name}}</td>
+                        <td>{{ $category->slug}}</td>
                         <td>
                           @if ($category->status == true)
                             <span class="badge badge-success">Activado</span>
@@ -69,11 +72,8 @@
                             
                         
                             <i class="material-icons">check_circle</i>
-                        </button>
-                           
-                          
-                          @endif
-                                                                    
+                          </button>                                                     
+                          @endif                                                                   
                         </td>
                     </tr>    
                     @endforeach

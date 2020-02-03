@@ -25,11 +25,9 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         //dd($user->roles()->where('status', 1)->get());
-        $roles = $user->roles()->where('status', 1)->get();
-        //dd($roles);
-        if ($roles->isNotEmpty()) {
+        $roles = $user->rols()->get();
+        if ($roles->isNotEmpty() && $user->status == true) {
             $user->setSession($roles->toArray());
-            //dd('llega');
         } else {
             $this->guard()->logout();
             $request->session()->invalidate();
@@ -44,7 +42,7 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
-        dd(session());
+        //dd(session());
         $rol = session()->get('rol_nombre');
         if ($rol == 'admin') {
             return '/admin/dashboard';
@@ -52,7 +50,7 @@ class LoginController extends Controller
 
         if ($rol == 'superAdmin') {
             // dd('llega');
-            return '/superuser/client';
+            return '/superuser/superuser';
         }
 
         if ($rol == 'user') {

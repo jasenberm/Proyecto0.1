@@ -51,6 +51,9 @@ class RestaurantController extends Controller
             'ruc' => 'required|digits:13',
             'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);
+        if ($request->category == "Seleccione la categoria...") {
+            return redirect()->back()->with('alertMsg', 'Olvido seleccionar la categoria');
+        }
         $image = $request->file('image');
         $slug = str_slug($request->name_restaurant);
         if (isset($image)) {
@@ -95,7 +98,7 @@ class RestaurantController extends Controller
     public function edit($id)
     {
         $restaurant = Restaurant::find($id);
-        $categoryRestaurant = CategoryRestaurant::all();
+        $categoryRestaurant = CategoryRestaurant::where('status', 1)->get();
         //dd($restaurant->category_restaurant->id);
         return view('admin.restaurant.edit', compact('restaurant', 'categoryRestaurant'));
     }

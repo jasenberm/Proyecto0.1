@@ -57,6 +57,7 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'status' => 1,
         ]);
     }
 
@@ -69,18 +70,16 @@ class RegisterController extends Controller
             DB::table('rol_user')->insert([
                 'rol_id' => 1,
                 'user_id' => $user->id,
-                'status' => 1
             ]);
         } elseif ($request->is('register')) {
             // dd('entra register');
             DB::table('rol_user')->insert([
                 'rol_id' => 2,
                 'user_id' => $user->id,
-                'status' => 1
             ]);
         }
 
-        $roles = $user->roles()->where('status', 1)->get();
+        $roles = $user->rols()->get();
         //dd($roles);
         if ($roles->isNotEmpty()) {
             $user->setSession($roles->toArray());

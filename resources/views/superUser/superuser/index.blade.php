@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Clientes')
+@section('title', 'Admin')
 
 @push('css')
 {{--<link rel="stylesheet" href="{{ asset('backend/css/table-bootstrap.min.css') }}">--}}
+{{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> --}}
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 @endpush
 
@@ -12,10 +13,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-      @include('layouts.partial.msg')
+        <a href="{{ route('superuser.create') }}" class="btn btn-primary">Agregar</a>
+        @include('layouts.partial.msg')
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title">Usuarios</h4>
+            <h4 class="card-title">Super Usuarios</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -26,7 +28,7 @@
                   <th>Nombre</th>
                   <th>Correo</th>
                   <th>Creado</th>
-                  <th>Actualizado</th>                  
+                  <th>Actualizado</th>
                   <th>Estado</th>
                   <th>Acciones</th>
                 </thead>
@@ -72,6 +74,10 @@
                           </button>                                                     
                           @endif
                           
+                          <a href="{{ route('superuser.edit', $user->id) }}" class="btn btn-info btn-sm">
+                            <i class="material-icons">mode_edit</i>
+                          </a>
+
                           <form method="POST" id="delete-form-{{ $user->id }}" action="{{ route('superuser.update', $user->id) }}" style="display: none;">
                             @csrf
                             @method('DELETE')
@@ -83,7 +89,7 @@
                             event.preventDefault();
                           }">
                             <i class="material-icons">delete</i>
-                          </button> 
+                          </button>                   
                         </td>
                     </tr>    
                     @endforeach
@@ -99,7 +105,7 @@
 @endsection
 
 @push('scripts')
-<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     {{-- <script src="{{ asset('backend/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/js/dataTables.bootstrap4.min.js') }}"></script> --}}
     {{--<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

@@ -17,9 +17,7 @@ class MiddSuperAdmin
     public function handle($request, Closure $next)
     {
         if ($this->permiso()) {
-            // dd('enrtra');
             return $next($request);
-            dd('enrtra');
         }
 
         return redirect('/admin/dashboard');
@@ -27,8 +25,6 @@ class MiddSuperAdmin
 
     private function permiso()
     {
-        //dd(session()->all());
-        //dd('permiso');
         return session()->get('rol_nombre') == 'superAdmin';
     }
 }

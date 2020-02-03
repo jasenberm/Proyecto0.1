@@ -52,11 +52,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
 });
 
 
-Route::group(['prefix' => 'superuser', 'middleware' => ['auth', 'superuser'], 'namespace' => 'superuser'], function () {
+Route::group(['prefix' => 'superuser', 'middleware' => ['auth'], 'namespace' => 'superuser'], function () {
 
+    Route::resource('superuser', 'ClientController');
     Route::resource('client', 'ClientController');
     Route::resource('owner', 'ClientController');
     Route::resource('category_admin', 'CategoryRestaurantController');
     Route::resource('request', 'RequestController');
     Route::resource('restaurant_admin', 'RestaurantController');
+    Route::put('status/{id}', 'ClientController@status')->name('status');
 });

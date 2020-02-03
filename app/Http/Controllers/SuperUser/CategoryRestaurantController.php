@@ -27,7 +27,7 @@ class CategoryRestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('superUser.categories.create');
     }
 
     /**
@@ -38,7 +38,15 @@ class CategoryRestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        $category = new CategoryRestaurant();
+        $category->name = $request->name;
+        $category->slug = str_slug($request->name);
+        $category->save();
+
+        return redirect()->route('category_admin.index')->with('successMsg', 'Categoria Guardada Correctamente');
     }
 
     /**

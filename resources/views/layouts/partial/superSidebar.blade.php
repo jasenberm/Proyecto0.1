@@ -6,6 +6,12 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
+            <li class="{{ Request::is('superuser/superuser*')? 'active': '' }}">
+                <a class="nav-link" href="{{ route('superuser.index') }}">
+                    <i class="material-icons">dashboard</i>
+                    <p>Super Usuarios</p>
+                </a>
+            </li>
             <li class="{{ Request::is('superuser/client*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('client.index') }}">
                     <i class="material-icons">dashboard</i>
@@ -29,8 +35,8 @@
                     <i class="material-icons">dashboard</i>
                     <p>Solicitudes</p>
                 </a>
-            </li>
-            <li class="{{ Request::is('superuser/restautrant*')? 'active': '' }}">
+            </li>                        
+            <li class="{{ Request::is('superuser/restaurant_admin*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('restaurant_admin.index') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Restaurantes</p>
