@@ -295,6 +295,16 @@
 							</div>
                         </div>
 
+                        <div class="col-md-12">                            
+                            <span class="txt9">
+                                Mensaje
+                            </span>
+
+                            <div class="wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                <textarea class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="message" rows="3"></textarea>                                
+                            </div>
+                        </div>
+
                         @guest
                         <div class="t-center">
                             <span class="tit2 t-center">

@@ -61,4 +61,8 @@ Route::group(['prefix' => 'superuser', 'middleware' => ['auth'], 'namespace' => 
     Route::resource('request', 'RequestController');
     Route::resource('restaurant_admin', 'RestaurantController');
     Route::put('status/{id}', 'ClientController@status')->name('status');
+    Route::get('export/index', 'ExportController@index')->name('export.index');
+    Route::get('export/clients', 'ExportController@client')->name('export.client');
+    Route::get('export/owners', 'ExportController@owner')->name('export.owner');
+    Route::get('export/restaurants', 'ExportController@restaurant')->name('export.restaurant');
 });

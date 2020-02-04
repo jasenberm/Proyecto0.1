@@ -13,7 +13,7 @@ class ReservationController extends Controller
         //dd($request->name);
         $this->validate($request, [
             'date' => 'required',
-            'time' => 'required'
+            'time' => 'required',
         ]);
         $usuario = auth()->user();
         //dd($usuario);
@@ -23,7 +23,7 @@ class ReservationController extends Controller
         $reservation->email = $usuario->email;
         $reservation->date = $request->date;
         $reservation->time = $request->time;
-        $reservation->message = "ejemplo";
+        $reservation->message = $request->message;
 
         $reservation->status = false;
         $reservation->save();

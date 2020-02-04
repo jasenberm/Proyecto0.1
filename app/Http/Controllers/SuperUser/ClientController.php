@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\SuperUser;
 
+use App\Exports\UserExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Item;
@@ -9,6 +10,7 @@ use App\Models\Resources\RolUser;
 use App\Models\Security\User;
 use App\Rol;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClientController extends Controller
 {
