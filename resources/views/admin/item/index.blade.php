@@ -13,7 +13,16 @@
           <div class="row">
             <div class="col-md-12">
               @if ($valRestaurant->isNotEmpty())
-              <a href="{{ route('item.create') }}" class="btn btn-primary">Agregar Nuevo</a>
+              @foreach ($valRestaurant as $restaurant)
+              <div class="row justify-content-between">
+                <div class="col-2">
+                  <a href="{{ route('item.create') }}" class="btn btn-primary">Agregar Nuevo</a>
+                </div>
+                <div class="col-3">
+                  <a href="{{ route('export.items') }}" class="btn btn-primary">Exportar mis productos</a>  
+                </div>
+              </div>              
+              @endforeach              
               @else
               <p>Agregar el <a href="">restaurante</a> para poder empezar a registrar productos que su negocio 
                 va a proveer</p>

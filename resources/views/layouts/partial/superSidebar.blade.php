@@ -42,12 +42,12 @@
                     <p>Restaurantes</p>
                 </a>
             </li>   
-            <li class="{{ Request::is('superuser/export*')? 'active': '' }}">
+            {{-- <li class="{{ Request::is('superuser/export*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('export.index') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Reportes</p>
                 </a>
-            </li>          
+            </li>           --}}
         </ul>
     </div>
 </div>

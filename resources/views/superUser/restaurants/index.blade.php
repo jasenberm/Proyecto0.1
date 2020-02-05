@@ -12,6 +12,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
+        <a href="{{ route('export.restaurant') }}" class="btn btn-primary">Exportar Restaurantes</a>
       @include('layouts.partial.msg')
         <div class="card">
           <div class="card-header card-header-primary">
@@ -22,6 +23,7 @@
               <table id="table" class="table table-striped" style="width:100%">
                 <thead class="text-primary">
                   <th>Id</th>
+                  <th>Categoria</th>
                   <th>Nombre</th>
                   <th>Dueño</th>
                   <th>RUC</th>
@@ -33,6 +35,7 @@
                     @foreach ($restaurants as $key=>$restaurant)
                     <tr>
                         <td>{{ $key + 1 }}</td>
+                        <td>{{ $restaurant->category_restaurant->name}}</td>
                         <td>{{ $restaurant->name_restaurant}}</td>
                         <td>{{ $restaurant->user->name}}</td>
                         <td>{{ $restaurant->ruc}}</td>

@@ -49,6 +49,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
     Route::delete('contact/{id}', 'ContactController@destroy')->name('contact.destroy');
 
     Route::get('maps', 'MapsController@index')->name('maps.index');
+
+    Route::get('export/client', 'ExportRestaurantController@client')->name('export.clients');
+    Route::get('export/item', 'ExportRestaurantController@item')->name('export.items');
 });
 
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Clientes')
+@section('title', 'Clients')
 
 @push('css')
 {{--<link rel="stylesheet" href="{{ asset('backend/css/table-bootstrap.min.css') }}">--}}
@@ -11,7 +11,13 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">        
+      <div class="col-md-12">     
+        @if (Request::is('superuser/client'))
+        <a href="{{ route('export.client') }}" class="btn btn-primary">Exportar Clientes</a>  
+        @else
+        <a href="{{ route('export.owner') }}" class="btn btn-primary">Exportar Dueños</a>
+        @endif
+        
       @include('layouts.partial.msg')
         <div class="card">
           <div class="card-header card-header-primary">

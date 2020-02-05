@@ -12,6 +12,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
+              <a href="{{ route('export.clients') }}" class="btn btn-primary">Exportar mis Clientes</a>  
               @include('layouts.partial.msg')
               <div class="card">
                 <div class="card-header card-header-primary">
