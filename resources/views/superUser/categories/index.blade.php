@@ -4,7 +4,8 @@
 
 @push('css')
 {{--<link rel="stylesheet" href="{{ asset('backend/css/table-bootstrap.min.css') }}">--}}
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+{{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> --}}
+<link rel="stylesheet" href="{{ asset('backend/css/jquery.dataTables.min.css') }}">
 @endpush
 
 @section('content')
@@ -89,8 +90,9 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('backend/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('backend/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('backend/js/jquery.dataTables.min.js') }}"></script>
+    {{-- <script src="{{ asset('backend/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/js/dataTables.bootstrap4.min.js') }}"></script> --}}
     {{--<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>--}}
 <script>

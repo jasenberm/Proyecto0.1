@@ -50,7 +50,7 @@ class LoginController extends Controller
 
         if ($rol == 'superAdmin') {
             // dd('llega');
-            return '/superuser/superuser';
+            return '/superuser/request';
         }
 
         if ($rol == 'user') {

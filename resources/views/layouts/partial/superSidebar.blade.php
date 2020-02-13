@@ -6,42 +6,42 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="{{ Request::is('superuser/superuser*')? 'active': '' }}">
-                <a class="nav-link" href="{{ route('superuser.index') }}">
+            <li class="{{ Request::is('superuser/request*')? 'active': '' }}">
+                <a class="nav-link" href="{{ route('request.index') }}">
                     <i class="material-icons">dashboard</i>
-                    <p>Super Usuarios</p>
+                    <p>Solicitudes</p>
                 </a>
-            </li>
-            <li class="{{ Request::is('superuser/client*')? 'active': '' }}">
-                <a class="nav-link" href="{{ route('client.index') }}">
-                    <i class="material-icons">dashboard</i>
-                    <p>Usuarios Clientes</p>
-                </a>
-            </li>
-            <li class="{{ Request::is('superuser/owner*')? 'active': '' }}">
-                <a class="nav-link" href="{{ route('owner.index') }}">
-                    <i class="material-icons">dashboard</i>
-                    <p>Usuarios Dueños</p>
-                </a>
-            </li>
+            </li>  
             <li class="{{ Request::is('superuser/category_admin*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('category_admin.index') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Restaurante-Categorias</p>
                 </a>
             </li>
-            <li class="{{ Request::is('superuser/request*')? 'active': '' }}">
-                <a class="nav-link" href="{{ route('request.index') }}">
-                    <i class="material-icons">dashboard</i>
-                    <p>Solicitudes</p>
-                </a>
-            </li>                        
             <li class="{{ Request::is('superuser/restaurant_admin*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('restaurant_admin.index') }}">
-                    <i class="material-icons">dashboard</i>
+                    <i class="material-icons">restaurant</i>
                     <p>Restaurantes</p>
                 </a>
             </li>   
+            <li class="{{ Request::is('superuser/superuser*')? 'active': '' }}">
+                <a class="nav-link" href="{{ route('superuser.index') }}">
+                    <i class="material-icons">group</i>
+                    <p>Super Usuarios</p>
+                </a>
+            </li>
+            <li class="{{ Request::is('superuser/client*')? 'active': '' }}">
+                <a class="nav-link" href="{{ route('client.index') }}">
+                    <i class="material-icons">people</i>
+                    <p>Usuarios Clientes</p>
+                </a>
+            </li>
+            <li class="{{ Request::is('superuser/owner*')? 'active': '' }}">
+                <a class="nav-link" href="{{ route('owner.index') }}">
+                    <i class="material-icons">people_alt</i>
+                    <p>Usuarios Dueños</p>
+                </a>
+            </li>                                                          
             {{-- <li class="{{ Request::is('superuser/export*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('export.index') }}">
                     <i class="material-icons">dashboard</i>

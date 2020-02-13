@@ -24,7 +24,7 @@ class ReservationController extends Controller
         $reservation->email = $usuario->email;
         $reservation->date = $request->date;
         $reservation->time = $request->time;
-        $reservation->message = $request->message;
+        $reservation->message = 'es un ejemplo';
 
         $reservation->status = false;
         $reservation->save();

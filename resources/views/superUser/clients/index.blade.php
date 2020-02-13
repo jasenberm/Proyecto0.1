@@ -4,7 +4,8 @@
 
 @push('css')
 {{--<link rel="stylesheet" href="{{ asset('backend/css/table-bootstrap.min.css') }}">--}}
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+{{-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> --}}
+<link rel="stylesheet" href="{{ asset('backend/css/jquery.dataTables.min.css') }}">
 @endpush
 
 @section('content')
@@ -13,7 +14,10 @@
     <div class="row">
       <div class="col-md-12">     
         @if (Request::is('superuser/client'))
-        <a href="{{ route('export.client') }}" class="btn btn-primary">Exportar Clientes</a>  
+        <a href="{{ route('export.client') }}" class="btn btn-primary">          
+          Exportar Clientes
+          <i class="material-icons">cloud_download</i>
+        </a>  
         @else
         <a href="{{ route('export.owner') }}" class="btn btn-primary">Exportar Dueños</a>
         @endif
@@ -105,9 +109,9 @@
 @endsection
 
 @push('scripts')
-<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    {{-- <script src="{{ asset('backend/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('backend/js/dataTables.bootstrap4.min.js') }}"></script> --}}
+{{-- <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> --}}
+    <script src="{{ asset('backend/js/jquery.dataTables.min.js') }}"></script>
+    {{-- <script src="{{ asset('backend/js/dataTables.bootstrap4.min.js') }}"></script> --}}
     {{--<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>--}}
 <script>

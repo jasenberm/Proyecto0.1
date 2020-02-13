@@ -21,6 +21,7 @@ Route::post('reservations/{id}', 'ReservationController@reserve')->name('reserva
 Route::post('/contact', 'ContactController@sendMessage')->name('contact.send');
 Route::get('/{id}', 'RestaurantController@index')->where('id', '[0-9]+')->name('restaurant.welcome');
 
+
 // Auth::routes();
 
 Route::get('/login', 'Security\LoginController@index')->name('login');

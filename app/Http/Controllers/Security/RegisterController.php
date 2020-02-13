@@ -99,8 +99,7 @@ class RegisterController extends Controller
         }
 
         if ($rol == 'superAdmin') {
-            dd('lega');
-            return '/superuser/client';
+            return '/superuser/request';
         }
 
         if ($rol == 'user') {
