@@ -47,7 +47,7 @@ class RestaurantController extends Controller
     {
         $this->validate($request, [
             'category' => 'required',
-            'name_restaurant' => 'required',
+            'name_restaurant' => ['required', 'max:28'],
             'ruc' => 'required|digits:13',
             'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);

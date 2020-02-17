@@ -256,7 +256,7 @@
 							@if ($category->restaurants->where('status', 1)->count() > 0)
 								<li class="filter txt13" data-filter="#{{ $category->slug }}">
 									{{ $category->name }}
-									<span class="badge badge-primary badge-pill">{{ $category->restaurants->count() }}</span>
+									<span class="badge badge-primary badge-pill">{{ $category->restaurants->where('status', 1)->count() }}</span>
 								</li>
 							@endif
 							@endforeach
@@ -273,16 +273,19 @@
 								<img src="{{ asset('upload/restaurant/'.$restaurant->image) }}" class="img-responsive bo-rad-10" alt="Food">
 								<div class="rest-desc text-center">
 									<span>
-										<h3>{{ $restaurant->name_restaurant }}</h3>
-										Descripcion: {{ $restaurant->description}} <br>
+										<h4>{{ $restaurant->name_restaurant }}</h4>
+										<br>
 										Direccion: {{ $restaurant->address }} <br>
+													
+										{{-- Descripcion: {{ $restaurant->description}} <br> --}}
 									</span>
 								</div>
 							</a>
-							<h2 class="flex-c-m txt1">{{ $restaurant->name_restaurant }}</h2>
+							<p class="flex-c-m" style="font-family: Courgette; font-size: 20px">{{ $restaurant->name_restaurant }}</p>
 						</li>                    
 						@endforeach
 					</ul>
+					{{ $restaurants->links() }}
 				</div>
 			</div>
 		</div>
@@ -303,16 +306,15 @@
 				<div class="container">
 					<div class="row" id="lista2">						
 						@foreach ($items as $item)	
-						<div class="col-md-3">
+						<div class="col-md-3" style="margin-top:20px">
 							<!-- Item our menu -->
 							<div class="bo-rad-10 hov-img-zoom">
 								<img src="{{ asset('upload/item/'.$item->image) }}" class="img-responsive" alt="Food"
-								style="width: 100%;
-								height: 300px;">
+								style="width: 100%; height: 300px;">
 	
 								<!-- Button2 -->
-								<a href="{{ route('restaurant.welcome', $item->category->restaurant->id) }}" class="btn2 flex-c-m txt5 ab-c-m size7">
-									{{ $item->category->restaurant->id }}
+								<a href="{{ route('restaurant.welcome', $item->id) }}" class="btn2 flex-c-m txt5 ab-c-m size7">
+									ver menu									
 								</a>
 							</div>
 						</div>

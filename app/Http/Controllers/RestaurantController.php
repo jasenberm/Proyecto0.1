@@ -15,24 +15,27 @@ class RestaurantController extends Controller
         if ($restaurant == null) {
             return redirect('/');
         } else {
+            if (request()->has('category')) {
+                //dd(request('category'));
+                $items = Item::inRandomOrder()->join('categories', 'items.category_id', '=', 'categories.id')
+                    ->join('restaurants', 'categories.restaurant_id', '=', 'restaurants.id')
+                    ->where('restaurants.id', $restaurant->id)
+                    ->where('categories.slug', request('category'))
+                    ->select('items.name', 'items.image', 'items.description', 'items.price', 'categories.slug', 'categories.id')
+                    ->paginate(16)
+                    ->appends('category', request('category'));
+
+                //dd($items);
+            } else {
+                $items = Item::join('categories', 'items.category_id', '=', 'categories.id')
+                    ->join('restaurants', 'categories.restaurant_id', '=', 'restaurants.id')
+                    ->where('restaurants.id', $restaurant->id)
+                    ->select('items.name', 'items.image', 'items.description', 'items.price', 'categories.slug', 'categories.id')
+                    ->paginate(16);
+            }
+
             $categories = Restaurant::find($id)->categories;
             $sliders = Restaurant::find($id)->sliders;
-
-            //$items = Category::find(2)->items;
-            //dd($restaurant);
-            $itemSub = collect();
-            $items = collect();
-
-            foreach ($categories as $key => $category) {
-                //$itemSub->push(Item::Where('category_id', $category->id)->get());
-                $itemSub->push(Category::find($category->id)->items);
-            }
-
-            foreach ($itemSub as $key => $value) {
-                foreach ($value as $key => $item) {
-                    $items->push($item);
-                }
-            }
 
             // return view('restaurant', compact('restaurant', 'categories', 'items', 'sliders'));
             return view('nuevoRestaurant', compact('restaurant', 'categories', 'items', 'sliders'));

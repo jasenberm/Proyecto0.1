@@ -50,12 +50,8 @@
 								</li>
 
 								<li>
-									<a href="#restaurantes">Restaurantes</a>
+									<a href="#restaurantes">Menu</a>
 								</li>								
-
-								<li>
-									<a href="#menu">Menus</a>
-								</li>
 								
 								<li>
 									<a href="#ubicacion">Ubicacion</a>
@@ -108,19 +104,15 @@
 		<!-- - -->
 		<ul class="menu-sidebar p-t-95 p-b-70">
 			<li class="t-center m-b-13">
-				<a href="index.html" class="txt19">Inicio</a>
+				<a href="/" class="txt19">Inicio</a>
 			</li>
 
 			<li class="t-center m-b-13">
-				<a href="menu.html" class="txt19">Menu</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="#" class="txt19  disabled">Reservacion</a>
+				<a href="#restaurantes" class="txt19">Menu</a>
 			</li>
 			
 			<li class="t-center m-b-33">
-				<a href="contact.html" class="txt19">Contact</a>
+				<a href="#ubicacion" class="txt19">Ubicacion</a>
 			</li>
 
 			@guest
@@ -130,7 +122,11 @@
 					Iniciar Sesion
 				</a>
 			</li>
-			@else                        
+			@else       
+			<li class="t-center m-b-13">
+				<a href="#reservar" class="txt19">Reservar</a>
+			</li>
+			
 			<li class="t-center">
 				{{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 					{{ Auth::user()->user }} <span class="caret"></span>
@@ -206,7 +202,7 @@
 				<div class="col-md-6 p-t-45 p-b-30">
 					<div class="wrap-text-welcome t-center">
 						<span class="tit2 t-center">
-							Encuentra tu restaurante
+							{{ $restaurant->name_restaurant }}
 						</span>
 
 						<h3 class="tit3 t-center m-b-35 m-t-5">
@@ -214,16 +210,9 @@
 						</h3>
 
 						<p class="t-center m-b-22 size3 m-l-r-auto">
-							Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia, nisl ante egestas mi, ac facilisis ligula sem id neque.
+							{{ $restaurant->description }}
 						</p>
-						<p class="t-center m-b-22 size3 m-l-r-auto">
-							Si desea publicitar su negocio a travez de nuestra plataforma, inicie el proceso en el siguiente enlace.
-						</p>
-
-						<a href="" class="txt4">
-							Trabaja con nosotros...
-							<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-						</a>
+						
 					</div>
 				</div>
 
@@ -247,8 +236,52 @@
 				Nuestro Menu
 			</h3>
 		</div>
-		
+
 		<div class="container">
+			<div class="row" id="list-filtros">
+				<div class="col-md-12 col-offset-1" id="envol-filtros">
+					<div class="section-header">
+						<h2 class="tit2">Menú</h2>
+						<ul class="clearfix" id="list-rest">
+							<li class="filter txt13" data-filter="all">todo</li>
+							@foreach($categories as $category)
+							@if ($category->items->count() > 0)
+							<li class="filter txt13" data-filter="#{{ $category->slug }}" href="/{{ $restaurant->id }}/?category={{ $category->slug }}">
+								{{ $category->name }}
+								{{-- <span class="badge badge-primary badge-pill">{{ $category->items->count() }}</span> --}}
+							</li>
+							@endif
+							@endforeach
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="restaurantes">
+				<div class="col col-md-offset-1" id="contenedor">
+					<ul class="listado" id="lista">
+						@foreach($items as $item)
+						<li class="item bo-rad-10" id="{{ $item->slug }}">
+							<a href="{{ route('restaurant.welcome', $item->id) }}">
+								<img src="{{ asset('upload/item/'.$item->image) }}" class="img-responsive" alt="Food">
+								<div class="rest-desc text-center">
+									<span>
+										<h3>{{ $item->name }}</h3>
+										Descripcion: {{ $item->description}} <br>
+										
+									</span>
+								</div>
+							</a>
+							<h2 class="white">${{ $item->price }}</h2>
+						</li>                    
+						@endforeach
+					</ul>											
+					{{ $items->links() }}					
+				</div>
+			</div>
+		</div>
+		
+		
+		{{-- <div class="container">
 			<div class="row" id="list-filtros">
 				<div class="col-md-12 col-offset-1" id="envol-filtros">
 					<div class="section-header">
@@ -271,7 +304,7 @@
 				<div class="col col-md-offset-1" id="contenedor">
 					<ul class="listado" id="lista">
 						@foreach($items as $item)
-						<li class="item bo-rad-10" id="{{ $item->category->slug }}">
+						<li class="item bo-rad-10" id="{{ $item->slug }}">
 							<a href="{{ route('restaurant.welcome', $item->id) }}">
 								<img src="{{ asset('upload/item/'.$item->image) }}" class="img-responsive" alt="Food">
 								<div class="rest-desc text-center">
@@ -285,10 +318,11 @@
 							<h2 class="white">${{ $item->price }}</h2>
 						</li>                    
 						@endforeach
-					</ul>
+					</ul>											
+					{{ $items->appends(['category' => $item->slug])->links() }}					
 				</div>
 			</div>
-		</div>
+		</div> --}}
 	</section>
 
 	<!--== 15. Reserve A Table! ==-->

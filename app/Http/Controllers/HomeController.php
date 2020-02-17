@@ -25,10 +25,13 @@ class HomeController extends Controller
     public function index()
     {
         $categoryRestaurants = CategoryRestaurant::all();
-        $restaurants = Restaurant::where('status', 1)->get();
-        $items = Item::inRandomOrder()->limit(12)->get();
-        // dd($items);
-        //dd($restaurants->find(1)->category_restaurant);
+        $restaurants = Restaurant::where('status', 1)->paginate(12);
+        //$items = Item::inRandomOrder()->limit(12)->get()        
+
+        $items = Item::inRandomOrder()->limit(12)->join('categories', 'items.category_id', '=', 'categories.id')
+            ->join('restaurants', 'categories.restaurant_id', '=', 'restaurants.id')->where('restaurants.status', true)
+            ->select('items.image', 'restaurants.id')->get();
+
         // return view('welcome', compact('restaurants', 'categoryRestaurants'));
         return view('nuevoWellcome', compact('restaurants', 'categoryRestaurants', 'items'));
     }
