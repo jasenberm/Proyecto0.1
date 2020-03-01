@@ -14,13 +14,18 @@
       <div class="col-md-12">
       @if ($restaurants->isNotEmpty())
       @foreach ($restaurants as $restaurant)
-        <a href="{{ route('restaurant.edit', $restaurant->id) }}" class="btn btn-primary">Modificar Informacion</a>  
-        @include('layouts.partial.msg')
+        <a href="{{ route('restaurant.edit', $restaurant->id) }}" class="btn btn-primary">Modificar Informacion</a>          
+      @endforeach
+      @else
+        <p><a href="{{ route('restaurant.create') }}" class="btn btn-primary">Agregar</a> el restaurante para proceder con la 
+          creación de las categorias y productos que su negocio va a proveer.</p>
+      @endif      
+      @include('layouts.partial.msg')
         <div class="card">
           <div class="card-header card-header-primary">
             <h4 class="card-title">Informacion de mi Restaurante</h4>
           </div>
-          {{-- @foreach ($restaurants as $restaurant)     --}}
+          @foreach ($restaurants as $restaurant)    
           <div class="card-body">
             <div class="col-12">
               <dl class="row">
@@ -84,13 +89,8 @@
               </div>
             </div>
           </div>
-          {{-- @endforeach --}}
+          @endforeach
         </div>
-      @endforeach
-      @else
-        <p><a href="{{ route('restaurant.create') }}" class="btn btn-primary">Agregar</a> el restaurante para proceder con la 
-          creación de las categorias y productos que su negocio va a proveer.</p>
-      @endif      
       </div>
     </div>
   </div>

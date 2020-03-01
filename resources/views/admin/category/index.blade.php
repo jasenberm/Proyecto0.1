@@ -16,7 +16,7 @@
               @if ($valRestaurant->isNotEmpty())
               <a href="{{ route('category.create') }}" class="btn btn-primary">Agregar Nuevo</a>                  
               @else
-              <p>Agregar el <a href="{{ route('restaurant.index') }}">restaurante</a> para poder empezar a registrar categorias de productos que su negocio 
+              <p><a href="{{ route('restaurant.index') }}">Agregar el restaurante</a> para poder empezar a registrar categorias de productos que su negocio 
                 va a proveer.</p>
               @endif
               @include('layouts.partial.msg')

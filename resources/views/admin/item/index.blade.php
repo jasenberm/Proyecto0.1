@@ -25,8 +25,8 @@
               </div>              
               @endforeach              
               @else
-              <p>Agregar el <a href="">restaurante</a> para poder empezar a registrar productos que su negocio 
-                va a proveer</p>
+              <p><a href="{{ route('restaurant.index') }}">Agregar el restaurante</a> para poder empezar a registrar categorias de productos que su negocio 
+                va a proveer.</p>
               @endif
               @include('layouts.partial.msg')
               <div class="card">
