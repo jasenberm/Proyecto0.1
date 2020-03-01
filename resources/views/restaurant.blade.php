@@ -10,10 +10,6 @@
     <title>Mamma's Kitchen</title>
 
     {{-- CSS --}}
-    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/list-restaurant.css') }}">  --}}
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/list-restaurant.css') }}"> 
@@ -55,9 +51,9 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/pricing.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-datetimepicker.min.css') }}">--}}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     
     {{-- <style>
         @foreach($sliders as $key=>$slider)
@@ -460,6 +456,8 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <!--===============================================================================================-->
 	<script type="text/javascript" src="frontend/vendor/lightbox2/js/lightbox.min.js"></script> --}}
 <!--===============================================================================================-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	
 
 <script type="text/javascript">
@@ -508,41 +506,16 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
     
     
 </script> 
-
-
-    {{-- <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frontend/js/jquery.mixitup.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/wow.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/jquery.validate.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frontend/js/jquery.hoverdir.js') }}"></script>
     
-    <script type="text/javascript" src="{{ asset('frontend/js/jQuery.scrollSpeed2.js') }}"></script>
-    <script src="{{ asset('frontend/js/script.js') }}"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
-
     {{-- @if ($errors->any())
         @foreach ($errors->all() as $error)
             <script>
                 toastr.error('{{ $error }}');
             </script>
         @endforeach
-    @endif     --}}
-
-
-    {{-- <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker({
-                    format: "dd MM yyyy - HH:11 P",
-                    showMeridian: true,
-                    autoclose: true,
-                    todayBtn: true
-                });
-            });
-            
-    </script>  --}}
-{{-- {!! Toastr::message() !!} --}}
+    @endif --}}
+    
+    {!! Toastr::message() !!}
 </body>
 
 </html>

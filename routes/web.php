@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('welcome');
 Route::post('reservations/{id}', 'ReservationController@reserve')->name('reservation.reserve');
-Route::post('/contact', 'ContactController@sendMessage')->name('contact.send');
+Route::post('contact/{id}', 'ContactController@sendMessage')->name('contact.send');
 Route::get('/{id}', 'RestaurantController@index')->where('id', '[0-9]+')->name('restaurant.welcome');
 
 
@@ -40,6 +40,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
     Route::resource('category', 'CategoryController');
     Route::resource('item', 'ItemController');
     Route::resource('restaurant', 'RestaurantController');
+    Route::post('coordinates', 'RestaurantController@coordinates')->name('restaurnat.coordinates');
+
 
     Route::get('reservation', 'ReservationController@index')->name('reservation.index');
     Route::post('reservation/{id}', 'ReservationController@status')->name('reservation.status');

@@ -20,7 +20,8 @@ class CreateRestaurantsTable extends Migration
             $table->string('name_restaurant')->unique();
             $table->string('ruc');
             $table->string('image', 150)->default('default.jpg');
-            $table->string('description', 200)->nullable();
+            $table->string('description', 200);
+            $table->string('location', 200);
             $table->boolean('status')->default(false);
             $table->string('lng')->nullable();
             $table->string('lat')->nullable();

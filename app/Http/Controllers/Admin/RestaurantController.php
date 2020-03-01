@@ -23,7 +23,22 @@ class RestaurantController extends Controller
             $categoryRestaurant = Restaurant::find($value->id)->category_restaurant;
         }
 
-        return view('admin.restaurant.index', compact('restaurants', 'categoryRestaurant'));
+        $markers = array(
+            'type'      => 'FeatureCollection',
+            'features'  => array()
+        );
+
+        foreach ($restaurants as $key => $value) {
+            $feature = array(
+                'type' => 'Feature',
+                'geometry' => ['type' => 'Point', 'coordinates' => [$value->lng, $value->lat]]
+            );
+            # Add feature arrays to feature collection array
+            array_push($markers['features'], $feature);
+        }
+
+        //        dd($restaurants);
+        return view('admin.restaurant.index', compact('restaurants', 'categoryRestaurant', 'markers'));
     }
 
     /**
@@ -47,9 +62,13 @@ class RestaurantController extends Controller
     {
         $this->validate($request, [
             'category' => 'required',
-            'name_restaurant' => ['required', 'max:28'],
+            'name_restaurant' => 'required|max:28',
             'ruc' => 'required|digits:13',
             'image' => 'mimes:jpeg,jpg,bmp,png',
+            'description' => 'required',
+            'location' => 'required',
+            'longitud' => 'required',
+            'latitud' => 'required',
         ]);
         if ($request->category == "Seleccione la categoria...") {
             return redirect()->back()->with('alertMsg', 'Olvido seleccionar la categoria');
@@ -74,6 +93,9 @@ class RestaurantController extends Controller
         $restaurant->ruc = $request->ruc;
         $restaurant->image = $imagename;
         $restaurant->description = $request->description;
+        $restaurant->location = $request->location;
+        $restaurant->lng = $request->longitud;
+        $restaurant->lat = $request->latitud;
         $restaurant->save();
         return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Creado y Registrado Correctamente');
     }
@@ -99,7 +121,17 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::find($id);
         $categoryRestaurant = CategoryRestaurant::where('status', 1)->get();
-        //dd($restaurant->category_restaurant->id);
+
+        $markers = array(
+            'type'      => 'FeatureCollection',
+            'features'  => array()
+        );
+        $feature = array(
+            'type' => 'Feature',
+            'geometry' => ['type' => 'Point', 'coordinates' => [$restaurant->lng, $restaurant->lat]]
+        );
+        array_push($markers['features'], $feature);
+
         return view('admin.restaurant.edit', compact('restaurant', 'categoryRestaurant'));
     }
 
@@ -117,6 +149,9 @@ class RestaurantController extends Controller
             'name_restaurant' => 'required',
             'ruc' => 'required|digits:13',
             'image' => 'mimes:jpeg,jpg,bmp,png',
+            'location' => 'required',
+            'longitud' => 'required',
+            'latitud' => 'required',
         ]);
         $restaurant = Restaurant::find($id);
         $image = $request->file('image');
@@ -139,6 +174,9 @@ class RestaurantController extends Controller
         $restaurant->ruc = $request->ruc;
         $restaurant->image = $imagename;
         $restaurant->description = $request->description;
+        $restaurant->location = $request->location;
+        $restaurant->lng = $request->longitud;
+        $restaurant->lat = $request->latitud;
         $restaurant->save();
         return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Modificado Correctamente');
     }
@@ -152,5 +190,26 @@ class RestaurantController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function coordinates(Request $request)
+    {
+        $this->validate($request, [
+            'lng' => 'required',
+            'lat' => 'required',
+        ]);
+
+
+        $restaurant = Restaurant::where('user_id', auth()->id())->get();
+        foreach ($restaurant as $restaurants) {
+            $id = $restaurants->id;
+        }
+
+        $restaurant = Restaurant::find($id);
+        $restaurant->lng = $request->lng;
+        $restaurant->lat = $request->lat;
+        $restaurant->save();
+
+        return ('Ubicacion Asignada Correctamente');
     }
 }

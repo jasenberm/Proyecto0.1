@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Brian2694\Toastr\Facades\Toastr;
+
 use App\Reservation;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ReservationController extends Controller
 {
@@ -14,6 +15,7 @@ class ReservationController extends Controller
         $this->validate($request, [
             'date' => 'required',
             'time' => 'required',
+            'people' => 'required'
         ]);
         $usuario = auth()->user();
         //dd($usuario);
@@ -24,11 +26,13 @@ class ReservationController extends Controller
         $reservation->email = $usuario->email;
         $reservation->date = $request->date;
         $reservation->time = $request->time;
-        $reservation->message = 'es un ejemplo';
-
+        $reservation->people = $request->people;
+        $reservation->message = $request->message;
         $reservation->status = false;
         $reservation->save();
-        //Toastr::success('Reservacion enviada correctamente. Espere su confirmacion', 'Exito!', ["positionClass" => "toast-top-right"]);
+
+
+        Toastr::success('Solicitud enviada correctamente. Espere su confirmación', 'Exito!', ["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 }

@@ -22,7 +22,7 @@ class RestaurantController extends Controller
                     ->where('restaurants.id', $restaurant->id)
                     ->where('categories.slug', request('category'))
                     ->select('items.name', 'items.image', 'items.description', 'items.price', 'categories.slug', 'categories.id')
-                    ->paginate(16)
+                    ->paginate(4)
                     ->appends('category', request('category'));
 
                 //dd($items);
@@ -31,7 +31,7 @@ class RestaurantController extends Controller
                     ->join('restaurants', 'categories.restaurant_id', '=', 'restaurants.id')
                     ->where('restaurants.id', $restaurant->id)
                     ->select('items.name', 'items.image', 'items.description', 'items.price', 'categories.slug', 'categories.id')
-                    ->paginate(16);
+                    ->paginate(4);
             }
 
             $categories = Restaurant::find($id)->categories;

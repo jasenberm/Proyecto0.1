@@ -48,12 +48,12 @@
                     <p>Mensajes</p>
                 </a> 
             </li>
-            <li class="{{ Request::is('admin/maps*')? 'active': '' }}">
+            {{-- <li class="{{ Request::is('admin/maps*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('maps.index') }}">
                     <i class="material-icons">add_location</i>
                     <p>Mapa</p>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </div>

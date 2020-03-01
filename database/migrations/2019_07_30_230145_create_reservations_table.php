@@ -21,7 +21,8 @@ class CreateReservationsTable extends Migration
             $table->string('email');
             $table->string('date');
             $table->string('time');
-            $table->string('message');
+            $table->string('people');
+            $table->string('message')->nullable();
             $table->boolean('status');
             $table->foreign('restaurant_id')
                 ->references('id')

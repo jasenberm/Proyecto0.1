@@ -12,8 +12,18 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $contacts = Contact::all();
-        return view('admin.contact.index', compact('contacts'));
+        $valRestaurant = Restaurant::where('user_id', auth()->id())->get('id');
+        if ($valRestaurant->isNotEmpty()) {
+            foreach ($valRestaurant as $key => $value) {
+                //dd($valRestaurant);
+                $contacts = Restaurant::find($value->id)->contacts;
+                //dd($contacts);
+            }
+            return view('admin.contact.index', compact('contacts'));
+        } else {
+            $contacts = collect();
+            return view('admin.contact.index', compact('contacts'));
+        }
     }
 
     public function show($id)

@@ -3,7 +3,8 @@
 @section('title', 'Category')
 
 @push('css')
-
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css" type="text/css"/>
 @endpush
 
 @section('content')
@@ -55,11 +56,54 @@
                           <label class="bmd-label-floating">Descripción</label>
                           <textarea class="form-control" name="description">{{ $restaurant->description }}</textarea>
                         </div>
-                      </div>      
+                      </div> 
+                      <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Ubicación</label>
+                            <input type="text" class="form-control" name="location" value="{{ $restaurant->location }}">
+                        </div>
+                      </div>
+                      <br>
+                        <dd class="col-sm-9"><a href="#" data-toggle="modal" data-target="#modalMapa">Modificar en el mapa</a> la dirección de su restaurante<br></dd>                                                
+                        <div class="col-md-12">
+                          <div class="form-group">
+                              <label class="bmd-label-floating">Longitud</label>
+                              <input type="text" class="form-control" id="longitud" name="longitud" value="{{ $restaurant->lng }}">
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                              <label class="bmd-label-floating">Latitud</label>
+                              <input type="text" class="form-control" id="latitud" name="latitud" value="{{ $restaurant->lat }}">
+                          </div>
+                        </div>     
                       <br>
                       <a href="{{ route('restaurant.index') }}" class="btn btn-danger">Back</a>
                       <button type="submit" class="btn btn-primary">Save</button>
                     </form>
+                </div>
+              </div>
+              <div class="modal fade" id="modalMapa" tabindex="-1" role="dialog" aria-labelledby="modalMapaLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalImagenLbel">Cambiar la ubicacion de su restaurnate.</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">   
+                      <div class="container">                        
+                        <p>Arrastre el puntero por el mapa hasta la ubicación de su restaurnate y pulse "Hecho!"</p>
+                        <div id="map" style="margin-top: 0%; height: 310px; width: 100%; border-radius: 20px;"></div>                                                                                               
+                      </div>
+                    </div>                  
+                    <div class="modal-footer">                      
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">Hecho!</span>
+                      </button>                      
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -69,5 +113,60 @@
 @endsection
 
 @push('scripts')
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiamFzZW5iZXJtIiwiYSI6ImNqeXhpZDFmbDA3a2YzY28xcW5kMWI3ajMifQ.CdmHunZbUBpmZPYvK0_HyA';
+  if (!mapboxgl.supported()) {
+    alert('Your browser does not support Mapbox GL');
+  } else {
+    var lng = {{ $restaurant->lng }};
+    var lat = {{ $restaurant->lat }};
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [lng, lat],
+      zoom: 14,
+      scrollZoom: false
+    });
+
+    var lng = {{ $restaurant->lng }};
+    var lat = {{ $restaurant->lat }};
+
+    var marker = new mapboxgl.Marker({
+      draggable: true
+    })
+    .setLngLat([lng, lat])
+    .addTo(map);
     
+    function onDragEnd() {
+      var lngLat = marker.getLngLat();
+      $('#longitud').val(lngLat.lng);
+      $('#latitud').val(lngLat.lat);            
+    }
+    
+    marker.on('dragend', onDragEnd);
+
+    // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl());
+    
+    // Agregar geolocalizacion
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true,
+        fitBoundsOptions: {
+          zoom:14
+        }
+      })
+    ); 
+  };      
+
+</script>
 @endpush

@@ -54,6 +54,7 @@ class ReservationController extends Controller
     {
         $reservMail = Reservation::find($id);
         $email = $reservMail->email;
+
         try {
             $email_service = new emailService();
 
@@ -61,10 +62,12 @@ class ReservationController extends Controller
             $params = array(
                 'email' => $email,
                 'name' => $reservMail->name,
-                'date_time' => $reservMail->date_and_time,
+                'date' => $reservMail->date,
+                'time' => $reservMail->time,
+                'people' => $reservMail->people,
                 'message' => $reservMail->message,
             );
-
+            // dd($email);
             $email_service->SendEmail($email, $subject, 'emails/emailConfirmation', $params);
         } catch (\Exception $ex) {
             return response()->json(['message' => $ex->getMessage(), 'status' => $ex->getCode()], 404);

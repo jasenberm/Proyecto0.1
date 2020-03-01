@@ -272,8 +272,12 @@
                                                                                                     <p>La solicitud de reservacion
                                                                                                         realizada en el restaurant 
                                                                                                         <strong>Aun falta esto.</strong>
-                                                                                                        ha sido aceptada con fecha y hora:
-                                                                                                        <strong>{{ $date_time }}</strong>
+                                                                                                        ha sido aceptada con fecha:
+                                                                                                        <strong>{{ $date }}</strong>
+                                                                                                        y hora:
+                                                                                                        <strong>{{ $time }}</strong>
+                                                                                                        para:
+                                                                                                        <strong>{{ $people }}</strong>                
                                                                                                         Bajo las siguientes indicaciones
                                                                                                         <strong>{{ $message }}</strong> 
                                                                                                     </p>

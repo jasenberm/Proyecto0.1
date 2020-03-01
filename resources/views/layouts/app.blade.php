@@ -359,7 +359,8 @@
         });
     </script>
     @stack('scripts')
-    {!! Toastr::message() !!}
+    {{-- {!! Toastr::message() !!} --}}
+    @toastr_render
 </body>
 
 </html>

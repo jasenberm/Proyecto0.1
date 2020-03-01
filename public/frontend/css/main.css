@@ -223,3 +223,13 @@ input[type="date" i] {
     left: 20px;
     border-radius: 10px;
     background-color: #ec1d25;
+}
+
+.marker {
+    background-image: url(../images/marker.png);
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}

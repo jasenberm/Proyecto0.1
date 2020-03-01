@@ -2,13 +2,14 @@
 
 namespace App\services;
 
+use SendGrid\Mail\Mail;
+
 class EmailService
 {
 
-    public function SendEmail($emailAddress, $subject, $emailTemplate, array $params)
+    public function SendEmail($emailAddress, $subject, $emailTemplate, $params)
     {
-
-        $mail = new \SendGrid\Mail\Mail();
+        $mail = new Mail();
 
         $template = $this->getTemplate($emailTemplate, $params);
 
@@ -19,7 +20,7 @@ class EmailService
         $mail->addTo($emailAddress);
         $mail->addContent("text/html", $template);
         try {
-            //dd($mail);
+            // dd($mail);
             $sg->send($mail);
         } catch (\Exception $ex) {
             $message = "no se pudo enviar el correo electronico";
