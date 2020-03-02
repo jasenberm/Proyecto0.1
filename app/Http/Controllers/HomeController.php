@@ -53,12 +53,20 @@ class HomeController extends Controller
 
         //dd($markers);
 
-        $items = Item::inRandomOrder()->limit(12)->join('categories', 'items.category_id', '=', 'categories.id')
+        $items = Item::inRandomOrder()
+            ->limit(12)
+            ->join('categories', 'items.category_id', '=', 'categories.id')
             ->join('restaurants', 'categories.restaurant_id', '=', 'restaurants.id')->where('restaurants.status', true)
             ->select('items.image', 'restaurants.id')->get();
 
-        // return view('welcome', compact('restaurants', 'categoryRestaurants'));
+        $items1 = Item::inRandomOrder()
+            ->limit(9)
+            ->join('categories', 'items.category_id', '=', 'categories.id')
+            ->join('restaurants', 'categories.restaurant_id', '=', 'restaurants.id')->where('restaurants.status', true)
+            ->select('items.image', 'restaurants.id')->get();
 
-        return view('nuevoWellcome', compact('restaurants', 'categoryRestaurants', 'items', 'markers'));
+        // dd($items1);
+        // return view('welcome', compact('restaurants', 'categoryRestaurants'));
+        return view('nuevoWellcome', compact('restaurants', 'categoryRestaurants', 'items', 'items1', 'markers'));
     }
 }

@@ -17,7 +17,8 @@ class RestaurantController extends Controller
         } else {
             if (request()->has('category')) {
                 //dd(request('category'));
-                $items = Item::inRandomOrder()->join('categories', 'items.category_id', '=', 'categories.id')
+                $items = Item::inRandomOrder()
+                    ->join('categories', 'items.category_id', '=', 'categories.id')
                     ->join('restaurants', 'categories.restaurant_id', '=', 'restaurants.id')
                     ->where('restaurants.id', $restaurant->id)
                     ->where('categories.slug', request('category'))

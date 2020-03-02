@@ -61,7 +61,7 @@
 								</li>
 								
 								<li>
-									<a href="#ubicacion">Ubicacion</a>
+									<a href="#ubicacion">Ubicación</a>
 								</li>
 								@guest
 								<li class="nav-item">
@@ -132,35 +132,34 @@
 			</li>
 			@else                        
 			<li class="t-center">
-				{{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-					{{ Auth::user()->user }} <span class="caret"></span>
-				</a> --}}
+				<a class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto" href="{{ route('logout') }}"
+					onclick="event.preventDefault();
+					document.getElementById('logout-form').submit();">
+					{{ __('Logout') }}
+				</a>
 
-				{{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> --}}
-					<a class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto" href="{{ route('logout') }}"
-						onclick="event.preventDefault();
-						document.getElementById('logout-form').submit();">
-						{{ __('Logout') }}
-					</a>
-
-					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-					@csrf
-					</form>
-				{{-- </div> --}}
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+				@csrf
+				</form>
 			</li>
 			@endguest
 		</ul>
 
 		<!-- - -->
-		{{-- <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
+		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
 			<!-- - -->
 			<h4 class="txt20 m-b-33">
-				Gallery
+				Galeria
 			</h4>
 
 			<!-- Gallery -->
 			<div class="wrap-gallery-sidebar flex-w">
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-01.jpg" data-lightbox="gallery-footer">
+				@foreach ($items1 as $item1)					
+				<a class="item-gallery-sidebar wrap-pic-w" href="{{ route('restaurant.welcome', $item1->id) }}">
+					<img src="{{ asset('upload/item/'.$item1->image) }}" alt="GALLERY">
+				</a>
+				@endforeach
+				{{-- <a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-01.jpg" data-lightbox="gallery-footer">
 					<img src="images/photo-gallery-thumb-01.jpg" alt="GALLERY">
 				</a>
 
@@ -194,9 +193,9 @@
 
 				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-11.jpg" data-lightbox="gallery-footer">
 					<img src="images/photo-gallery-thumb-11.jpg" alt="GALLERY">
-				</a>
+				</a> --}}
 			</div>
-		</div> --}}
+		</div>
 	</aside>
 
 	<!-- Welcome --> <!-- imagen y mensaje de bienvenida -->
@@ -278,7 +277,7 @@
 									<span>
 										<h4>{{ $restaurant->name_restaurant }}</h4>
 										<br>
-										Direccion: {{ $restaurant->address }} <br>
+										Direccion: {{ $restaurant->location }} <br>
 													
 										{{-- Descripcion: {{ $restaurant->description}} <br> --}}
 									</span>
@@ -338,38 +337,13 @@
 
 
 	<!-- contact -->
-	<section class="section-contact bg1-pattern p-t-90 p-b-113">
+	<section class="section-contact bg1-pattern p-t-90 p-b-113" id="ubicacion">
 		<!-- Map -->
 		<div class="container">
 			<div class="map bo8 bo-rad-10 of-hidden">
 				<div class="contact-map size37" id="map-canvas"></div>
 			</div>
 		</div>
-
-		{{-- <div class="container">
-			<h3 class="tit7 t-center p-b-62 p-t-105">
-				Enviar un mensaje
-			</h3>
-
-			<form class="wrap-form-reservation size22 m-l-r-auto">
-				<div class="row">
-					<div class="col-12">
-						<!-- Message -->
-						<span class="txt9">
-							Mensaje
-						</span>
-						<textarea class="bo-rad-10 size35 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-3" name="message" placeholder="Mensaje"></textarea>
-					</div>
-				</div>
-
-				<div class="wrap-btn-booking flex-c-m m-t-13">
-					<!-- Button3 -->
-					<button type="submit" class="btn3 flex-c-m size36 txt11 trans-0-4">
-						Enviar
-					</button>
-				</div>
-			</form>		
-		</div> --}}
 	</section>
 
 	<!-- Back to top -->

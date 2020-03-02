@@ -55,11 +55,11 @@
 								</li>
 
 								<li>
-									<a href="#restaurantes">Menu</a>
+									<a href="#restaurantes">Menú</a>
 								</li>								
 								
 								<li>
-									<a href="#ubicacion">Ubicacion</a>
+									<a href="#ubicacion">Ubicación</a>
 								</li>								
 								@guest
 								<li class="nav-item">
@@ -69,7 +69,7 @@
 								</li>
 								@else          
 								<li class="nav-item">
-									<a class="nav-link" href="#reservar">Reservar</a>
+									<a class="nav-link" href="#reservar">Reservación</a>
 								</li>                
 								<li class="nav-item dropdown">
 									<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -113,11 +113,11 @@
 			</li>
 
 			<li class="t-center m-b-13">
-				<a href="#restaurantes" class="txt19">Menu</a>
+				<a href="#restaurantes" class="txt19">Menú</a>
 			</li>
 			
 			<li class="t-center m-b-33">
-				<a href="#ubicacion" class="txt19">Ubicacion</a>
+				<a href="#ubicacion" class="txt19">Ubicación</a>
 			</li>
 
 			@guest
@@ -129,25 +129,19 @@
 			</li>
 			@else       
 			<li class="t-center m-b-13">
-				<a href="#reservar" class="txt19">Reservar</a>
+				<a href="#reservar" class="txt19">Reservación</a>
 			</li>
 			
 			<li class="t-center">
-				{{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-					{{ Auth::user()->user }} <span class="caret"></span>
-				</a> --}}
+				<a class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto" href="{{ route('logout') }}"
+					onclick="event.preventDefault();
+					document.getElementById('logout-form').submit();">
+					{{ __('Logout') }}
+				</a>
 
-				{{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> --}}
-					<a class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto" href="{{ route('logout') }}"
-						onclick="event.preventDefault();
-						document.getElementById('logout-form').submit();">
-						{{ __('Logout') }}
-					</a>
-
-					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-					@csrf
-					</form>
-				{{-- </div> --}}
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+				@csrf
+				</form>
 			</li>
 			@endguest
 		</ul>
@@ -161,11 +155,13 @@
 
 			<!-- Gallery -->
 			<div class="wrap-gallery-sidebar flex-w">
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-01.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-01.jpg" alt="GALLERY">
+				@foreach ($items as $item)					
+				<a class="item-gallery-sidebar wrap-pic-w" href="{{ route('restaurant.welcome', $item->id) }}">
+					<img src="{{ asset('upload/item/'.$item->image) }}" alt="GALLERY">
 				</a>
+				@endforeach
 
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-02.jpg" data-lightbox="gallery-footer">
+				{{-- <a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-02.jpg" data-lightbox="gallery-footer">
 					<img src="images/photo-gallery-thumb-02.jpg" alt="GALLERY">
 				</a>
 
@@ -195,7 +191,7 @@
 
 				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-11.jpg" data-lightbox="gallery-footer">
 					<img src="images/photo-gallery-thumb-11.jpg" alt="GALLERY">
-				</a>
+				</a> --}}
 			</div>
 		</div>
 	</aside>
@@ -238,7 +234,7 @@
 			</span>
 
 			<h3 class="tit4 t-center p-l-15 p-r-15 p-t-3">
-				Nuestro Menu
+				Nuestro Menú
 			</h3>
 		</div>
 
@@ -266,7 +262,7 @@
 					<ul class="listado" id="lista">
 						@foreach($items as $item)
 						<li class="item bo-rad-10" id="{{ $item->slug }}">
-							<a href="{{ route('restaurant.welcome', $item->id) }}">
+							<a>
 								<img src="{{ asset('upload/item/'.$item->image) }}" class="img-responsive" alt="Food">
 								<div class="rest-desc text-center">
 									<span>
@@ -284,50 +280,6 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		{{-- <div class="container">
-			<div class="row" id="list-filtros">
-				<div class="col-md-12 col-offset-1" id="envol-filtros">
-					<div class="section-header">
-						<h2 class="tit2">Menú</h2>
-						<ul class="clearfix" id="list-rest">
-							<li class="filter txt13" data-filter="all">todo</li>
-							@foreach($categories as $category)
-							@if ($category->items->count() > 0)
-								<li class="filter txt13" data-filter="#{{ $category->slug }}">
-									{{ $category->name }}
-									<span class="badge badge-primary badge-pill">{{ $category->items->count() }}</span>
-								</li>
-							@endif
-							@endforeach
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="restaurantes">
-				<div class="col col-md-offset-1" id="contenedor">
-					<ul class="listado" id="lista">
-						@foreach($items as $item)
-						<li class="item bo-rad-10" id="{{ $item->slug }}">
-							<a href="{{ route('restaurant.welcome', $item->id) }}">
-								<img src="{{ asset('upload/item/'.$item->image) }}" class="img-responsive" alt="Food">
-								<div class="rest-desc text-center">
-									<span>
-										<h3>{{ $item->name }}</h3>
-										Descripcion: {{ $item->description}} <br>
-										
-									</span>
-								</div>
-							</a>
-							<h2 class="white">${{ $item->price }}</h2>
-						</li>                    
-						@endforeach
-					</ul>											
-					{{ $items->appends(['category' => $item->slug])->links() }}					
-				</div>
-			</div>
-		</div> --}}
 	</section>
 
 	<!--== 15. Reserve A Table! ==-->
@@ -388,6 +340,10 @@
 										<option>17:00</option>
 										<option>17:30</option>
 										<option>18:00</option>
+										<option>18:30</option>
+										<option>19:00</option>
+										<option>19:30</option>
+										<option>20:00</option>
 									</select>
 								</div>
 							</div>
@@ -438,7 +394,7 @@
 							<div class="wrap-btn-booking flex-c-m m-t-6">
 								<!-- Button3 -->
 								<button type="submit" class="btn3 flex-c-m size13 txt11 trans-0-4">
-									Reservar
+									Reservación
 								</button>
 							</div>
 						@endguest
@@ -450,7 +406,7 @@
 	</section>
 
 	<!-- contact -->
-	<section class="section-contact p-t-90 p-b-113">
+	<section class="section-contact p-t-90 p-b-113" id="ubicacion">
 		<!-- Map -->
 		<div class="container">
 			<div class="col-lg-12 p-b-30">
@@ -460,7 +416,7 @@
 					</span>
 
 					<h3 class="tit3 t-center m-b-35 m-t-2">
-						Ubicacion
+						Ubicación
 					</h3>
 				</div>
 			</div>
@@ -486,12 +442,20 @@
 					</div>
 				</div>
 
+				@guest
+				<div class="t-center">
+					<span class="tit2 t-center">
+						Inicia sesión para enviar su mensaje
+					</span>
+				</div>
+				@else
 				<div class="wrap-btn-booking flex-c-m m-t-13">
-					<!-- Button3 -->
+				<!-- Button3 -->
 					<button type="submit" class="btn3 flex-c-m size36 txt11 trans-0-4">
 						Enviar
 					</button>
 				</div>
+				@endguest				
 			</form>		
 		</div>
 	</section>
