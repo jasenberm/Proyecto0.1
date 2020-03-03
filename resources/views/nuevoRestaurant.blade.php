@@ -361,14 +361,7 @@
 										<option>2 personas</option>
 										<option>3 personas</option>
 										<option>4 personas</option>
-										<option>5 personas</option>
-										<option>6 personas</option>
-										<option>7 personas</option>
-										<option>8 personas</option>
-										<option>9 personas</option>
-										<option>10 personas</option>
-										<option>11 personas</option>
-										<option>12 personas</option>
+										<option>5 o más personas</option>										
 									</select>
 								</div>
 							</div>

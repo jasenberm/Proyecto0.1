@@ -45,7 +45,7 @@
                 </div>
               </div>
               <div class="col-md-12">
-                <p>¿No tines una cuenta? <a href="{{ route('register') }}">Registrate</a></p>
+                <p>¿No tienes una cuenta? <a href="{{ route('register') }}">Registrate</a></p>
               </div>             
               <br>
               <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
