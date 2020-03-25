@@ -21,6 +21,7 @@ class ReservationController extends Controller
         //dd($usuario);
         $reservation = new Reservation();
         $reservation->restaurant_id = $id;
+        $reservation->user_id = $usuario->id;
         $reservation->name = $usuario->name;
         $reservation->last_name = $usuario->last_name;
         $reservation->email = $usuario->email;

@@ -31,7 +31,7 @@
                         <th>Hora</th>
                         <th>Mensaje</th>--}}
                         <th>Estado</th>
-                        <th>Creado</th>
+                        <th>Dia y Hora</th>
                         <th>Acciones</th>
                       </thead>
                       <tbody>
@@ -51,7 +51,7 @@
                                     <span class="badge badge-danger">Sin Confirmar</span>
                                   @endif
                                 </td>
-                                <td>{{ $reservation->created_at }}</td>
+                                <td>{{ $reservation->date }} - {{ $reservation->time }}</td>
                                 <td>
                                   @if ($reservation->status == false)
                                   <form method="POST" id="status-form-{{ $reservation->id }}" 

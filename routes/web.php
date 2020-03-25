@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('welcome');
+Route::get('/', 'HomeController@index')->name('welcome')->middleware('guest');
 Route::post('reservations/{id}', 'ReservationController@reserve')->name('reservation.reserve');
 Route::post('contact/{id}', 'ContactController@sendMessage')->name('contact.send');
 Route::get('/{id}', 'RestaurantController@index')->where('id', '[0-9]+')->name('restaurant.welcome');
@@ -25,7 +25,7 @@ Route::get('/{id}', 'RestaurantController@index')->where('id', '[0-9]+')->name('
 // Auth::routes();
 
 Route::get('/login', 'Security\LoginController@index')->name('login');
-Route::post('/login', 'Security\LoginController@login')->name('login_post');
+Route::post('/login', 'Security\LoginController@login')->middleware('guest')->name('login_post');
 Route::get('/logout', 'Security\LoginController@logout')->name('logout');
 Route::post('/logout', 'Security\LoginController@logout')->name('logout');
 Route::get('/register', 'Security\RegisterController@index')->name('register');
@@ -58,7 +58,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
 });
 
 
-Route::group(['prefix' => 'superuser', 'middleware' => ['auth'], 'namespace' => 'superuser'], function () {
+Route::group(['prefix' => 'superuser', 'middleware' => ['auth', 'superuser'], 'namespace' => 'superuser'], function () {
 
     Route::resource('superuser', 'ClientController');
     Route::resource('client', 'ClientController');

@@ -233,3 +233,14 @@ input[type="date" i] {
     border-radius: 50%;
     cursor: pointer;
 }
+
+.mapboxgl-popup {
+    max-width: 300px;
+}
+
+.mapboxgl-popup-content {
+    font-family: Courgette;
+    font-size: 30px;
+    line-height: 1.2;
+    color: #d61c22;
+}

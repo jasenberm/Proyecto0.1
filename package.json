@@ -20,11 +20,14 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
-        "vue": "^2.5.17"
+        "vue": "^2.5.17",
+        "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "bootstrap-vue": "^2.8.0",
         "material-design-icons": "^3.0.1",
         "select2": "~4.0",
-        "toastr": "^2.1.4"
+        "toastr": "^2.1.4",
+        "vuelidate": "^0.7.5"
     }
 }

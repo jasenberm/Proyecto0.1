@@ -89,8 +89,9 @@
                                 <thead class="text-primary">
                                     <th>Id</th>
                                     <th>Nombre</th>
-                                    <th>Telefono</th>
+                                    <th>Correo</th>
                                     <th>Estado</th>
+                                    <th>Dia y Hora</th>
                                     <th>Acciones</th>
                                 </thead>
                                 <tbody>
@@ -98,7 +99,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $reservation->name }}</td>
-                                        <td>{{ $reservation->phone}}</td>                        
+                                        <td>{{ $reservation->email}}</td>                        
                                         <td>
                                         @if ($reservation->status == true)
                                             <span class="badge badge-info">Confirmado</span>
@@ -106,7 +107,7 @@
                                             <span class="badge badge-danger">Sin Confirmar</span>
                                         @endif
                                         </td>
-                                        <td>{{ $reservation->created_at }}</td>
+                                        <td>{{ $reservation->date }} - {{ $reservation->time }}</td>
                                         <td>
                                         @if ($reservation->status == false)
                                             <form method="POST" id="status-form-{{ $reservation->id }}" 

@@ -20,7 +20,7 @@ class MiddSuperAdmin
             return $next($request);
         }
 
-        return redirect('/admin/dashboard');
+        return redirect('/superuser/client');
     }
 
     private function permiso()

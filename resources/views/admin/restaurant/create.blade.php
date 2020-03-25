@@ -29,25 +29,25 @@
                         @csrf
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label class="bmd-label-floating">Categoria</label>
-                            <select class="form-control" name="category">
-                              <option selected>Seleccione la categoria...</option>
+                            <label class="bmd-label-floating">Tipo de Restaurante</label>
+                            <select class="form-control custom-select browser-default" id="category" name="category" required>
+                              <option value="">Seleccione el tipo de restaurante...</option>
                               @foreach ($categoryRestaurant as $categories)
                               <option value="{{ $categories->id }}"> {{ $categories->name }}</option>
                               @endforeach
-                            </select>
+                            </select>                            
                           </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Nombre del Restaurante</label>
-                                <input type="text" class="form-control" name="name_restaurant" value="{{ old('name_restaurant') }}">
+                                <input type="text" class="form-control" id="name_restaurant" name="name_restaurant" value="{{ old('name_restaurant') }}">
                             </div>
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
                               <label class="bmd-label-floating">RUC</label>
-                              <input type="text" class="form-control" name="ruc" value="{{ old('ruc') }}">
+                              <input type="text" class="form-control" id="ruc" name="ruc" value="{{ old('ruc') }}">
                           </div>
                       </div>
                         <div class="col-md-12">
@@ -122,6 +122,7 @@
   <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
   <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
+  <script src="{{ asset ('backend/js/bootstrap-validate.js') }}"></script>
 
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiamFzZW5iZXJtIiwiYSI6ImNqeXhpZDFmbDA3a2YzY28xcW5kMWI3ajMifQ.CdmHunZbUBpmZPYvK0_HyA';
@@ -168,5 +169,13 @@
       ); 
     };      
   
+  </script>
+
+  <script>    
+    bootstrapValidate('#name_restaurant','required:El campo nombre es requerido');
+    bootstrapValidate('#category','required:El campo nombre es requerido');
+    bootstrapValidate('#ruc','numeric:Ingrese solamente digitos');
+    bootstrapValidate('#ruc','max:13:No ingrese más de 13 digitos');
+    bootstrapValidate('#ruc','min:13:No ingrese menos de 13 digitos');
   </script>
 @endpush

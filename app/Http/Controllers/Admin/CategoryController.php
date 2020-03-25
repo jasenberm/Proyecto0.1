@@ -50,7 +50,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'name' => ['required', 'alpha']
         ]);
         $category = new Category();
         $restaurantVal = Restaurant::where('user_id', auth()->id())->get('id');
@@ -102,7 +102,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'name' => ['required', 'alpha']
         ]);
         $category = Category::find($id);
         $category->name = $request->name;

@@ -38,7 +38,12 @@ class DashboardController extends Controller
                 $itemCount = $itemCount + $items;
             }
         }
-        return view('admin.dashboard', compact('categoryCount', 'itemCount', 'sliderCount', 'reservations', 
-            'contactCount'));
+        return view('admin.dashboard', compact(
+            'categoryCount',
+            'itemCount',
+            'sliderCount',
+            'reservations',
+            'contactCount'
+        ));
     }
 }

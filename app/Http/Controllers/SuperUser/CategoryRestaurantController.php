@@ -39,7 +39,7 @@ class CategoryRestaurantController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'name' => ['required', 'alpha']
         ]);
         $category = new CategoryRestaurant();
         $category->name = $request->name;

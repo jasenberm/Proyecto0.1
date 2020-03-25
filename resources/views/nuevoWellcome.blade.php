@@ -5,9 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{{ asset('frontend/images/icons/favicon.png') }}"/>
+	<link rel="icon" type="image/png" href="{{ asset('frontend/images/icons/ejemplo3.png') }}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
 <!--===============================================================================================-->
 	 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
 <!--===============================================================================================-->
@@ -40,7 +40,7 @@
 					<!-- Logo -->
 					<div class="logo">
 						<a href="/">
-							<img src="{{ asset('frontend/images/icons/logo.png') }}" alt="IMG-LOGO" data-logofixed="{{ asset('frontend/images/icons/logo2.png') }}">
+							<img src="{{ asset('frontend/images/icons/ejemplo.png') }}" alt="IMG-LOGO" data-logofixed="{{ asset('frontend/images/icons/ejemplo2.png') }}">
 						</a>
 					</div>
 
@@ -67,20 +67,23 @@
 								<li class="nav-item">
 									{{-- <a class="nav-link" data-toggle="modal" 
 										data-target="#staticBackdrop">inicio de sesion</a> --}}
-										<a class="nav-link" href="{{ route('login') }}">inicio de sesion</a>
+										{{-- <a class="nav-link" href="{{ route('login') }}">inicio de sesion</a> --}}
+										<a class="nav-link" onClick="iniciarsession();" href="javascript:void(0)">Iniciar sesion</a>
 								</li>
 								@else                        
 								<li class="nav-item dropdown">
 									<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 										{{ Auth::user()->user }} <span class="caret"></span>
-									</a>
+									</a>		
 
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalReservations">Mis Reservaciones</a>
+
 										<a class="dropdown-item" href="{{ route('logout') }}"
 										onclick="event.preventDefault();
 														document.getElementById('logout-form').submit();">
 											{{ __('Logout') }}
-										</a>
+										</a>																			
 
 										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 											@csrf
@@ -126,11 +129,17 @@
 			@guest
 			<li class="t-center">
 				<!-- Button3 -->
-				<a href="{{ route('login') }}" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
+				{{-- <a href="{{ route('login') }}" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
 					Iniciar Sesion
+				</a> --}}
+				<a class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto" onClick="iniciarsession();" href="javascript:void(0)">
+					Iniciar session
 				</a>
 			</li>
-			@else                        
+			@else     
+			<li class="t-center m-b-13">
+				<a class="txt19" href="#" data-toggle="modal" data-target="#modalReservations">Mis Reservaciones</a>
+			</li>                   
 			<li class="t-center">
 				<a class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto" href="{{ route('logout') }}"
 					onclick="event.preventDefault();
@@ -141,7 +150,7 @@
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 				@csrf
 				</form>
-			</li>
+			</li>			
 			@endguest
 		</ul>
 
@@ -158,42 +167,7 @@
 				<a class="item-gallery-sidebar wrap-pic-w" href="{{ route('restaurant.welcome', $item1->id) }}">
 					<img src="{{ asset('upload/item/'.$item1->image) }}" alt="GALLERY">
 				</a>
-				@endforeach
-				{{-- <a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-01.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-01.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-02.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-02.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-03.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-03.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-05.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-05.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-06.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-06.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-07.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-07.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-09.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-09.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-10.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-10.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-11.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-11.jpg" alt="GALLERY">
-				</a> --}}
+				@endforeach				
 			</div>
 		</div>
 	</aside>
@@ -213,7 +187,7 @@
 						</h3>
 
 						<p class="t-center m-b-22 size3 m-l-r-auto">
-							Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia, nisl ante egestas mi, ac facilisis ligula sem id neque.
+							Ponemos a su alcance nuestro listado de restaurantes asociados con sus variados menus y respectivas ubicaciones, para que conzca lo que ellos tienen para ofrecerle y disfrute de la variada gastronomia que existe ciudad de Guayaquil.
 						</p>
 						<p class="t-center m-b-22 size3 m-l-r-auto">
 							Si desea publicitar su negocio a travez de nuestra plataforma, inicie el proceso en el siguiente enlace.
@@ -227,7 +201,7 @@
 				</div>
 
 				<div class="col-md-6 p-b-30">
-					<div class="wrap-pic-welcome size2 bo-rad-10 hov-img-zoom m-l-r-auto">
+					<div class="wrap-pic-welcome size2 bo-rad-10 hov-img-zoom m-l-r-auto" style="margin-top: 90px">
 						<img src="{{ asset('frontend/images/About-C-bg.jpg') }}" alt="IMG-OUR">
 					</div>
 				</div>
@@ -258,7 +232,7 @@
 							@if ($category->restaurants->where('status', 1)->count() > 0)
 								<li class="filter txt13" data-filter="#{{ $category->slug }}">
 									{{ $category->name }}
-									<span class="badge badge-primary badge-pill">{{ $category->restaurants->where('status', 1)->count() }}</span>
+									{{-- <span class="badge badge-primary badge-pill">{{ $category->restaurants->where('status', 1)->count() }}</span> --}}
 								</li>
 							@endif
 							@endforeach
@@ -270,16 +244,17 @@
 				<div class="col col-md-offset-1" id="contenedor">
 					<ul class="listado" id="lista">
 						@foreach($restaurants as $restaurant)
-						<li class="item bo-rad-10" id="{{ $restaurant->category_restaurant->slug }}">
+						<li class="item bo-rad-10 hov-img-zoom pos-relative m-t-30" id="{{ $restaurant->category_restaurant->slug }}">
 							<a href="{{ route('restaurant.welcome', $restaurant->id) }}">
 								<img src="{{ asset('upload/restaurant/'.$restaurant->image) }}" class="img-responsive bo-rad-10" alt="Food">
 								<div class="rest-desc text-center">
 									<span>
-										<h4>{{ $restaurant->name_restaurant }}</h4>
+										<button class="btn2 flex-c-m tit2 ab-c-m size8">
+											Descubrir
+										</button>
+										{{-- <h4>{{ $restaurant->name_restaurant }}</h4>
 										<br>
-										Direccion: {{ $restaurant->location }} <br>
-													
-										{{-- Descripcion: {{ $restaurant->description}} <br> --}}
+										Direccion: {{ $restaurant->location }} <br> --}}
 									</span>
 								</div>
 							</a>
@@ -340,6 +315,17 @@
 	<section class="section-contact bg1-pattern p-t-90 p-b-113" id="ubicacion">
 		<!-- Map -->
 		<div class="container">
+			<div class="col-lg-12 p-b-30">
+				<div class="t-center">	
+					<span class="tit2 t-center">
+						Encuentra tu restaurante
+					</span>
+									
+					<h3 class="tit3 t-center m-b-35 m-t-2">
+						Ubicaciones
+					</h3>
+				</div>
+			</div>
 			<div class="map bo8 bo-rad-10 of-hidden">
 				<div class="contact-map size37" id="map-canvas"></div>
 			</div>
@@ -356,7 +342,7 @@
 	<!-- Container Selection1 -->
 	<div id="dropDownSelect1"></div>
 
-
+	
 <!--===============================================================================================-->
 	<script type="text/javascript" src="{{ asset('frontend/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
 <!--===============================================================================================-->
@@ -423,30 +409,33 @@
 
 		// add markers
 		geojson.features.forEach(function(marker) {
-		let element = document.createElement('div');
-		element.className = 'marker';
-			
-		new mapboxgl.Marker(element)
-			.setLngLat(marker.geometry.coordinates)
-			.setPopup(new mapboxgl.Popup({ offset:25 })
-			.setHTML('<h3>' + marker.properties.name + '</h3> <p>' + marker.properties.location + '</p>'))
-			.addTo(map);	
-		// map.on('click', e => {		
-		// 	if (e.lngLat === marker.geometry.coordinates) {
-		// 		console.log(e.lngLat);
-		// 		console.log('paso');
-		// 	}
-		// 	new mapboxgl.Popup(element).setLngLat(marker.geometry.coordinates).setHTML('<h1>ejemplo</h1>').addTo(map);
-		// });	
+			let element = document.createElement('div');
+			element.className = 'marker';
+				
+			new mapboxgl.Marker(element)
+				.setLngLat(marker.geometry.coordinates)
+				.setPopup(new mapboxgl.Popup()
+				.setHTML('<a href="{{ route('restaurant.welcome', $restaurant->id) }}"><h4>' + marker.properties.name + '</h4></a> <p>' + marker.properties.location + '</p>'))
+				.addTo(map);						
 		
 		});
-
-		
-		
-
 		
 	</script>
     <!--Fin mapa-->
-
+	<script>
+		function iniciarsession(){
+			$('#login-modal').modal('show');
+		}	
+		
+		function registrarclient(){
+			$('#register-client-modal').modal('show');
+			$('#login-modal').modal('hide');
+		}
+	</script>
+	
 </body>
 </html>
+
+@include('layouts.partial.reservations')
+@include('security.login-modal')
+@include('security.registro-client-modal')

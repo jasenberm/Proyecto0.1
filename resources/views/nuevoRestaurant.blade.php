@@ -65,7 +65,8 @@
 								<li class="nav-item">
 									{{-- <a class="nav-link" data-toggle="modal" 
 										data-target="#staticBackdrop">inicio de sesion</a> --}}
-										<a class="nav-link" href="{{ route('login') }}">inicio de sesion</a>
+										{{-- <a class="nav-link" href="{{ route('login') }}">inicio de sesion</a> --}}
+										<a class="nav-link" onClick="iniciarsession();" href="javascript:void(0)">Iniciar session</a>
 								</li>
 								@else          
 								<li class="nav-item">
@@ -77,6 +78,7 @@
 									</a>
 
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalReservations">Mis Reservaciones</a>
 										<a class="dropdown-item" href="{{ route('logout') }}"
 										onclick="event.preventDefault();
 														document.getElementById('logout-form').submit();">
@@ -101,6 +103,9 @@
 		</div>
 	</header>
 
+	<!-- modales -->
+	@include('layouts.partial.reservations')
+
 	<!-- Sidebar --> <!-- boton de expander -->
 	<aside class="sidebar trans-0-4">
 		<!-- Button Hide sidebar -->
@@ -123,8 +128,11 @@
 			@guest
 			<li class="t-center">
 				<!-- Button3 -->
-				<a href="{{ route('login') }}" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
+				{{-- <a href="{{ route('login') }}" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
 					Iniciar Sesion
+				</a> --}}
+				<a class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto" onClick="iniciarsession();" href="javascript:void(0)">
+					Iniciar session
 				</a>
 			</li>
 			@else       
@@ -160,38 +168,6 @@
 					<img src="{{ asset('upload/item/'.$item->image) }}" alt="GALLERY">
 				</a>
 				@endforeach
-
-				{{-- <a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-02.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-02.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-03.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-03.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-05.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-05.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-06.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-06.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-07.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-07.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-09.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-09.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-10.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-10.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="images/photo-gallery-11.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-11.jpg" alt="GALLERY">
-				</a> --}}
 			</div>
 		</div>
 	</aside>
@@ -219,7 +195,7 @@
 
 				<div class="col-md-6 p-b-30">
 					<div class="wrap-pic-welcome size2 bo-rad-10 hov-img-zoom m-l-r-auto">
-						<img src="{{ asset('upload/restaurant/'.$restaurant->image) }}" alt="IMG-OUR">
+						<img src="{{ asset('upload/restaurant/'.$restaurant->image) }}" alt="IMG-OUR" style="margin-top: 30px">
 					</div>
 				</div>
 			</div>
@@ -544,7 +520,16 @@
 		}
 	</script>
     <!--Fin mapa-->
-	
+	<script>
+		function iniciarsession(){
+			$('#login-modal').modal('show');
+		}		
+	</script>
 	@toastr_render
 </body>
 </html>
+
+	<!-- modales -->
+	@include('layouts.partial.reservations')
+	@include('security.login-modal')
+	@include('security.registro-admin-modal')

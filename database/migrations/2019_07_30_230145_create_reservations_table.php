@@ -16,6 +16,7 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('restaurant_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('last_name');
             $table->string('email');
@@ -27,6 +28,10 @@ class CreateReservationsTable extends Migration
             $table->foreign('restaurant_id')
                 ->references('id')
                 ->on('restaurants')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
                 ->onDelete('cascade');
             $table->timestamps();
         });
