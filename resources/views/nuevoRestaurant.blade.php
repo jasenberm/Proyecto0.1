@@ -532,4 +532,4 @@
 	<!-- modales -->
 	@include('layouts.partial.reservations')
 	@include('security.login-modal')
-	@include('security.registro-admin-modal')
+	{{-- @include('security.registro-admin-modal') --}}

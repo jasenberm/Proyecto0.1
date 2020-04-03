@@ -44,7 +44,6 @@ class ClientController extends Controller
                     $users = $rol->users()->get();
                 }
             }
-
             return view('superUser.clients.index', compact('users'));
         }
 

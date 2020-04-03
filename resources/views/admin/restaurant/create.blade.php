@@ -73,13 +73,13 @@
                         <div class="col-md-12">
                           <div class="form-group">
                               <label class="bmd-label-floating">Longitud</label>
-                              <input type="text" class="form-control" id="longitud" name="longitud" value="{{ old('longitud') }}">
+                              <input type="text" readonly class="form-control" id="longitud" name="longitud" value="{{ old('longitud') }}">
                           </div>
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
                               <label class="bmd-label-floating">Latitud</label>
-                              <input type="text" class="form-control" id="latitud" name="latitud" value="{{ old('latitud') }}">
+                              <input type="text" readonly class="form-control" id="latitud" name="latitud" value="{{ old('latitud') }}">
                           </div>
                         </div>                        
                         <br>
@@ -173,6 +173,7 @@
 
   <script>    
     bootstrapValidate('#name_restaurant','required:El campo nombre es requerido');
+    bootstrapValidate('#name_restaurant','max:28:El campo nombre no debe de contener mas de 28 caracteres');
     bootstrapValidate('#category','required:El campo nombre es requerido');
     bootstrapValidate('#ruc','numeric:Ingrese solamente digitos');
     bootstrapValidate('#ruc','max:13:No ingrese más de 13 digitos');

@@ -33,13 +33,13 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Nombre</label>
-                          <input type="text" class="form-control" value="{{ $item->name }}" name="name">
+                          <input type="text" id="nombre" class="form-control" value="{{ $item->name }}" name="name">
                         </div>
                       </div>                        
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Descripcion</label>
-                          <textarea class="form-control" name="description">{{ $item->description }}</textarea>
+                          <textarea class="form-control" id="descripcion" name="description">{{ $item->description }}</textarea>
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -50,7 +50,7 @@
                       </div>
                       <div class="col-md-12">
                         <label class="bmd-label-floating">Imagen</label><br>
-                        <input type="file" name="image">
+                        <input type="file" id="imagen" name="image">
                       </div>
                       <br>
                       <a href="{{ route('item.index') }}" class="btn btn-danger">Back</a>
@@ -65,5 +65,13 @@
 @endsection
 
 @push('scripts')
+  <script src="{{ asset ('frontend/js/bootstrap-validate.js') }}"></script>    
+  <script>
+    bootstrapValidate('#nombre','required:El campo nombre es requerido');
+    bootstrapValidate('#descripcion','required:El campo descripción es requerido');
+    bootstrapValidate('#precio','required:El campo precio es requerido');
+    bootstrapValidate('#imagen','required:El campo imagen es requerido');
+      
+  </script>
     
 @endpush

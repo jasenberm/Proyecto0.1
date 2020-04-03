@@ -56,18 +56,18 @@
                                   style="height: 100px; width: 100px" alt=""></td>                        
                                 <td>{{ $item->category->name }}</td>
                                 <td>{{ $item->description }}</td>
-                                <td>{{ $item->price }}</td>
+                                <td>${{ $item->price }}</td>
                                 <td>{{ $item->created_at }}</td>
                                 <td>{{ $item->updated_at }}</td>
                                 <td>
-                                  <a href="{{ route('item.edit', $item->id) }}" class="btn btn-info btn-sm">
+                                  <a href="{{ route('item.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar Plato" class="btn btn-info btn-sm">
                                     <i class="material-icons">mode_edit</i>
                                   </a>
                                   <form method="POST" id="delete-form-{{ $item->id }}" action="{{ route('item.destroy', $item->id) }}" style="display: none;">
                                     @csrf
                                     @method('DELETE')
                                   </form>
-                                  <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
+                                  <button type="button" data-toggle="tooltip" data-placement="top" title="Eliminar Plato" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
                                     event.preventDefault();
                                     document.getElementById('delete-form-{{ $item->id }}').submit();
                                   }else{
@@ -97,7 +97,11 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> --}}
 <script>
     $(document).ready(function() {
-    $('#table').DataTable();
-    } );
+      $('#table').DataTable();
+    });
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 @endpush

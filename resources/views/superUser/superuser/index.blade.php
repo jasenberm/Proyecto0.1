@@ -55,7 +55,7 @@
                               @method('PUT')
                             </form>
                             @if ($user->status == true)
-                            <button type="button" class="btn btn-warning btn-sm" onclick="if(confirm('¿Seguro de desactivar este usuario?')){
+                            <button type="button" data-toggle="tooltip" data-placement="top" title="Desactivar SuperUsuario" class="btn btn-warning btn-sm" onclick="if(confirm('¿Seguro de desactivar este usuario?')){
                               event.preventDefault();
                               document.getElementById('status-form-{{ $user->id }}').submit();
                               }else{
@@ -64,7 +64,7 @@
                             <i class="material-icons">highlight_off</i>
                           </button>
                           @else
-                          <button type="button" class="btn btn-success btn-sm" onclick="if(confirm('¿Seguro de activar este usuario?')){
+                          <button type="button" data-toggle="tooltip" data-placement="top" title="Desactivar SuperUsuario" class="btn btn-success btn-sm" onclick="if(confirm('¿Seguro de activar este usuario?')){
                             event.preventDefault();
                             document.getElementById('status-form-{{ $user->id }}').submit();
                             }else{
@@ -74,7 +74,7 @@
                           </button>                                                     
                           @endif
                           
-                          <a href="{{ route('superuser.edit', $user->id) }}" class="btn btn-info btn-sm">
+                          <a href="{{ route('superuser.edit', $user->id) }}" data-toggle="tooltip" data-placement="top" title="Editar SuperUsuario" class="btn btn-info btn-sm">
                             <i class="material-icons">mode_edit</i>
                           </a>
 
@@ -82,7 +82,7 @@
                             @csrf
                             @method('DELETE')
                           </form>
-                          <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
+                          <button type="button" data-toggle="tooltip" data-placement="top" title="Eliminar SuperUsuario" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
                             event.preventDefault();
                             document.getElementById('delete-form-{{ $user->id }}').submit();
                           }else{
@@ -112,7 +112,11 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>--}}
 <script>
     $(document).ready(function() {
-    $('#table').DataTable();
+      $('#table').DataTable();
     } );
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 @endpush

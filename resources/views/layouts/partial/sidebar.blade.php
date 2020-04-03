@@ -9,13 +9,13 @@
             <li class="{{ Request::is('admin/dashboard*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('admin.dashboard') }}">
                     <i class="material-icons">dashboard</i>
-                    <p>Tablero</p>
+                    <p>Mi Tablero</p>
                 </a>
             </li>
             <li class="{{ Request::is('admin/restaurant*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('restaurant.index') }}">
                     <i class="material-icons">restaurant</i>
-                    <p>Restaurante</p>
+                    <p>Mi Restaurante</p>
                 </a> 
             </li>
             {{-- <li class="{{ Request::is('admin/slider*')? 'active': '' }}">
@@ -27,13 +27,13 @@
             <li class="{{ Request::is('admin/category*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('category.index') }}">
                     <i class="material-icons">content_paste</i>
-                    <p>Categorias</p>
+                    <p>Mi Clasificación de platos</p>
                 </a>
             </li>
             <li class="{{ Request::is('admin/item*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('item.index') }}">
                     <i class="material-icons">library_books</i>
-                    <p>Items</p>
+                    <p>Listado de mis Platos</p>
                 </a>
             </li>
             <li class="{{ Request::is('admin/reservation*')? 'active': '' }}">

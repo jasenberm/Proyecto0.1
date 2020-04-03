@@ -35,13 +35,13 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Nombre</label>
-                          <input type="text" class="form-control" value="{{ $restaurant->name_restaurant }}" name="name_restaurant">
+                          <input type="text" class="form-control" id="name_restaurant" value="{{ $restaurant->name_restaurant }}" name="name_restaurant">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">RUC</label>
-                          <input type="text" class="form-control" value="{{ $restaurant->ruc }}" name="ruc">
+                          <input type="text" class="form-control" id="ruc" value="{{ $restaurant->ruc }}" name="ruc">
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -68,13 +68,13 @@
                         <div class="col-md-12">
                           <div class="form-group">
                               <label class="bmd-label-floating">Longitud</label>
-                              <input type="text" class="form-control" id="longitud" name="longitud" value="{{ $restaurant->lng }}">
+                              <input type="text" readonly class="form-control" id="longitud" name="longitud" value="{{ $restaurant->lng }}">
                           </div>
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
                               <label class="bmd-label-floating">Latitud</label>
-                              <input type="text" class="form-control" id="latitud" name="latitud" value="{{ $restaurant->lat }}">
+                              <input type="text" readonly class="form-control" id="latitud" name="latitud" value="{{ $restaurant->lat }}">
                           </div>
                         </div>     
                       <br>
@@ -117,6 +117,7 @@
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
+<script src="{{ asset ('backend/js/bootstrap-validate.js') }}"></script>
 
 <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoiamFzZW5iZXJtIiwiYSI6ImNqeXhpZDFmbDA3a2YzY28xcW5kMWI3ajMifQ.CdmHunZbUBpmZPYvK0_HyA';
@@ -168,5 +169,14 @@
     ); 
   };      
 
+</script>
+
+<script>    
+  bootstrapValidate('#name_restaurant','required:El campo nombre es requerido');
+  bootstrapValidate('#name_restaurant','max:28:El campo nombre no debe de contener mas de 28 caracteres');
+  bootstrapValidate('#category','required:El campo nombre es requerido');
+  bootstrapValidate('#ruc','numeric:Ingrese solamente digitos');
+  bootstrapValidate('#ruc','max:13:No ingrese más de 13 digitos');
+  bootstrapValidate('#ruc','min:13:No ingrese menos de 13 digitos');
 </script>
 @endpush

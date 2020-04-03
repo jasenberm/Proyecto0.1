@@ -10,24 +10,24 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
                             <i class="material-icons">content_copy</i>
                         </div>
-                        <p class="card-category">Categoria/Items</p>
+                        <p class="card-category">Clasificaciones/Platos</p>
                         <h3 class="card-title">{{ $categoryCount }}/{{ $itemCount }}
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons text-danger">info</i> Total de Categorias e Items
+                            <i class="material-icons">local_offer</i> Total de Clasificaciones y Platos
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            {{-- <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header card-header-success card-header-icon">
                         <div class="card-icon">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">local_offer</i> Reservaciones sin Confirmar
+                            <i class="material-icons text-danger">info</i> Reservaciones sin Confirmar
                         </div>
                     </div>
                 </div>
@@ -65,12 +65,12 @@
                         <div class="card-icon">
                             <i class="fa fa-twitter"></i>
                         </div>
-                        <p class="card-category">Contactos</p>
+                        <p class="card-category">Mensajes</p>
                         <h3 class="card-title">{{ $contactCount }}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">update</i> Just Updated
+                            <i class="material-icons">update</i> Mensajes recibidos
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                                                 action="{{ route('reservation.status', $reservation->id) }}" style="display: none;">
                                             @csrf
                                             </form>
-                                            <button type="button" class="btn btn-info btn-sm" onclick="if(confirm('¿Verificaste la Solicitud por Telefono?')){
+                                            <button type="button" data-toggle="tooltip" data-placement="top" title="Aceptar Reservación" class="btn btn-info btn-sm" onclick="if(confirm('¿Aceptar Reservación?')){
                                                     event.preventDefault();
                                                     document.getElementById('status-form-{{ $reservation->id }}').submit();
                                                 }else{
@@ -129,7 +129,7 @@
                                         @csrf
                                         @method('DELETE')
                                             </form>
-                                            <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
+                                            <button type="button" data-toggle="tooltip" data-placement="top" title="Eliminar Reservación" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
                                                     event.preventDefault();
                                                     document.getElementById('delete-form-{{ $reservation->id }}').submit();
                                                 }else{
@@ -152,5 +152,9 @@
 @endsection
 
 @push('scripts')
-
+<script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 @endpush

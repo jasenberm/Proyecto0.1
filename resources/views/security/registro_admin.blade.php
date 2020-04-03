@@ -31,13 +31,13 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label class="bmd-label-floating">Usuario</label>
-                      <input type="text" placeholder="Ej: usuario123" id="user"class="form-control" name="user" value="{{ old('user') }}" required>
+                      <input type="text" placeholder="Ej: dueño123" id="user"class="form-control" name="user" value="{{ old('user') }}" required>
                   </div>
                 </div>
                 <div class="col-md-8">
                   <div class="form-group">
                     <label class="bmd-label-floating">Correo</label>
-                      <input type="email" placeholder="Ej: usuario@hotmail.com" id="email" placeholder="Ej: usuario@hotmail.com" class="form-control" name="email" value="{{ old('email') }}" required>
+                      <input type="email" placeholder="Ej: dueño@hotmail.com" id="email" placeholder="Ej: usuario@hotmail.com" class="form-control" name="email" value="{{ old('email') }}" required>
                   </div>
                 </div>
               </div>
@@ -45,13 +45,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Nombres</label>
-                      <input type="text" placeholder="Ej: nombre usuario" id="name" class="form-control" name="name" value="{{ old('name') }}" required>
+                      <input type="text" placeholder="Ej: nombre dueño" id="name" class="form-control" name="name" value="{{ old('name') }}" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Apellidos</label>
-                      <input type="text" placeholder="Ej: apellido usuario" id="last_name" class="form-control" name="last_name" value="{{ old('last_name') }}" required>
+                      <input type="text" placeholder="Ej: apellido dueño" id="last_name" class="form-control" name="last_name" value="{{ old('last_name') }}" required>
                   </div>
                 </div>
               </div>
@@ -65,7 +65,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Confirmación de Clave</label>
-                      <input type="password" class="form-control" name="password_confirmation" required>
+                      <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" required>
                   </div>
                 </div>  
               </div>              
@@ -102,8 +102,9 @@
 
   // (?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*.])(?=.{8,})
   bootstrapValidate('#password','min:8:Ingrese al menos 8 caracteres');
-  bootstrapValidate('#password', 'regex:^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*.])(?=.{8,}):Debe de contener al menos 8 caracteres. Debe de contener al menos un caracter en minusculas y mayusculas. Debe de contener al menos un caracter numerico. Debe de conter un caracter especial "!@#\$%\^&\*."');
+  bootstrapValidate('#password', 'regex:^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*.])(?=.{8,}):Debe contener MAYUSCULA, minuscula, caracter especial y Numero Ejemplo "Cliente@2020"');
 
+  bootstrapValidate('#password_confirmation','matches:#password:Las contraseñas no coinciden');
 </script>
 
 </body>

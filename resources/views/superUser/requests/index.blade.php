@@ -52,7 +52,7 @@
                                       @csrf
                                       @method('PUT')
                                     </form>
-                                    <button type="button" class="btn btn-info btn-sm" onclick="if(confirm('¿Verificaste el RUC en el SRI?')){
+                                    <button type="button" data-toggle="tooltip" data-placement="top" title="Aceptar Solicitud" class="btn btn-info btn-sm" onclick="if(confirm('¿Verificaste el RUC en el SRI?')){
                                       event.preventDefault();
                                       document.getElementById('status-form-{{ $restaurant->id }}').submit();
                                       }else{
@@ -67,7 +67,7 @@
                                     @csrf
                                     @method('DELETE')
                                   </form>
-                                  <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
+                                  <button type="button" data-toggle="tooltip" data-placement="top" title="Eliminar Solicitud" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
                                     event.preventDefault();
                                     document.getElementById('delete-form-{{ $restaurant->id }}').submit();
                                   }else{
@@ -99,5 +99,9 @@
     $(document).ready(function() {
     $('#table').DataTable();
     } );
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 @endpush

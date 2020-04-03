@@ -35,9 +35,9 @@
                   <th>Usuario</th>
                   <th>Nombre</th>
                   <th>Correo</th>
-                  <th>Creado</th>
-                  <th>Actualizado</th>                  
                   <th>Estado</th>
+                  <th>Creado</th>
+                  <th>Actualizado</th>                                    
                   <th>Acciones</th>
                 </thead>
                 <tbody>
@@ -45,10 +45,8 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $user->user}}</td>
-                        <td>{{ $user->name}}</td>
+                        <td>{{ $user->name}} {{ $user->last_name }}</td>
                         <td>{{ $user->email}}</td>
-                        <td>{{ $user->created_at}}</td>
-                        <td>{{ $user->updated_at}}</td>
                         <td>
                           @if ($user->status == true)
                             <span class="badge badge-success">Activado</span>
@@ -56,6 +54,8 @@
                             <span class="badge badge-danger">Desactivado</span>
                           @endif
                         </td>
+                        <td>{{ $user->created_at}}</td>
+                        <td>{{ $user->updated_at}}</td>                        
                         <td>
                           <form method="POST" id="status-form-{{ $user->id }}" 
                             action="{{ route('status', $user->id) }}" style="display: none;">
@@ -63,7 +63,7 @@
                               @method('PUT')
                             </form>
                             @if ($user->status == true)
-                            <button type="button" class="btn btn-warning btn-sm" onclick="if(confirm('¿Seguro de desactivar este usuario?')){
+                            <button type="button" data-toggle="tooltip" data-placement="top" title="Desactivar Usuario" class="btn btn-warning btn-sm" onclick="if(confirm('¿Seguro de desactivar este usuario?')){
                               event.preventDefault();
                               document.getElementById('status-form-{{ $user->id }}').submit();
                               }else{
@@ -72,7 +72,7 @@
                             <i class="material-icons">highlight_off</i>
                           </button>
                           @else
-                          <button type="button" class="btn btn-success btn-sm" onclick="if(confirm('¿Seguro de activar este usuario?')){
+                          <button type="button" data-toggle="tooltip" data-placement="top" title="Activar Usuario" class="btn btn-success btn-sm" onclick="if(confirm('¿Seguro de activar este usuario?')){
                             event.preventDefault();
                             document.getElementById('status-form-{{ $user->id }}').submit();
                             }else{
@@ -86,7 +86,7 @@
                             @csrf
                             @method('DELETE')
                           </form>
-                          <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
+                          <button type="button" data-toggle="tooltip" data-placement="top" title="Eliminar Usuario" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
                             event.preventDefault();
                             document.getElementById('delete-form-{{ $user->id }}').submit();
                           }else{
@@ -118,5 +118,10 @@
     $(document).ready(function() {
     $('#table').DataTable();
     } );
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+
 </script>
 @endpush

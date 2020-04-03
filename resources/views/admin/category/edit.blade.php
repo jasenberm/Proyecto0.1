@@ -22,8 +22,8 @@
                         @method('PUT')
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="bmd-label-floating">Nomber</label>
-                                <input type="text" class="form-control" name="name" value="{{ $category->name }}">
+                                <label class="bmd-label-floating">Nuevo nombre de clasificación</label>
+                                <input type="text" id="name" class="form-control" name="name" value="{{ $category->name }}">
                             </div>
                         </div>
                         <br>
@@ -39,5 +39,8 @@
 @endsection
 
 @push('scripts')
-    
+  <script src="{{ asset ('frontend/js/bootstrap-validate.js') }}"></script>
+  <script>
+    bootstrapValidate('#name','required:El campo nombre es requerido.');
+  </script>
 @endpush

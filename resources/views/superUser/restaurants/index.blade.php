@@ -30,7 +30,7 @@
                   <th>RUC</th>
                   <th>Creado</th>
                   <th>Actualizado</th>
-                  <th>Acciones</th>
+                  {{-- <th>Acciones</th> --}}
                 </thead>
                 <tbody>
                     @foreach ($restaurants as $key=>$restaurant)
@@ -42,11 +42,11 @@
                         <td>{{ $restaurant->ruc}}</td>
                         <td>{{ $restaurant->created_at}}</td>
                         <td>{{ $restaurant->updated_at}}</td>
-                        <td>
+                        {{-- <td>
                           <a href="" class="btn btn-info btn-sm">
                             <i class="material-icons">more_horiz</i>
                           </a>                    
-                        </td>
+                        </td> --}}
                     </tr>    
                     @endforeach
                 </tbody>

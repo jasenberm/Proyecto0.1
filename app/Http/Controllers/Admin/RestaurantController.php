@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Restaurant;
 use Illuminate\Support\Carbon;
 use App\CategoryRestaurant;
+use Brian2694\Toastr\Facades\Toastr;
 
 class RestaurantController extends Controller
 {
@@ -97,7 +98,9 @@ class RestaurantController extends Controller
         $restaurant->lng = $request->longitud;
         $restaurant->lat = $request->latitud;
         $restaurant->save();
-        return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Creado y Registrado Correctamente');
+        Toastr::success('Restaurante Creado y Registrado Correctamente', 'Exito!', ["positionClass" => "toast-top-right"]);
+        // return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Creado y Registrado Correctamente');
+        return redirect()->route('restaurant.index');
     }
 
     /**
@@ -178,7 +181,9 @@ class RestaurantController extends Controller
         $restaurant->lng = $request->longitud;
         $restaurant->lat = $request->latitud;
         $restaurant->save();
-        return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Modificado Correctamente');
+        Toastr::success('Restaurante Modificado Correctamente', 'Exito!', ["positionClass" => "toast-top-right"]);
+        // return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Modificado Correctamente');
+        return redirect()->route('restaurant.index');
     }
 
     /**

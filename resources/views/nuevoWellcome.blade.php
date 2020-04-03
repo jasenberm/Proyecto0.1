@@ -70,15 +70,17 @@
 										{{-- <a class="nav-link" href="{{ route('login') }}">inicio de sesion</a> --}}
 										<a class="nav-link" onClick="iniciarsession();" href="javascript:void(0)">Iniciar sesion</a>
 								</li>
-								@else                        
+								@else   								                      
 								<li class="nav-item dropdown">
 									<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 										{{ Auth::user()->user }} <span class="caret"></span>
 									</a>		
 
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalReservations">Mis Reservaciones</a>
+										{{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#perfil-modal">Mi Perfil</a> --}}
 
+										<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalReservations">Mis Reservaciones</a>																			
+										
 										<a class="dropdown-item" href="{{ route('logout') }}"
 										onclick="event.preventDefault();
 														document.getElementById('logout-form').submit();">
@@ -102,6 +104,11 @@
 			</div>
 		</div>
 	</header>
+
+	@guest
+	@else
+	@include('security.perfil')
+	@endguest
 
 	<!-- Sidebar --> <!-- boton de expander -->
 	<aside class="sidebar trans-0-4">
@@ -136,7 +143,10 @@
 					Iniciar session
 				</a>
 			</li>
-			@else     
+			@else
+			{{-- <li class="t-center m-b-13">
+				<a class="txt19" href="#" data-toggle="modal" data-target="#perfil-modal">Mis Perfil</a>
+			</li>       --}}
 			<li class="t-center m-b-13">
 				<a class="txt19" href="#" data-toggle="modal" data-target="#modalReservations">Mis Reservaciones</a>
 			</li>                   
@@ -187,10 +197,10 @@
 						</h3>
 
 						<p class="t-center m-b-22 size3 m-l-r-auto">
-							Ponemos a su alcance nuestro listado de restaurantes asociados con sus variados menus y respectivas ubicaciones, para que conzca lo que ellos tienen para ofrecerle y disfrute de la variada gastronomia que existe ciudad de Guayaquil.
+							Ponemos a su alcance nuestro listado de restaurantes asociados, con sus variados menus y respectivas ubicaciones, para que conozca lo que ellos tienen para ofrecerle y disfrute de la variada gastronomia que existe ciudad de Guayaquil.
 						</p>
 						<p class="t-center m-b-22 size3 m-l-r-auto">
-							Si desea publicitar su negocio a travez de nuestra plataforma, inicie el proceso en el siguiente enlace.
+							Si desea publicitar su negocio a través de nuestra plataforma, inicie el proceso en el siguiente enlace.
 						</p>
 
 						<a href="{{ route('register_owner') }}" class="txt4">

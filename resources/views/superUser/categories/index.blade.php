@@ -53,7 +53,7 @@
                               @method('PUT')
                             </form>
                             @if ($category->status == true)
-                            <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('¿Seguro de desactivar esta categoria?')){
+                            <button type="button" data-toggle="tooltip" data-placement="top" title="Desactivar Categoria" class="btn btn-danger btn-sm" onclick="if(confirm('¿Seguro de desactivar esta categoria?')){
                               event.preventDefault();
                               document.getElementById('status-form-{{ $category->id }}').submit();
                               }else{
@@ -64,7 +64,7 @@
                             <i class="material-icons">highlight_off</i>
                           </button>
                           @else
-                          <button type="button" class="btn btn-success btn-sm" onclick="if(confirm('¿Seguro de activar esta categoria?')){
+                          <button type="button" data-toggle="tooltip" data-placement="top" title="Activar Categoria" class="btn btn-success btn-sm" onclick="if(confirm('¿Seguro de activar esta categoria?')){
                             event.preventDefault();
                             document.getElementById('status-form-{{ $category->id }}').submit();
                             }else{
@@ -99,5 +99,9 @@
     $(document).ready(function() {
     $('#table').DataTable();
     } );
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 @endpush

@@ -39,7 +39,7 @@
                                 <td>{{ $contact->message }}</td>
                                 <td>{{ $contact->created_at }}</td>
                                 <td>
-                                  <a href="{{ route('contact.show', $contact->id) }}" class="btn btn-info btn-sm">
+                                  <a href="{{ route('contact.show', $contact->id) }}" data-toggle="tooltip" data-placement="top" title="Ver Detalle de Mensaje" class="btn btn-info btn-sm">
                                     <i class="material-icons">details</i>
                                   </a>
                                   <form method="POST" id="delete-form-{{ $contact->id }}" 
@@ -47,7 +47,7 @@
                                     @csrf
                                     @method('DELETE')
                                   </form>
-                                  <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
+                                  <button type="button" data-toggle="tooltip" data-placement="top" title="Eliminar Mensaje" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
                                     event.preventDefault();
                                     document.getElementById('delete-form-{{ $contact->id }}').submit();
                                   }else{
@@ -77,7 +77,11 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> --}}
 <script>
     $(document).ready(function() {
-    $('#table').DataTable();
-    } );
+      $('#table').DataTable();
+    });
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 @endpush

@@ -8,6 +8,7 @@ use App\Item;
 use App\Category;
 use Illuminate\Support\Carbon;
 use App\Restaurant;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ItemController extends Controller
 {
@@ -82,7 +83,9 @@ class ItemController extends Controller
         }
 
         if ($categories->isEmpty()) {
-            return redirect()->route('item.index')->with('alertMsg', 'No se pueden agregar items sin crear las categorias a las que pertenecen');
+            Toastr::warning('No se pueden agregar Nuevos Platos sin crear las Clasificaciones a los que pertenecen.', 'Exito!', ["positionClass" => "toast-top-right"]);
+            // return redirect()->route('item.index')->with('alertMsg', 'No se pueden agregar items sin crear las categorias a las que pertenecen');
+            return redirect()->route('item.index');
         } else {
             return view('admin.item.create', compact('categories'));
         }
@@ -123,7 +126,9 @@ class ItemController extends Controller
         $item->price = $request->price;
         $item->image = $imagename;
         $item->save();
-        return redirect()->route('item.index')->with('successMsg', 'Item Guardado Exitosamente');
+        Toastr::success('Nuevo Plato Guardado Exitosamente.', 'Exito!', ["positionClass" => "toast-top-right"]);
+        // return redirect()->route('item.index')->with('successMsg', 'Item Guardado Exitosamente');
+        return redirect()->route('item.index');
     }
 
     /**
@@ -187,7 +192,9 @@ class ItemController extends Controller
         $item->price = $request->price;
         $item->image = $imagename;
         $item->save();
-        return redirect()->route('item.index')->with('successMsg', 'Item Actualizado Exitosamente');
+        Toastr::success('Plato Actualizado Exitosamente.', 'Exito!', ["positionClass" => "toast-top-right"]);
+        // return redirect()->route('item.index')->with('successMsg', 'Item Actualizado Exitosamente');
+        return redirect()->route('item.index');
     }
 
     /**
@@ -203,6 +210,8 @@ class ItemController extends Controller
             unlink('upload/item/' . $item->image);
         }
         $item->delete();
-        return redirect()->back()->with('successMsg', 'Item Eliminado Correctamente');
+        Toastr::success('Plato Eliminado Correctamente.', 'Exito!', ["positionClass" => "toast-top-right"]);
+        // return redirect()->back()->with('successMsg', 'Item Eliminado Correctamente');
+        return redirect()->back();
     }
 }

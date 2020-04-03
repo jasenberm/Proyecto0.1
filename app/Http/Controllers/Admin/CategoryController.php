@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Restaurant;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CategoryController extends Controller
 {
@@ -50,7 +51,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => ['required', 'alpha']
+            'name' => ['required']
         ]);
         $category = new Category();
         $restaurantVal = Restaurant::where('user_id', auth()->id())->get('id');
@@ -65,7 +66,9 @@ class CategoryController extends Controller
             $category->name = $request->name;
             $category->slug = str_slug($request->name);
             $category->save();
-            return redirect()->route('category.index')->with('successMsg', 'Categoria Guardada Correctamente');
+            Toastr::success('Nueva Clasificación Registrada Correctamente', 'Exito!', ["positionClass" => "toast-top-right"]);
+            // return redirect()->route('category.index')->with('successMsg', 'Categoria Guardada Correctamente');
+            return redirect()->route('category.index');
         }
     }
 
@@ -102,13 +105,15 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => ['required', 'alpha']
+            'name' => ['required']
         ]);
         $category = Category::find($id);
         $category->name = $request->name;
         $category->slug = str_slug($request->name);
         $category->save();
-        return redirect()->route('category.index')->with('successMsg', 'Cambios Realizados Correctamente');
+        Toastr::success('Cambios Realizados Correctamente', 'Exito!', ["positionClass" => "toast-top-right"]);
+        // return redirect()->route('category.index')->with('successMsg', 'Cambios Realizados Correctamente');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -120,6 +125,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::find($id)->delete();
-        return redirect()->back()->with('successMsg', 'Categoria Eliminada Correctamente');
+        Toastr::success('Clasificación Eliminada Correctamente', 'Exito!', ["positionClass" => "toast-top-right"]);
+        // return redirect()->back()->with('successMsg', 'Categoria Eliminada Correctamente');
+        return redirect()->back();
     }
 }

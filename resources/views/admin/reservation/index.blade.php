@@ -58,7 +58,7 @@
                                     action="{{ route('reservation.status', $reservation->id) }}" style="display: none;">
                                       @csrf
                                     </form>
-                                    <button type="button" class="btn btn-info btn-sm" onclick="if(confirm('¿Verificaste la Solicitud por Telefono?')){
+                                    <button type="button" data-toggle="tooltip" data-placement="top" title="Aceptar Reservación" class="btn btn-info btn-sm" onclick="if(confirm('¿Verificaste la Solicitud por Telefono?')){
                                       event.preventDefault();
                                       document.getElementById('status-form-{{ $reservation->id }}').submit();
                                       }else{
@@ -73,7 +73,7 @@
                                     @csrf
                                     @method('DELETE')
                                   </form>
-                                  <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
+                                  <button type="button" data-toggle="tooltip" data-placement="top" title="Eliminar Reservación" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
                                     event.preventDefault();
                                     document.getElementById('delete-form-{{ $reservation->id }}').submit();
                                   }else{
@@ -103,7 +103,11 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>--}}
 <script>
     $(document).ready(function() {
-    $('#table').DataTable();
-    } );
+      $('#table').DataTable();
+    });
+    
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 @endpush

@@ -22,7 +22,7 @@
                         <div class="col-md-12">
                           <div class="form-group">
                               <label class="bmd-label-floating">Categoria</label>
-                              <select class="form-control" name="category">
+                              <select class="form-control" id="category" name="category" required>
                                   <option selected>Seleccione la categoria...</option>
                                 @foreach ($categories as $category)
                                   <option value="{{ $category->id }}"> {{ $category->name }}</option>
@@ -32,25 +32,25 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="bmd-label-floating">Nombre</label>
-                                <input type="text" class="form-control" name="name">
+                                <label class="bmd-label-floating">Nombre del Plato</label>
+                                <input type="text" id="nombre" class="form-control" name="name" required>
                             </div>
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
-                              <label class="bmd-label-floating">Descripcion</label>
-                              <textarea class="form-control" name="description"></textarea>
+                              <label class="bmd-label-floating">Descripcion de Plato</label>
+                              <textarea class="form-control" id="descripcion" name="description" required></textarea>
                           </div>
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
-                              <label class="bmd-label-floating">Precio</label>
-                              <input type="number" class="form-control" name="price" step="any">
+                              <label class="bmd-label-floating">Precio del PLato</label>
+                              <input type="number" id="precio" class="form-control" name="price" step="any" required>
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <label class="bmd-label-floating">Imagen</label><br>
-                          <input type="file" name="image">
+                          <label class="bmd-label-floating">Imagen del Plato</label><br>
+                          <input type="file" id="imagen" name="image" required>
                         </div>
                         <br>
                         <a href="{{ route('item.index') }}" class="btn btn-danger">Retroceder</a>
@@ -65,5 +65,13 @@
 @endsection
 
 @push('scripts')
+  <script src="{{ asset ('frontend/js/bootstrap-validate.js') }}"></script>    
+  <script>
+    bootstrapValidate('#nombre','required:El campo nombre es requerido');
+    bootstrapValidate('#descripcion','required:El campo descripción es requerido');
+    bootstrapValidate('#precio','required:El campo precio es requerido');
+    bootstrapValidate('#imagen','required:El campo imagen es requerido');
     
+    
+  </script>
 @endpush
