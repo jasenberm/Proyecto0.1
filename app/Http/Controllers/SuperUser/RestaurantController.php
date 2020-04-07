@@ -83,6 +83,21 @@ class RestaurantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = Restaurant::find($id);
+        $user->delete();
+        return redirect()->back()->with('successMsg', 'Restaurante Eliminado Correctamente');
+    }
+
+    public function status($id)
+    {
+        $restaurant = Restaurant::find($id);
+        if ($restaurant->status == true) {
+            $restaurant->status = false;
+            $restaurant->save();
+        } elseif ($restaurant->status == false) {
+            $restaurant->status = true;
+            $restaurant->save();
+        }
+        return redirect()->back()->with('successMsg', 'Cambio de estado realizado correctamente');
     }
 }

@@ -81,7 +81,7 @@
                 @include('layouts.partial.msg')
                 <div class="card">
                     <div class="card-header card-header-primary">
-                      <h4 class="card-title">Todas las Reservaciones</h4>
+                      <h4 class="card-title">Todas las Reservaciones sin Confirmar</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -90,7 +90,7 @@
                                     <th>Id</th>
                                     <th>Nombre</th>
                                     <th>Correo</th>
-                                    <th>Estado</th>
+                                    <th>N° de Personas</th>
                                     <th>Dia y Hora</th>
                                     <th>Acciones</th>
                                 </thead>
@@ -99,16 +99,22 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $reservation->name }}</td>
-                                        <td>{{ $reservation->email}}</td>                        
-                                        <td>
+                                        <td>{{ $reservation->email}}</td>    
+                                        <td>{{ $reservation->people}}</td>                        
+                                        {{-- <td>
                                         @if ($reservation->status == true)
                                             <span class="badge badge-info">Confirmado</span>
                                         @else
                                             <span class="badge badge-danger">Sin Confirmar</span>
                                         @endif
-                                        </td>
+                                        </td> --}}
                                         <td>{{ $reservation->date }} - {{ $reservation->time }}</td>
                                         <td>
+                                            @if ($reservation->message == !null)                                                
+                                            <a href="{{ route('reservation.show', $reservation->id) }}" data-toggle="tooltip" data-placement="top" title="Ver Detalle de Reservación" class="btn btn-warning btn-sm">
+                                                <i class="material-icons">details</i>
+                                            </a>
+                                            @endif
                                         @if ($reservation->status == false)
                                             <form method="POST" id="status-form-{{ $reservation->id }}" 
                                                 action="{{ route('reservation.status', $reservation->id) }}" style="display: none;">

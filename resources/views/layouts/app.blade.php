@@ -17,6 +17,7 @@
     {{--<link rel="stylesheet" href="{{ asset('backend/css/google-api.css') }}">--}}
 
     <!-- Styles -->
+    <link rel="icon" type="image/png" href="{{ asset('frontend/images/icons/ejemplo3.png') }}"/>
     <link rel="stylesheet" href="{{ asset('backend/css/material-icons.css') }}">
     {{--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />--}}
     {{--<link rel="stylesheet" href="{{ asset('backend/css/google-api-roboto.css') }}">--}}

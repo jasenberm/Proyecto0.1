@@ -26,12 +26,12 @@
                         <th>Id</th>
                         <th>Nombre</th>
                         {{--<th>Telefono</th>--}}
-                        <th>Email</th>
+                        <th>Correo</th>
                         {{--<th>Dia</th>
-                        <th>Hora</th>
-                        <th>Mensaje</th>--}}
-                        <th>Estado</th>
+                        <th>Hora</th>--}}
+                        <th>N° Personas</th>                      
                         <th>Dia y Hora</th>
+                        <th>Estado</th>                        
                         <th>Acciones</th>
                       </thead>
                       <tbody>
@@ -42,23 +42,28 @@
                                 {{--<td>{{ $reservation->phone}}</td>--}}
                                 <td>{{ $reservation->email }}</td>
                                 {{--<td>{{ $reservation->date }}</td>
-                                <td>{{ $reservation->time }}</td>
-                                <td>{{ $reservation->message }}</td>--}}
+                                <td>{{ $reservation->time }}</td>--}}
+                                <td>{{ $reservation->people }}</td>
+                                <td>{{ $reservation->date }} - {{ $reservation->time }}</td>
                                 <td>
                                   @if ($reservation->status == true)
                                     <span class="badge badge-info">Confirmado</span>
                                   @else
                                     <span class="badge badge-danger">Sin Confirmar</span>
                                   @endif
-                                </td>
-                                <td>{{ $reservation->date }} - {{ $reservation->time }}</td>
+                                </td>                                
                                 <td>
+                                  @if ($reservation->message == !null)                                                
+                                    <a href="{{ route('reservation.show', $reservation->id) }}" data-toggle="tooltip" data-placement="top" title="Ver Detalle de Reservación" class="btn btn-warning btn-sm">
+                                      <i class="material-icons">details</i>
+                                    </a>
+                                  @endif
                                   @if ($reservation->status == false)
                                   <form method="POST" id="status-form-{{ $reservation->id }}" 
                                     action="{{ route('reservation.status', $reservation->id) }}" style="display: none;">
                                       @csrf
                                     </form>
-                                    <button type="button" data-toggle="tooltip" data-placement="top" title="Aceptar Reservación" class="btn btn-info btn-sm" onclick="if(confirm('¿Verificaste la Solicitud por Telefono?')){
+                                    <button type="button" data-toggle="tooltip" data-placement="top" title="Aceptar Reservación" class="btn btn-info btn-sm" onclick="if(confirm('¿Aceptar la reservacóin?')){
                                       event.preventDefault();
                                       document.getElementById('status-form-{{ $reservation->id }}').submit();
                                       }else{

@@ -270,16 +270,18 @@
                                                                                                     align="justify">
                                                                                                     <p>Hola, <strong>{{ $name }}</strong></p>
                                                                                                     <p>La solicitud de reservacion
-                                                                                                        realizada en el restaurant 
-                                                                                                        <strong>Aun falta esto.</strong>
+                                                                                                        realizada en el restaurante
+                                                                                                        <strong>{{ $restaurant }}.</strong>
                                                                                                         ha sido aceptada con fecha:
                                                                                                         <strong>{{ $date }}</strong>
                                                                                                         y hora:
                                                                                                         <strong>{{ $time }}</strong>
                                                                                                         para:
-                                                                                                        <strong>{{ $people }}</strong>                
-                                                                                                        Bajo las siguientes indicaciones
-                                                                                                        <strong>{{ $message }}</strong> 
+                                                                                                        <strong>{{ $people }}</strong> 
+                                                                                                        @if ($message == !null)
+                                                                                                        Bajo las siguientes indicaciones:
+                                                                                                        <strong>{{ $message }}</strong>     
+                                                                                                        @endif                                                                                                                          
                                                                                                     </p>
                                                                                                     <br>
                                                                                                     Gracias por preferirnos.<p>

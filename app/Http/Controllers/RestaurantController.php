@@ -24,8 +24,8 @@ class RestaurantController extends Controller
             $categories = Restaurant::find($id)
                 ->categories;
             $reservaciones = Reservation::where('user_id', auth()->id())
-                ->limit(4)
-                ->orderBy('id', 'asc')
+                ->limit(20)
+                ->orderBy('date', 'desc')
                 ->get();
 
             return view('nuevoRestaurant', compact('restaurant', 'categories', 'items', 'reservaciones'));

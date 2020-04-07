@@ -9,7 +9,7 @@
             <li class="{{ Request::is('superuser/request*')? 'active': '' }}">
                 <a class="nav-link" href="{{ route('request.index') }}">
                     <i class="material-icons">dashboard</i>
-                    <p>Solicitudes</p>
+                    <p>Solicitudes de Activación</p>
                 </a>
             </li>  
             <li class="{{ Request::is('superuser/category_admin*')? 'active': '' }}">

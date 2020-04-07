@@ -29,9 +29,9 @@
                         @csrf
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label class="bmd-label-floating">Tipo de Restaurante</label>
+                            <label class="bmd-label-floating">Tipo de Comida que ofrece su restaurante</label>
                             <select class="form-control custom-select browser-default" id="category" name="category" required>
-                              <option value="">Seleccione el tipo de restaurante...</option>
+                              <option value="">Seleccione el tipo de comida...</option>
                               @foreach ($categoryRestaurant as $categories)
                               <option value="{{ $categories->id }}"> {{ $categories->name }}</option>
                               @endforeach
@@ -69,7 +69,7 @@
                           </div>
                         </div>
                         <br>
-                        <dd class="col-sm-9"><a href="#" data-toggle="modal" data-target="#modalMapa">Agregar en el mapa</a> la dirección de su restaurante para obtener los siguientes campos<br></dd>                                                
+                        <dd class="col-sm-9">Pulse <a href="#" data-toggle="modal" data-target="#modalMapa">< aqui ></a> para obtener los campos de longitud y latitud<br></dd>                                                
                         <div class="col-md-12">
                           <div class="form-group">
                               <label class="bmd-label-floating">Longitud</label>
@@ -92,7 +92,7 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="modalImagenLbel">Selecione su ubicacion en el mapa</h5>
+                      <h5 class="modal-title" id="modalImagenLbel">Selecione su ubicación en el mapa</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>

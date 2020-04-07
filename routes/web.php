@@ -32,8 +32,12 @@ Route::get('/register', 'Security\RegisterController@index')->name('register');
 Route::get('/registerOwner', 'Security\RegisterController@index')->name('register_owner');
 Route::post('/register', 'Security\RegisterController@register')->name('register_client_post');
 Route::post('/registerOwner', 'Security\RegisterController@register')->name('register_owner_post');
+Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+Route::get('/email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace' => 'admin'], function () {
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified'], 'namespace' => 'admin'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 
     Route::resource('slider', 'SliderController');
@@ -46,6 +50,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
     Route::get('reservation', 'ReservationController@index')->name('reservation.index');
     Route::post('reservation/{id}', 'ReservationController@status')->name('reservation.status');
     Route::delete('reservation/{id}', 'ReservationController@destory')->name('reservation.destory');
+    Route::get('reservation/{id}', 'ReservationController@show')->name('reservation.show');
 
     Route::get('contact', 'ContactController@index')->name('contact.index');
     Route::get('contact/{id}', 'ContactController@show')->name('contact.show');
@@ -67,6 +72,7 @@ Route::group(['prefix' => 'superuser', 'middleware' => ['auth', 'superuser'], 'n
     Route::resource('request', 'RequestController');
     Route::resource('restaurant_admin', 'RestaurantController');
     Route::put('status/{id}', 'ClientController@status')->name('status');
+    Route::put('statusrestaurant/{id}', 'RestaurantController@status')->name('restaurant.status');
     Route::get('export/index', 'ExportController@index')->name('export.index');
     Route::get('export/clients', 'ExportController@client')->name('export.client');
     Route::get('export/owners', 'ExportController@owner')->name('export.owner');

@@ -5,13 +5,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{{ asset('frontend/images/icons/favicon.png') }}"/>
+	<link rel="icon" type="image/png" href="{{ asset('frontend/images/icons/ejemplo3.png') }}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
 <!--===============================================================================================-->
 	 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/vendor/select2/select2.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/vendor/daterangepicker/daterangepicker.css') }}">
 <!--===============================================================================================-->
 	
 <!--===============================================================================================-->
@@ -42,7 +43,7 @@
 					<!-- Logo -->
 					<div class="logo">
 						<a href="/">
-							<img src="{{ asset('frontend/images/icons/logo.png') }}" alt="IMG-LOGO" data-logofixed="{{ asset('frontend/images/icons/logo2.png') }}">
+							<img src="{{ asset('frontend/images/icons/ejemplo.png') }}" alt="IMG-LOGO" data-logofixed="{{ asset('frontend/images/icons/logo2.png') }}">
 						</a>
 					</div>
 
@@ -454,7 +455,7 @@
 	<script type="text/javascript" src="{{ asset('frontend/vendor/select2/select2.min.js') }}"></script>
 <!--===============================================================================================-->
 	<script type="text/javascript" src="{{ asset('frontend/vendor/daterangepicker/moment.min.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('frontend/vendor/daterangepicker/daterangepicker.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('frontend/vendor/daterangepicker/daterangepicker.js') }}"></script>	
 <!--===============================================================================================-->
 	<script type="text/javascript" src="{{ asset('frontend/vendor/slick/slick.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('frontend/js/slick-custom.js') }}"></script>

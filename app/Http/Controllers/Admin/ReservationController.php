@@ -55,6 +55,15 @@ class ReservationController extends Controller
         $reservMail = Reservation::find($id);
         $email = $reservMail->email;
 
+        $valRestaurant = Restaurant::where('user_id', auth()->id())->get('id');
+
+        foreach ($valRestaurant as $value) {
+            $idRest = $value->id;
+        }
+
+        $restaurant = Restaurant::find($idRest);
+        $nameRest = strtoupper($restaurant->name_restaurant);
+
         try {
             $email_service = new emailService();
 
@@ -66,11 +75,18 @@ class ReservationController extends Controller
                 'time' => $reservMail->time,
                 'people' => $reservMail->people,
                 'message' => $reservMail->message,
+                'restaurant' => $nameRest
             );
             // dd($email);
             $email_service->SendEmail($email, $subject, 'emails/emailConfirmation', $params);
         } catch (\Exception $ex) {
             return response()->json(['message' => $ex->getMessage(), 'status' => $ex->getCode()], 404);
         }
+    }
+
+    public function show($id)
+    {
+        $reservations = Reservation::find($id);
+        return view('admin.reservation.show', compact('reservations'));
     }
 }

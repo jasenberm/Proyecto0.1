@@ -11,10 +11,12 @@
       
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/utilCambio.css') }}">
+	
         
 </head>
 
-<body>
+<body class="bg2-pattern">
 <div class="content" style="margin-top: 50px">
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -24,7 +26,7 @@
           <div class="card-header card-header-primary">
             <h4 class="card-title ">Registro Dueños de Restaurantes</h4>
           </div>
-          <div class="card-body">
+          <div class="card-body bg1-pattern">
             <form method="POST" action="{{ route('register_owner_post') }}" autocomplete="off">
             @csrf
               <div class="form-row">

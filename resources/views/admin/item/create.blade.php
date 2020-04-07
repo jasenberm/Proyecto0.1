@@ -21,9 +21,9 @@
                         @csrf
                         <div class="col-md-12">
                           <div class="form-group">
-                              <label class="bmd-label-floating">Categoria</label>
+                              <label class="bmd-label-floating">Clasifiación</label>
                               <select class="form-control" id="category" name="category" required>
-                                  <option selected>Seleccione la categoria...</option>
+                                  <option selected>Seleccione la Clasificación a la que pertece...</option>
                                 @foreach ($categories as $category)
                                   <option value="{{ $category->id }}"> {{ $category->name }}</option>
                                 @endforeach

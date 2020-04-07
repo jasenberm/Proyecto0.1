@@ -53,8 +53,8 @@
                         <input type="file" id="imagen" name="image">
                       </div>
                       <br>
-                      <a href="{{ route('item.index') }}" class="btn btn-danger">Back</a>
-                      <button type="submit" class="btn btn-primary">Save</button>
+                      <a href="{{ route('item.index') }}" class="btn btn-danger">Retroceder</a>
+                      <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
                 </div>
               </div>

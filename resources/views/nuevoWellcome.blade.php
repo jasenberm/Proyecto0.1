@@ -204,7 +204,7 @@
 						</p>
 
 						<a href="{{ route('register_owner') }}" class="txt4">
-							Trabaja con nosotros
+							Publicite su negocio con nosotros
 							<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
 						</a>
 					</div>
@@ -232,7 +232,7 @@
 		</div>
 		
 		<div class="container">
-			<div class="row" id="list-filtros">
+			{{-- <div class="row" id="list-filtros">
 				<div class="col-md-12 col-offset-1" id="envol-filtros">
 					<div class="section-header">
 						<h2 class="tit2">Lista de restaurantes asociados</h2>
@@ -242,10 +242,28 @@
 							@if ($category->restaurants->where('status', 1)->count() > 0)
 								<li class="filter txt13" data-filter="#{{ $category->slug }}">
 									{{ $category->name }}
-									{{-- <span class="badge badge-primary badge-pill">{{ $category->restaurants->where('status', 1)->count() }}</span> --}}
+									<span class="badge badge-primary badge-pill">{{ $category->restaurants->where('status', 1)->count() }}</span>
 								</li>
 							@endif
 							@endforeach
+						</ul>
+					</div>
+				</div>
+			</div> --}}
+			<div class="row" id="list-filtros">
+				<div class="col-md-12 col-offset-1" id="envol-filtros">
+					<div class="section-header">
+						<h2 class="tit2">Lista de restaurantes asociados</h2>
+						<ul class="clearfix" id="list-rest">
+							<li class="filter txt13" data-filter="all">todo</li>
+							<select class="txt12" style="border-radius: 10px">
+								<option selected>Restaurantes por tipos de comidas</option>
+								@foreach ($categoryRestaurants as $category)
+								@if ($category->restaurants->where('status', 1)->count() > 0)
+								<option class="filter" data-filter="#{{ $category->slug }}">{{ $category->name }}</option>
+								@endif								
+								@endforeach
+							</select>
 						</ul>
 					</div>
 				</div>
@@ -385,6 +403,7 @@
 	<script src="{{ asset('frontend/js/jquery.mixitup.min.js') }}"></script>
 
 	<!--Mapa-->
+
 	<script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
 	<script>
 		mapboxgl.accessToken = 'pk.eyJ1IjoiamFzZW5iZXJtIiwiYSI6ImNqeXhpZDFmbDA3a2YzY28xcW5kMWI3ajMifQ.CdmHunZbUBpmZPYvK0_HyA';
@@ -420,12 +439,12 @@
 		// add markers
 		geojson.features.forEach(function(marker) {
 			let element = document.createElement('div');
-			element.className = 'marker';
+			element.className = 'marker';			
 				
 			new mapboxgl.Marker(element)
 				.setLngLat(marker.geometry.coordinates)
 				.setPopup(new mapboxgl.Popup()
-				.setHTML('<a href="{{ route('restaurant.welcome', $restaurant->id) }}"><h4>' + marker.properties.name + '</h4></a> <p>' + marker.properties.location + '</p>'))
+				.setHTML('<a href="{{ route('restaurant.welcome',"' + marker.properties.id +'") }}"><h4>' + marker.properties.name + '</h4></a> <p>' + marker.properties.location + '</p>'))
 				.addTo(map);						
 		
 		});

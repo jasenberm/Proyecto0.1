@@ -18,12 +18,12 @@
       @endforeach
       @else
         <p><a href="{{ route('restaurant.create') }}" class="btn btn-primary">Agregar</a> el restaurante para proceder con la 
-          creación de las categorias y productos que su negocio va a proveer.</p>
+          creación de las clasificaciones y productos que su negocio va a proveer.</p>
       @endif      
       @include('layouts.partial.msg')
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title">Informacion de mi Restaurante</h4>
+            <h4 class="card-title">Información de mi Restaurante</h4>
           </div>
           @foreach ($restaurants as $restaurant)    
           <div class="card-body">
@@ -52,7 +52,7 @@
             <div class="modal-dialog modal-dialog-scrollable" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="modalImagenLbel">{{ $restaurant->image }}</h5>
+                  <h5 class="modal-title" id="modalImagenLbel">{{ $restaurant->name_restaurant }}</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -60,10 +60,7 @@
                 <div class="modal-body">
                   <img src="{{ asset('upload/restaurant/'.$restaurant->image) }}" alt="restaurante"
                   style="width:100%">
-                </div>
-                <div class="modal-footer">
-                  <h3>{{ $restaurant->name_restaurant }}</h3>
-                </div>
+                </div>               
               </div>
             </div>
           </div>
@@ -71,7 +68,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="modalImagenLbel">Selecione su ubicacion en el mapa</h5>
+                  <h5 class="modal-title" id="modalImagenLbel">Ubicación de su restaurante</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>

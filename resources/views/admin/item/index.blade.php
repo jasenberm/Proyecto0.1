@@ -43,7 +43,7 @@
                         <th>Categoria</th>
                         <th>Descripcion</th>
                         <th>Precio</th>
-                        <th>Creado</th>
+                        {{-- <th>Creado</th> --}}
                         <th>Actualizado</th>
                         <th>Acciones</th>
                       </thead>
@@ -57,7 +57,7 @@
                                 <td>{{ $item->category->name }}</td>
                                 <td>{{ $item->description }}</td>
                                 <td>${{ $item->price }}</td>
-                                <td>{{ $item->created_at }}</td>
+                                {{-- <td>{{ $item->created_at }}</td> --}}
                                 <td>{{ $item->updated_at }}</td>
                                 <td>
                                   <a href="{{ route('item.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar Plato" class="btn btn-info btn-sm">

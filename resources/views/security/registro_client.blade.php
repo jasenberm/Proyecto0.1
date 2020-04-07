@@ -19,11 +19,12 @@
       
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/utilCambio.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}"> --}}
         
 </head>
 
-<body>
+<body class="bg1-pattern">
 <div id="idparavue" class="content" style="margin-top: 50px">
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -33,7 +34,7 @@
           <div class="card-header card-header-primary">
             <h4 class="card-title ">Registro de Cliente</h4>
           </div>
-          <div class="card-body">
+          <div class="card-body bg2-pattern">
             <form method="POST" action="{{ route('register_client_post') }}" autocomplete="off">
             @csrf
               <div class="form-row">          

@@ -13,6 +13,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
+              <a href="https://srienlinea.sri.gob.ec/sri-en-linea/SriRucWeb/ConsultaRuc/Consultas/consultaRuc" target="_blank" class="btn btn-primary">Validar RUC</a>
               @include('layouts.partial.msg')
               <div class="card">
                 <div class="card-header card-header-primary">

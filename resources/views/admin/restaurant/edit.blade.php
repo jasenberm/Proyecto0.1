@@ -78,8 +78,8 @@
                           </div>
                         </div>     
                       <br>
-                      <a href="{{ route('restaurant.index') }}" class="btn btn-danger">Back</a>
-                      <button type="submit" class="btn btn-primary">Save</button>
+                      <a href="{{ route('restaurant.index') }}" class="btn btn-danger">Retroceder</a>
+                      <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
                 </div>
               </div>

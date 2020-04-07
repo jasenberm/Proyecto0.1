@@ -9,17 +9,6 @@
         </div>
         <div class="modal-body">
           <div class="col-md-12">
-            <div class="row-md-12">
-              <p class="tit2">Confirmadas</p>
-                <ul>
-                @foreach ($reservaciones as $reservacion)
-                @if ($reservacion->status == true)
-                  <li style="margin-top: 5px"><strong>Restaurante: </strong> {{ $reservacion->restaurant->name_restaurant }}</li>
-                  <li><strong>Fecha: </strong> {{ $reservacion->date }} <strong> y hora: </strong> {{ $reservacion->time }}</li>
-                @endif
-                @endforeach
-                </ul>
-            </div>
             <div class="row-md-12" style="margin-top: 10px">
               <p class="tit2">Sin Confirmar</p>
                 <ul>
@@ -30,7 +19,18 @@
                 @endif
                 @endforeach
                 </ul>
-            </div>            
+            </div>  
+            <div class="row-md-12">
+              <p class="tit2">Confirmadas</p>
+                <ul>
+                @foreach ($reservaciones as $reservacion)
+                @if ($reservacion->status == true)
+                  <li style="margin-top: 5px"><strong>Restaurante: </strong> {{ $reservacion->restaurant->name_restaurant }}</li>
+                  <li><strong>Fecha: </strong> {{ $reservacion->date }} <strong> y hora: </strong> {{ $reservacion->time }}</li>
+                @endif
+                @endforeach
+                </ul>
+            </div>                      
           </div>                              
         </div>                                            
         <div class="modal-footer">

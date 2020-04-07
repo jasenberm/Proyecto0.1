@@ -57,6 +57,7 @@ class HomeController extends Controller
                     'coordinates' => [$value->lng, $value->lat]
                 ],
                 'properties' => [
+                    'id' => $value->id,
                     'name' => $value->name_restaurant,
                     'location' => $value->location
                 ]
