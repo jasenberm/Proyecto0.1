@@ -48,12 +48,12 @@
                         <td>{{ $category->updated_at}}</td>                        
                         <td>              
                           <form method="POST" id="status-form-{{ $category->id }}" 
-                            action="{{ route('category_admin.update', $category->id) }}" style="display: none;">
+                            action="{{ route('status.categoryRestaurant', $category->id) }}" style="display: none;">
                               @csrf
                               @method('PUT')
                             </form>
                             @if ($category->status == true)
-                            <button type="button" data-toggle="tooltip" data-placement="top" title="Desactivar Categoria" class="btn btn-danger btn-sm" onclick="if(confirm('¿Seguro de desactivar esta categoria?')){
+                            <button type="button" data-toggle="tooltip" data-placement="top" title="Desactivar Categoria" class="btn btn-warning btn-sm" onclick="if(confirm('¿Seguro de desactivar esta categoria?')){
                               event.preventDefault();
                               document.getElementById('status-form-{{ $category->id }}').submit();
                               }else{
@@ -74,7 +74,24 @@
                         
                             <i class="material-icons">check_circle</i>
                           </button>                                                     
-                          @endif                                                                   
+                          @endif 
+
+                          <a href="{{ route('category_admin.edit', $category->id) }}" data-toggle="tooltip" data-placement="top" title="Editar Clasificación" class="btn btn-info btn-sm">
+                            <i class="material-icons">mode_edit</i>
+                          </a>
+                          
+                          <form method="POST" id="delete-form-{{ $category->id }}" action="{{ route('category_admin.destroy', $category->id) }}" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                          </form>
+                          <button type="button" data-toggle="tooltip" data-placement="top" title="Eliminar Clasificación" class="btn btn-danger btn-sm" onclick="if(confirm('¿Estas seguro de eliminarlo?')){
+                            event.preventDefault();
+                            document.getElementById('delete-form-{{ $category->id }}').submit();
+                          }else{
+                            event.preventDefault();
+                          }">
+                            <i class="material-icons">delete</i>
+                          </button>
                         </td>
                     </tr>    
                     @endforeach

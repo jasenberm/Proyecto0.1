@@ -255,15 +255,21 @@
 					<div class="section-header">
 						<h2 class="tit2">Lista de restaurantes asociados</h2>
 						<ul class="clearfix" id="list-rest">
-							<li class="filter txt13" data-filter="all">todo</li>
-							<select class="txt12" style="border-radius: 10px">
-								<option selected>Restaurantes por tipos de comidas</option>
-								@foreach ($categoryRestaurants as $category)
-								@if ($category->restaurants->where('status', 1)->count() > 0)
-								<option class="filter" data-filter="#{{ $category->slug }}">{{ $category->name }}</option>
-								@endif								
-								@endforeach
-							</select>
+							<ul>
+								<li class="filter txt13" data-filter="all">todo</li>
+							</ul>
+							<ul>						
+								<div id="combo">
+									<li class="selected txt13" >Restaurantes por tipo de comida</li>
+									<div class="opciones">										
+										@foreach ($categoryRestaurants as $category)
+											@if ($category->restaurants->where('status', 1)->count() > 0)
+											<li class="filter txt13 opcion" data-filter="#{{ $category->slug }}">{{ $category->name }}</li>	
+											@endif								
+										@endforeach							
+									</div>									
+								</div>
+							</ul>							
 						</ul>
 					</div>
 				</div>
@@ -455,11 +461,24 @@
 		function iniciarsession(){
 			$('#login-modal').modal('show');
 		}	
-		
-		function registrarclient(){
-			$('#register-client-modal').modal('show');
-			$('#login-modal').modal('hide');
-		}
+
+	</script>
+
+	<script>
+		const selected = document.querySelector(".selected");
+		const opcion = document.querySelector(".opciones");
+		const opcionList = document.querySelectorAll(".opcion");
+
+		selected.addEventListener("click", () => {
+			opcion.classList.toggle("active");
+		});
+
+		opcionList.forEach(o => {
+			o.addEventListener("click", () => {
+				selected.innerHTML = o.innerHTML;
+				opcion.classList.remove("active");
+			});
+		});
 	</script>
 	
 </body>
@@ -467,4 +486,3 @@
 
 @include('layouts.partial.reservations')
 @include('security.login-modal')
-@include('security.registro-client-modal')

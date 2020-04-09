@@ -530,7 +530,5 @@
 </body>
 </html>
 
-	<!-- modales -->
-	@include('layouts.partial.reservations')
-	@include('security.login-modal')
-	{{-- @include('security.registro-admin-modal') --}}
+@include('layouts.partial.reservations')
+@include('security.login-modal')	

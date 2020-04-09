@@ -27,8 +27,8 @@ class HomeController extends Controller
         $restaurants = Restaurant::where('status', 1)->paginate(12);
         $restaurants1 = Restaurant::where('status', 1)->get();
         $reservaciones = Reservation::where('user_id', auth()->id())
-            ->limit(10)
-            ->orderBy('id', 'desc')
+            ->limit(20)
+            ->orderBy('date', 'desc')
             ->get();
         $items = Item::inRandomOrder()
             ->limit(12)

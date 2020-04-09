@@ -37,7 +37,7 @@ Route::get('/email/verify', 'Auth\VerificationController@show')->name('verificat
 Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified'], 'namespace' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace' => 'admin'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 
     Route::resource('slider', 'SliderController');
@@ -71,7 +71,8 @@ Route::group(['prefix' => 'superuser', 'middleware' => ['auth', 'superuser'], 'n
     Route::resource('category_admin', 'CategoryRestaurantController');
     Route::resource('request', 'RequestController');
     Route::resource('restaurant_admin', 'RestaurantController');
-    Route::put('status/{id}', 'ClientController@status')->name('status');
+    Route::put('statusCategoria/{id}', 'CategoryRestaurantController@status')->name('status.categoryRestaurant');
+    Route::put('statusClient/{id}', 'ClientController@status')->name('status');
     Route::put('statusrestaurant/{id}', 'RestaurantController@status')->name('restaurant.status');
     Route::get('export/index', 'ExportController@index')->name('export.index');
     Route::get('export/clients', 'ExportController@client')->name('export.client');

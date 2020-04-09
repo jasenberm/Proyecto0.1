@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperUser;
 use App\CategoryRestaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CategoryRestaurantController extends Controller
 {
@@ -39,14 +40,17 @@ class CategoryRestaurantController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => ['required', 'alpha']
+            'name' => ['required', 'string']
         ]);
         $category = new CategoryRestaurant();
         $category->name = $request->name;
         $category->slug = str_slug($request->name);
+        $category->status = true;
         $category->save();
 
-        return redirect()->route('category_admin.index')->with('successMsg', 'Categoria Guardada Correctamente');
+        Toastr::success('Categoria Guardada Correctamente', 'Exito!', ["positionClass" => "toast-top-right"]);
+        // return redirect()->route('category_admin.index')->with('successMsg', 'Categoria Guardada Correctamente');
+        return redirect()->route('category_admin.index');
     }
 
     /**
@@ -68,7 +72,8 @@ class CategoryRestaurantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = CategoryRestaurant::find($id);
+        return view('superUser.categories.edit', compact('category'));
     }
 
     /**
@@ -80,6 +85,21 @@ class CategoryRestaurantController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => ['required', 'string']
+        ]);
+        $category = CategoryRestaurant::find($id);
+        $category->name = $request->name;
+        $category->slug = str_slug($request->name);
+        $category->save();
+
+        Toastr::success('Categoria Actualizada Correctamente', 'Exito!', ["positionClass" => "toast-top-right"]);
+        // return redirect()->route('category_admin.index')->with('successMsg', 'Categoria Guardada Correctamente');
+        return redirect()->route('category_admin.index');
+    }
+
+    public function status($id)
+    {
         $category = CategoryRestaurant::find($id);
         if ($category->status == true) {
             $category->status = false;
@@ -88,7 +108,9 @@ class CategoryRestaurantController extends Controller
             $category->status = true;
             $category->save();
         }
-        return redirect()->route('category_admin.index')->with('successMsg', 'Cambio de estado realizado correctamente');
+        Toastr::success('Cambio de Estado Realizado Correctamente', 'Exito!', ["positionClass" => "toast-top-right"]);
+        // return redirect()->route('category_admin.index')->with('successMsg', 'Cambio de estado realizado correctamente');
+        return redirect()->route('category_admin.index');
     }
 
     /**
@@ -99,6 +121,9 @@ class CategoryRestaurantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CategoryRestaurant::find($id)->delete();
+        Toastr::success('Categoria Eliminada Correctamente', 'Exito!', ["positionClass" => "toast-top-right"]);
+        // return redirect()->back()->with('successMsg', 'Categoria Eliminada Correctamente');
+        return redirect()->back();
     }
 }
