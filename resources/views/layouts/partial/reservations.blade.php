@@ -20,6 +20,7 @@
                 @endforeach
                 </ul>
             </div>  
+            <hr>
             <div class="row-md-12">
               <p class="tit2">Confirmadas</p>
                 <ul>

@@ -69,6 +69,30 @@
                           </div>
                         </div>
                         <br>
+                        <div class="col-md-12">
+                          <label class="bmd-label-floating">Redes Sociales</label>
+                          <div class="row">                            
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                  <label class="bmd-label-floating">Facebook</label>
+                                  <input type="text" class="form-control" name="face" value="{{ old('face') }}">
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                  <label class="bmd-label-floating">Instagram</label>
+                                  <input type="text" class="form-control" name="insta" value="{{ old('insta') }}">
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                  <label class="bmd-label-floating">Twiter</label>
+                                  <input type="text" class="form-control" name="twit" value="{{ old('twit') }}">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
                         <dd class="col-sm-9">Pulse <a href="#" data-toggle="modal" data-target="#modalMapa">< aqui ></a> para obtener los campos de longitud y latitud<br></dd>                                                
                         <div class="col-md-12">
                           <div class="form-group">

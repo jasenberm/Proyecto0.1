@@ -25,6 +25,9 @@ class CreateRestaurantsTable extends Migration
             $table->boolean('status')->default(false);
             $table->string('lng')->nullable();
             $table->string('lat')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twiter')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

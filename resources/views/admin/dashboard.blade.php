@@ -63,7 +63,7 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-info card-header-icon">
                         <div class="card-icon">
-                            <i class="fa fa-twitter"></i>
+                            <i class="fa fa-comment"></i>
                         </div>
                         <p class="card-category">Mensajes</p>
                         <h3 class="card-title">{{ $contactCount }}</h3>

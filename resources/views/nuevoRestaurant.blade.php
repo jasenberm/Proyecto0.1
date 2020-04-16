@@ -43,7 +43,7 @@
 					<!-- Logo -->
 					<div class="logo">
 						<a href="/">
-							<img src="{{ asset('frontend/images/icons/ejemplo.png') }}" alt="IMG-LOGO" data-logofixed="{{ asset('frontend/images/icons/logo2.png') }}">
+							<img src="{{ asset('frontend/images/icons/ejemplo.png') }}" alt="IMG-LOGO" data-logofixed="{{ asset('frontend/images/icons/ejemplo2.png') }}">
 						</a>
 					</div>
 
@@ -249,7 +249,7 @@
 									</span>
 								</div>
 							</a>
-							<h2 class="white">${{ $item->price }}</h2>
+							<h2 class="white">US$ {{ $item->price }}</h2>
 						</li>                    
 						@endforeach
 					</ul>											
@@ -473,7 +473,7 @@
 	<script src="{{ asset('frontend/js/main.js') }}"></script>
 	<script src="{{ asset('frontend/js/main2.js') }}"></script>
 	<script src="{{ asset('frontend/js/script.js') }}"></script>
-	<script src="{{ asset('frontend/js/jquery.mixitup.min.js') }}"></script>
+	<script src="{{ asset('frontend/js/jquery.mixitup.min.js') }}"></script>	
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 

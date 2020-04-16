@@ -256,7 +256,7 @@
 						<h2 class="tit2">Lista de restaurantes asociados</h2>
 						<ul class="clearfix" id="list-rest">
 							<ul>
-								<li class="filter txt13" data-filter="all">todo</li>
+								<li class="filter txt13 todo" data-filter="all">todo</li>
 							</ul>
 							<ul>						
 								<div id="combo">
@@ -264,7 +264,7 @@
 									<div class="opciones">										
 										@foreach ($categoryRestaurants as $category)
 											@if ($category->restaurants->where('status', 1)->count() > 0)
-											<li class="filter txt13 opcion" data-filter="#{{ $category->slug }}">{{ $category->name }}</li>	
+											<li class="filter txt1 opcion" data-filter="#{{ $category->slug }}">{{ $category->name }}</li>	
 											@endif								
 										@endforeach							
 									</div>									
@@ -468,7 +468,7 @@
 		const selected = document.querySelector(".selected");
 		const opcion = document.querySelector(".opciones");
 		const opcionList = document.querySelectorAll(".opcion");
-
+		
 		selected.addEventListener("click", () => {
 			opcion.classList.toggle("active");
 		});

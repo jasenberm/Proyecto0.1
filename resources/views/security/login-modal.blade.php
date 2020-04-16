@@ -26,14 +26,14 @@
         <div class="col-md-12">
           <div class="form-group">
             <label class="bmd-label-floating txt9">Usuario</label>
-              <input type="text" class="form-control" v-model="user" value="{{ old('user') }}" required>
+              <input type="text" class="form-control" v-model="user" value="{{ old('user') }}" required style=" border: 1px solid red !important">
           </div>
         </div>
         
         <div class="col-md-12">
           <div class="form-group">
             <label class="bmd-label-floating txt9">Clave</label>
-              <input id="pass" type="password" class="form-control" v-model="password" required>
+              <input id="pass" type="password" class="form-control" v-model="password" required style=" border: 1px solid red !important">
           </div>
         </div>
         <div class="col-md-12">

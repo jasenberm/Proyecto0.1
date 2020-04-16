@@ -64,6 +64,30 @@
                         </div>
                       </div>
                       <br>
+                      <div class="col-md-12">
+                        <label class="bmd-label-floating">Redes Sociales</label>
+                        <div class="row">                            
+                          <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Facebook</label>
+                                <input type="text" class="form-control" name="face" value="{{ $restaurant->facebook }}">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Instagram</label>
+                                <input type="text" class="form-control" name="insta" value="{{ $restaurant->instagram }}">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Twiter</label>
+                                <input type="text" class="form-control" name="twit" value="{{ $restaurant->twiter }}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <br>
                         <dd class="col-sm-9"><a href="#" data-toggle="modal" data-target="#modalMapa">Modificar en el mapa</a> la dirección de su restaurante<br></dd>                                                
                         <div class="col-md-12">
                           <div class="form-group">

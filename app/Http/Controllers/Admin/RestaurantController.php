@@ -97,6 +97,9 @@ class RestaurantController extends Controller
         $restaurant->location = $request->location;
         $restaurant->lng = $request->longitud;
         $restaurant->lat = $request->latitud;
+        $restaurant->facebook = $request->face;
+        $restaurant->instagram = $request->insta;
+        $restaurant->twiter = $request->twit;
         $restaurant->save();
         Toastr::success('Restaurante Creado y Registrado Correctamente', 'Exito!', ["positionClass" => "toast-top-right"]);
         // return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Creado y Registrado Correctamente');
@@ -180,6 +183,9 @@ class RestaurantController extends Controller
         $restaurant->location = $request->location;
         $restaurant->lng = $request->longitud;
         $restaurant->lat = $request->latitud;
+        $restaurant->facebook = $request->face;
+        $restaurant->instagram = $request->insta;
+        $restaurant->twiter = $request->twit;
         $restaurant->save();
         Toastr::success('Restaurante Modificado Correctamente', 'Exito!', ["positionClass" => "toast-top-right"]);
         // return redirect()->route('restaurant.index')->with('successMsg', 'Restaurante Modificado Correctamente');

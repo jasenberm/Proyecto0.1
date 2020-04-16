@@ -29,20 +29,35 @@
           <div class="card-body">
             <div class="col-12">
               <dl class="row">
-                <dt class="col-sm-3">Nombre de mi restaurante </dt>
+                <dt class="col-sm-3">Nombre de mi restaurante:</dt>
                 <dd class="col-sm-9">{{ $restaurant->name_restaurant }}<br></dd>
 
-                <dt class="col-sm-3">Foto de mi restaurante </dt>
+                <dt class="col-sm-3">Foto de mi restaurante:</dt>
                 <dd class="col-sm-9"><a href="#" data-toggle="modal" data-target="#modalImagen">{{ $restaurant->image }}</a><br></dd>
                 
-                <dt class="col-sm-3">Categoria</dt>
+                <dt class="col-sm-3">Categoria:</dt>
                 <dd class="col-sm-9">{{ $categoryRestaurant->name }}<br></dd>
         
-                <dt class="col-sm-3">Descripción</dt>
+                <dt class="col-sm-3">Descripción:</dt>
                 <dd class="col-sm-9">{{ $restaurant->description }}<br></dd>
                 
-                <dt class="col-sm-3">Dirección</dt>
-                <dd class="col-sm-9">{{ $restaurant->location }}<br></dd>                
+                <dt class="col-sm-3">Dirección:</dt>
+                <dd class="col-sm-9">{{ $restaurant->location }}<br></dd>
+                
+                @if ($restaurant->facebook == !null)                    
+                <dt class="col-sm-3">Facebook:</dt>
+                <dd class="col-sm-9"><a href="{{ $restaurant->facebook }}" target="_blank">FACEBOOK/{{ $restaurant->name_restaurant }}</a><br></dd>
+                @endif
+        
+                @if ($restaurant->instagram == !null)                    
+                <dt class="col-sm-3">Instagram:</dt>
+                <dd class="col-sm-9"><a href="{{ $restaurant->instagram }}" target="_blank">INSTAGRAM/{{ $restaurant->name_restaurant }}</a><br></dd>
+                @endif        
+
+                @if ($restaurant->twiter == !null)                    
+                <dt class="col-sm-3">Twiter:</dt>
+                <dd class="col-sm-9"><a href="{{ $restaurant->twiter }}" target="_blank">TWITER/{{ $restaurant->name_restaurant }}</a><br></dd>
+                @endif        
                 
                 <dd class="col-sm-9"><a href="#" data-toggle="modal" data-target="#modalMapa">ver su ubicación</a> en el mapa<br></dd>
               </dl>
@@ -68,7 +83,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="modalImagenLbel">Ubicación de su restaurante</h5>
+                  <h5 class="modal-title" id="modalImagenLbel">Ubicación de mi Restaurante</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
