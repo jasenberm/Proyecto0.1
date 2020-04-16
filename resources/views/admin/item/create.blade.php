@@ -38,13 +38,13 @@
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
-                              <label class="bmd-label-floating">Descripcion de Plato</label>
+                              <label class="bmd-label-floating">Descripción de Plato</label>
                               <textarea class="form-control" id="descripcion" name="description" required></textarea>
                           </div>
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
-                              <label class="bmd-label-floating">Precio del PLato</label>
+                              <label class="bmd-label-floating">Precio del Plato</label>
                               <input type="number" id="precio" class="form-control" name="price" step="any" required>
                           </div>
                         </div>

@@ -67,7 +67,7 @@
 									{{-- <a class="nav-link" data-toggle="modal" 
 										data-target="#staticBackdrop">inicio de sesion</a> --}}
 										{{-- <a class="nav-link" href="{{ route('login') }}">inicio de sesion</a> --}}
-										<a class="nav-link" onClick="iniciarsession();" href="javascript:void(0)">Iniciar session</a>
+										<a class="nav-link" onClick="iniciarsession();" href="javascript:void(0)">Iniciar sesión</a>
 								</li>
 								@else          
 								<li class="nav-item">
@@ -133,7 +133,7 @@
 					Iniciar Sesion
 				</a> --}}
 				<a class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto" onClick="iniciarsession();" href="javascript:void(0)">
-					Iniciar session
+					Iniciar sesión
 				</a>
 			</li>
 			@else       
@@ -427,6 +427,26 @@
 				</div>
 				@endguest				
 			</form>		
+		</div>
+		
+		<div class="row justify-content-center">
+			@if ($restaurant->instagram == !null)				
+			<div style="margin-top: 40px; margin-right: 40px">
+				<a href="{{ $restaurant->instagram }}" class="" style="font-size: 3em;" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>				
+			</div>
+			@endif
+
+			@if ($restaurant->facebook == !null)				
+			<div style="margin-top: 40px; margin-right: 40px">
+				<a href="{{ $restaurant->facebook }}" class="" style="font-size: 3em;" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>				
+			</div>
+			@endif
+
+			@if ($restaurant->twiter == !null)				
+			<div style="margin-top: 40px; margin-right: 40px">
+				<a href="{{ $restaurant->twiter }}" class="" style="font-size: 3em;" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			</div>
+			@endif
 		</div>
 	</section>
 

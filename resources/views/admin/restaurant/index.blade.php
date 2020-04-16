@@ -56,7 +56,7 @@
 
                 @if ($restaurant->twiter == !null)                    
                 <dt class="col-sm-3">Twiter:</dt>
-                <dd class="col-sm-9"><a href="{{ $restaurant->twiter }}" target="_blank">TWITER/{{ $restaurant->name_restaurant }}</a><br></dd>
+                <dd class="col-sm-9"><a href="{{ $restaurant->twiter }}" target="_blank">TWITTER/{{ $restaurant->name_restaurant }}</a><br></dd>
                 @endif        
                 
                 <dd class="col-sm-9"><a href="#" data-toggle="modal" data-target="#modalMapa">ver su ubicación</a> en el mapa<br></dd>

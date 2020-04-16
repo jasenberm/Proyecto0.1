@@ -81,7 +81,7 @@
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                                <label class="bmd-label-floating">Twiter</label>
+                                <label class="bmd-label-floating">Twitter</label>
                                 <input type="text" class="form-control" name="twit" value="{{ $restaurant->twiter }}">
                             </div>
                           </div>

@@ -22,7 +22,7 @@
                       @method('PUT')
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Categoria</label>
+                          <label class="bmd-label-floating">Clasifiación</label>
                           <select class="form-control" name="category">
                             @foreach ($categories as $category)
                             <option {{ $category->id == $item->category->id ? 'selected' : '' }} value="{{ $category->id }}"> {{ $category->name }}</option>
@@ -32,24 +32,24 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Nombre</label>
+                          <label class="bmd-label-floating">Nombre del Plato</label>
                           <input type="text" id="nombre" class="form-control" value="{{ $item->name }}" name="name">
                         </div>
                       </div>                        
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Descripcion</label>
+                          <label class="bmd-label-floating">Descripción del Plato</label>
                           <textarea class="form-control" id="descripcion" name="description">{{ $item->description }}</textarea>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Precio</label>
+                          <label class="bmd-label-floating">Precio del Plato</label>
                           <input type="number" class="form-control" value="{{ $item->price }}" name="price" step="any">
                         </div>
                       </div>
                       <div class="col-md-12">
-                        <label class="bmd-label-floating">Imagen</label><br>
+                        <label class="bmd-label-floating">Imagen del Plato</label><br>
                         <input type="file" id="imagen" name="image">
                       </div>
                       <br>

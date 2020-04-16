@@ -57,7 +57,7 @@
 								</li>								
 
 								<li>
-									<a href="#menu">Menus</a>
+									<a href="#menu">Menús</a>
 								</li>
 								
 								<li>
@@ -68,7 +68,7 @@
 									{{-- <a class="nav-link" data-toggle="modal" 
 										data-target="#staticBackdrop">inicio de sesion</a> --}}
 										{{-- <a class="nav-link" href="{{ route('login') }}">inicio de sesion</a> --}}
-										<a class="nav-link" onClick="iniciarsession();" href="javascript:void(0)">Iniciar sesion</a>
+										<a class="nav-link" onClick="iniciarsession();" href="javascript:void(0)">Iniciar sesión</a>
 								</li>
 								@else   								                      
 								<li class="nav-item dropdown">
@@ -126,7 +126,7 @@
 			</li>
 
 			<li class="t-center m-b-13">
-				<a href="#menu" class="txt19">Menus</a>
+				<a href="#menu" class="txt19">Menús</a>
 			</li>
 
 			<li class="t-center m-b-13">
@@ -140,7 +140,7 @@
 					Iniciar Sesion
 				</a> --}}
 				<a class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto" onClick="iniciarsession();" href="javascript:void(0)">
-					Iniciar session
+					Iniciar sesión
 				</a>
 			</li>
 			@else
@@ -168,7 +168,7 @@
 		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
 			<!-- - -->
 			<h4 class="txt20 m-b-33">
-				Galeria
+				Galería
 			</h4>
 
 			<!-- Gallery -->
@@ -197,7 +197,7 @@
 						</h3>
 
 						<p class="t-center m-b-22 size3 m-l-r-auto">
-							Ponemos a su alcance nuestro listado de restaurantes asociados, con sus variados menus y respectivas ubicaciones, para que conozca lo que ellos tienen para ofrecerle y disfrute de la variada gastronomia que existe ciudad de Guayaquil.
+							Ponemos a su alcance nuestro listado de restaurantes asociados, con sus variados menús y respectivas ubicaciones, para que conozca lo que ellos tienen para ofrecerle y disfrute de la variada gastronomía que existe ciudad de Guayaquil.
 						</p>
 						<p class="t-center m-b-22 size3 m-l-r-auto">
 							Si desea publicitar su negocio a través de nuestra plataforma, inicie el proceso en el siguiente enlace.
@@ -311,7 +311,7 @@
 				</span>
 
 				<h3 class="tit5 t-center m-t-2">
-					Nuestros Menus
+					Nuestros Menús
 				</h3>
 			</div>					
 				<div class="container">
