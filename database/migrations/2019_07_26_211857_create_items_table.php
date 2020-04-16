@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('name');
             $table->text('description');
-            $table->double('price');
+            $table->decimal('price', 5, 2);
             $table->string('image');
             $table->foreign('category_id')
                 ->references('id')->on('categories')
