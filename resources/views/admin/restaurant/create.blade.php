@@ -70,7 +70,7 @@
                         </div>
                         <br>
                         <div class="col-md-12">
-                          <label class="bmd-label-floating">Redes Sociales</label>
+                          <label class="bmd-label-floating">Enlace de Redes Sociales</label>
                           <div class="row">                            
                             <div class="col-md-4">
                               <div class="form-group">
