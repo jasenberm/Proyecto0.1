@@ -199,6 +199,9 @@
 						<p class="t-center m-b-22 size3 m-l-r-auto">
 							Ponemos a su alcance nuestro listado de restaurantes asociados, con sus variados menús y respectivas ubicaciones, para que conozca lo que ellos tienen para ofrecerle y disfrute de la variada gastronomía que existe ciudad de Guayaquil.
 						</p>
+
+						@guest
+							
 						<p class="t-center m-b-22 size3 m-l-r-auto">
 							Si desea publicitar su negocio a través de nuestra plataforma, inicie el proceso en el siguiente enlace.
 						</p>
@@ -207,6 +210,7 @@
 							Publicite su negocio con nosotros
 							<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
 						</a>
+						@endguest
 					</div>
 				</div>
 

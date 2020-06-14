@@ -41,31 +41,31 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Nombre del Restaurante</label>
-                                <input type="text" class="form-control" id="name_restaurant" name="name_restaurant" value="{{ old('name_restaurant') }}">
+                                <input type="text" class="form-control" id="name_restaurant" name="name_restaurant" value="{{ old('name_restaurant') }}" required>
                             </div>
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
                               <label class="bmd-label-floating">RUC</label>
-                              <input type="text" class="form-control" id="ruc" name="ruc" value="{{ old('ruc') }}">
+                              <input type="text" class="form-control" id="ruc" name="ruc" value="{{ old('ruc') }}" required>
                           </div>
                       </div>
                         <div class="col-md-12">
                           <div class="custom-file">
-                              <label class="bmd-label-floating">Elegir una foto</label>
+                              <label class="bmd-label-floating">Elegir una foto de su restaurante</label>
                               <input type="file" name="image">
                           </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Descripción</label>
-                                <input type="text" class="form-control" name="description" value="{{ old('description') }}">
+                                <input type="text" class="form-control" name="description" value="{{ old('description') }}" required>
                             </div>
                         </div>  
                         <div class="col-md-12">
                           <div class="form-group">
                               <label class="bmd-label-floating">Ubicación</label>
-                              <input type="text" class="form-control" name="location" value="{{ old('location') }}">
+                              <input type="text" class="form-control" name="location" value="{{ old('location') }}" required>
                           </div>
                         </div>
                         <br>

@@ -35,13 +35,13 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Nombre</label>
-                          <input type="text" class="form-control" id="name_restaurant" value="{{ $restaurant->name_restaurant }}" name="name_restaurant">
+                          <input type="text" class="form-control" id="name_restaurant" value="{{ $restaurant->name_restaurant }}" name="name_restaurant" required>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">RUC</label>
-                          <input type="text" class="form-control" id="ruc" value="{{ $restaurant->ruc }}" name="ruc">
+                          <input type="text" class="form-control" id="ruc" value="{{ $restaurant->ruc }}" name="ruc" required>
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -54,7 +54,8 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Descripción</label>
-                          <textarea class="form-control" name="description">{{ $restaurant->description }}</textarea>
+                          <input type="text" class="form-control" name="description" value="{{ $restaurant->description }}" required>
+                          {{-- <textarea class="form-control" name="description">{{ $restaurant->description }}</textarea> --}}
                         </div>
                       </div> 
                       <div class="col-md-12">

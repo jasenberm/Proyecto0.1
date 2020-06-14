@@ -261,26 +261,26 @@
                                                                                                 <td class="pc-cta-text pc-fb-font title-email"
                                                                                                     valign="top"
                                                                                                     align="center">
-                                                                                                    CONFIRMACION DE RESERVACION
+                                                                                                    CORREO DE CONFIRMACIÓN
                                                                                                 </td>
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <td class="pc-cta-text pc-fb-font info-message"
                                                                                                     valign="top"
                                                                                                     align="justify">
-                                                                                                    <p>Hola, <strong>{{ $name }}</strong></p>
+                                                                                                    <p>Hola, <strong>{{ $parametros['name'] }}</strong></p>
                                                                                                     <p>La solicitud de reservacion
                                                                                                         realizada en el restaurante
-                                                                                                        <strong>{{ $restaurant }}.</strong>
+                                                                                                        <strong>{{ $parametros['restaurant'] }}</strong>
                                                                                                         ha sido aceptada con fecha:
-                                                                                                        <strong>{{ $date }}</strong>
+                                                                                                        <strong>{{ $parametros['date'] }}</strong>
                                                                                                         y hora:
-                                                                                                        <strong>{{ $time }}</strong>
+                                                                                                        <strong>{{ $parametros['time'] }}</strong>
                                                                                                         para:
-                                                                                                        <strong>{{ $people }}</strong> 
+                                                                                                        <strong>{{ $parametros['people'] }}.</strong> 
                                                                                                         @if ($message == !null)
                                                                                                         Bajo las siguientes indicaciones:
-                                                                                                        <strong>{{ $message }}</strong>     
+                                                                                                        <strong>{{ $parametros['message'] }}</strong>     
                                                                                                         @endif                                                                                                                          
                                                                                                     </p>
                                                                                                     <br>

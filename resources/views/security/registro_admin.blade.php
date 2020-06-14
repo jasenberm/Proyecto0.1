@@ -104,7 +104,7 @@
 
   // (?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*.])(?=.{8,})
   bootstrapValidate('#password','min:8:Ingrese al menos 8 caracteres');
-  bootstrapValidate('#password', 'regex:^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*.])(?=.{8,}):Debe contener MAYUSCULA, minuscula, caracter especial y Numero Ejemplo "Cliente@2020"');
+  bootstrapValidate('#password', 'regex:^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*.])(?=.{8,}):Debe contener MAYUSCULA, minuscula, caracter especial y Numero Ejemplo "Dueño@2020"');
 
   bootstrapValidate('#password_confirmation','matches:#password:Las contraseñas no coinciden');
 </script>

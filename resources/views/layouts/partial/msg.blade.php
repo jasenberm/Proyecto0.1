@@ -5,7 +5,7 @@
                 <i class="material-icons">close</i>
             </button>                
             <span>
-                <b> Danger - </b>{{ $error }}</span>
+                <b> Error - </b>{{ $error }}</span>
         </div> 
     @endforeach
 @endif

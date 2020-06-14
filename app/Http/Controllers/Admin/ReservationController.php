@@ -11,6 +11,9 @@ use App\Notifications\ReservationConfirmed;
 use Illuminate\Support\Facades\Notification;
 use function Opis\Closure\serialize;
 use App\Restaurant;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationConfirmation;
+
 
 class ReservationController extends Controller
 {
@@ -35,8 +38,11 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::find($id);
         $reservation->status = true;
-        $reservation->save();
-        $this->SendEmailVerificationAccount($id);
+        //$reservation->save();
+        //$this->SendEmailVerificationAccount($id);
+
+        $this->envioCorreo($id);
+
         /*Notification::route('mail', $reservation->email)
             ->notify(new ReservationConfirmed());*/
         Toastr::success('Reservación Confirmada Extitosamente', 'Exito!', ["positionClass" => "toast-top-right"]);
@@ -88,5 +94,35 @@ class ReservationController extends Controller
     {
         $reservations = Reservation::find($id);
         return view('admin.reservation.show', compact('reservations'));
+    }
+
+    public function envioCorreo($id)
+    {        
+        $reservMail = Reservation::find($id);
+        $email = $reservMail->email;
+
+        $valRestaurant = Restaurant::where('user_id', auth()->id())->get('id');
+
+        foreach ($valRestaurant as $value) {
+            $idRest = $value->id;
+        }
+
+        $restaurant = Restaurant::find($idRest);
+        $nameRest = strtoupper($restaurant->name_restaurant);
+        
+        
+            $subject = "Correo de Confirmación";
+            $params = array(
+                'name' => $reservMail->name,
+                'date' => $reservMail->date,
+                'time' => $reservMail->time,
+                'people' => $reservMail->people,
+                'message' => $reservMail->message,
+                'restaurant' => $nameRest
+            );
+            // dd($email);
+            Mail::to($email)->send(new ReservationConfirmation($params));
+            //dd('llega');
+
     }
 }

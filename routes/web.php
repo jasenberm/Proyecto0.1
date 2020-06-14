@@ -24,20 +24,24 @@ Route::get('/{id}', 'RestaurantController@index')->where('id', '[0-9]+')->name('
 
 // Auth::routes();
 
-Route::get('/login', 'Security\LoginController@index')->name('login');
-Route::post('/login', 'Security\LoginController@login')->middleware('guest')->name('login_post');
-Route::get('/logout', 'Security\LoginController@logout')->name('logout');
-Route::post('/logout', 'Security\LoginController@logout')->name('logout');
-Route::get('/register', 'Security\RegisterController@index')->name('register');
-Route::get('/registerOwner', 'Security\RegisterController@index')->name('register_owner');
-Route::post('/register', 'Security\RegisterController@register')->name('register_client_post');
-Route::post('/registerOwner', 'Security\RegisterController@register')->name('register_owner_post');
-Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
-Route::get('/email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+Route::group(['verify' => true], function () {
+    
+    Route::get('/login', 'Security\LoginController@index')->name('login');
+    Route::post('/login', 'Security\LoginController@login')->middleware('guest')->name('login_post');
+    Route::get('/logout', 'Security\LoginController@logout')->name('logout');
+    Route::post('/logout', 'Security\LoginController@logout')->name('logout');
+    Route::get('/register', 'Security\RegisterController@index')->name('register');
+    Route::get('/registerOwner', 'Security\RegisterController@index')->name('register_owner');
+    Route::post('/register', 'Security\RegisterController@register')->name('register_client_post');
+    Route::post('/registerOwner', 'Security\RegisterController@register')->name('register_owner_post');
+    Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+    Route::get('/email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+    Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+});
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace' => 'admin'], function () {
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified'], 'namespace' => 'admin'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 
     Route::resource('slider', 'SliderController');
